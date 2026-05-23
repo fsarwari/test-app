@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tester App</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>📚 Tester App</h1>
+            <div id="user-info" class="user-info" style="display: none;">
+                <a href="/app/flashcards" class="btn-flashcards">🎴 Flashcards</a>
+                <a href="/app/admin" class="btn-admin">⚙️ Admin</a>
+                <button onclick="logout()" class="btn-logout">Logout</button>
+                <span id="username-display"></span>
+            </div>
+        </header>
+
+        <!-- Auth Section -->
+        <section id="auth-section" class="auth-section">
+            <div class="auth-container">
+                <h2>Login / Register</h2>
+                <form id="auth-form">
+                    <div class="form-group">
+                        <label for="username">Username:</label>
+                        <input type="text" id="username" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="password">Password:</label>
+                        <input type="password" id="password" required>
+                    </div>
+                    <div class="button-group">
+                        <button type="button" onclick="register()" class="btn">Register</button>
+                        <button type="submit" class="btn btn-primary">Login</button>
+                    </div>
+                </form>
+                <div id="auth-message" class="message"></div>
+            </div>
+        </section>
+
+        <!-- Main App Section -->
+        <section id="app-section" class="app-section" style="display: none;">
+            <!-- Navigation Tabs -->
+            <div class="app-tabs">
+                <button onclick="switchUserTab('tests')" class="tab-button active" id="tab-tests">📝 Tests</button>
+                <button onclick="switchUserTab('scores')" class="tab-button" id="tab-scores">📊 My Scores</button>
+                <button onclick="switchUserTab('profile')" class="tab-button" id="tab-profile">👤 Profile</button>
+            </div>
+
+            <!-- Tests Tab -->
+            <div id="tests-tab" class="app-tab-content">
+                <!-- Tests List View -->
+                <div id="tests-list-view">
+                    <h2>Available Tests</h2>
+                    <div id="tests-list" class="scores-table-container tests-list-container"></div>
+                </div>
+
+                <!-- Test Taking View -->
+                <div id="test-view" style="display: none;">
+                    <div class="test-header">
+                        <button onclick="backToTests()" class="btn-back">← Back to Tests</button>
+                        <h2 id="test-title"></h2>
+                    </div>
+                    
+                    <form id="test-form">
+                        <div id="questions-container"></div>
+                        <button type="submit" class="btn btn-primary btn-submit">Submit Test</button>
+                    </form>
+                </div>
+
+                <!-- Results View -->
+                <div id="results-view" style="display: none;">
+                    <div class="results-container">
+                        <h2>Test Results</h2>
+                        <div class="score-display">
+                            <div class="score-circle">
+                                <span id="result-percentage">0%</span>
+                            </div>
+                            <div class="score-details">
+                                <p>Correct: <strong id="result-correct">0</strong> / <strong id="result-total">0</strong></p>
+                            </div>
+                        </div>
+                        
+                        <div class="answers-section">
+                            <h3>Answer Breakdown</h3>
+                            <div id="answers-breakdown" class="answers-breakdown"></div>
+                        </div>
+                        
+                        <button onclick="backToTests()" class="btn btn-primary">Take Another Test</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Scores Tab -->
+            <div id="scores-tab" class="app-tab-content" style="display: none;">
+                <h2>My Test Scores</h2>
+                <div id="scores-list" class="scores-table-container"></div>
+            </div>
+
+            <!-- Profile Tab -->
+            <div id="profile-tab" class="app-tab-content" style="display: none;">
+                <div class="profile-container">
+                    <h2>Profile</h2>
+                    <div class="profile-panel">
+                        <h3>Change Password</h3>
+                        <div class="form-group">
+                            <label for="current-password">Current Password:</label>
+                            <input type="password" id="current-password" placeholder="Enter your current password" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="new-password">New Password:</label>
+                            <input type="password" id="new-password" placeholder="Enter new password (min 4 characters)" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="confirm-password">Confirm New Password:</label>
+                            <input type="password" id="confirm-password" placeholder="Confirm new password" required>
+                        </div>
+                        <button type="button" onclick="changePassword()" class="btn btn-primary">Change Password</button>
+                        <div id="password-message" class="message"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <script src="{{ url_for('static', filename='app.js') }}"></script>
+</body>
+</html>

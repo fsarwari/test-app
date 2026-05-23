@@ -1,0 +1,319 @@
+{
+    "title": "Test L20",
+    "description": "Lesson 20 Vocabulary",
+    "weight": 10,
+    "enabled": false,
+    "record_score": false,
+    "questions": [
+        {
+            "arabic_word": "ثَلاَثُ بَنَاتٍ",
+            "correct_answer": "Three daughters",
+            "options": [
+                "Three daughters",
+                "Letters of the alphabet",
+                "Letter of the alphabet",
+                "Six women"
+            ]
+        },
+        {
+            "arabic_word": "أَرْبَعُ أَخَوَاتٍ",
+            "correct_answer": "Four sisters",
+            "options": [
+                "Four sisters",
+                "Two (feminine)",
+                "Magazine/journal",
+                "Salma"
+            ]
+        },
+        {
+            "arabic_word": "خَمْسُ أُمَّهَاتٍ",
+            "correct_answer": "Five mothers",
+            "options": [
+                "Five mothers",
+                "Seven students",
+                "Faculties",
+                "Six women"
+            ]
+        },
+        {
+            "arabic_word": "سِتُّ نِسَاءٍ",
+            "correct_answer": "Six women",
+            "options": [
+                "Six women",
+                "Chickens",
+                "Word",
+                "Four brothers"
+            ]
+        },
+        {
+            "arabic_word": "سَبْعُ طَالِبَاتٍ",
+            "correct_answer": "Seven students",
+            "options": [
+                "Letter of the alphabet",
+                "Eight houses",
+                "Seven students",
+                "Paternal aunts"
+            ]
+        },
+        {
+            "arabic_word": "ثَمَانِي غُرَفٍ",
+            "correct_answer": "Eight rooms",
+            "options": [
+                "Eight rooms",
+                "Six men",
+                "Two (masculine)",
+                "Six women"
+            ]
+        },
+        {
+            "arabic_word": "عَشَرَةٌ",
+            "correct_answer": "Ten (feminine)",
+            "options": [
+                "Two (masculine)",
+                "Ten (feminine)",
+                "Magazine/journal",
+                "Ten (masculine)"
+            ]
+        },
+        {
+            "arabic_word": "إِثْنَتَانِ",
+            "correct_answer": "Two (feminine)",
+            "options": [
+                "Paternal aunts",
+                "One (masculine)",
+                "Salma",
+                "Two (feminine)"
+            ]
+        },
+        {
+            "arabic_word": "وَاحِدَةٌ",
+            "correct_answer": "One (feminine)",
+            "options": [
+                "Word",
+                "Salma",
+                "Three sons",
+                "One (feminine)"
+            ]
+        },
+        {
+            "arabic_word": "دَجَاجَةٌ",
+            "correct_answer": "Chicken",
+            "options": [
+                "Chicken",
+                "Six men",
+                "Two (masculine)",
+                "Six women"
+            ]
+        },
+        {
+            "arabic_word": "دَجَاجَاتٌ",
+            "correct_answer": "Chickens",
+            "options": [
+                "Letter of the alphabet",
+                "Eight houses",
+                "Chickens",
+                "Paternal aunts"
+            ]
+        },
+        {
+            "arabic_word": "كُلِّيَّاتٌ",
+            "correct_answer": "Faculties",
+            "options": [
+                "Two (masculine)",
+                "Faculties",
+                "Magazine/journal",
+                "Ten (masculine)"
+            ]
+        },
+        {
+            "arabic_word": "عَمَّاتٌ",
+            "correct_answer": "Paternal aunts",
+            "options": [
+                "Word",
+                "Paternal aunts",
+                "Ten (feminine)",
+                "Eight houses"
+            ]
+        },
+        {
+            "arabic_word": "جَامِعَاتٌ",
+            "correct_answer": "Universities",
+            "options": [
+                "Chicken",
+                "One (masculine)",
+                "Universities",
+                "Magazine/journal"
+            ]
+        },
+        {
+            "arabic_word": "غُرَفٌ",
+            "correct_answer": "Rooms",
+            "options": [
+                "One (feminine)",
+                "Two (masculine)",
+                "Four brothers",
+                "Rooms"
+            ]
+        },
+        {
+            "arabic_word": "سَلْمَى",
+            "correct_answer": "Salma",
+            "options": [
+                "Two (masculine)",
+                "Salma",
+                "Magazine/journal",
+                "Ten (masculine)"
+            ]
+        },
+        {
+            "arabic_word": "ثَلاَثَةُ أَبْنَاءٍ",
+            "correct_answer": "Three sons",
+            "options": [
+                "Word",
+                "Three sons",
+                "Ten (feminine)",
+                "Eight houses"
+            ]
+        },
+        {
+            "arabic_word": "أَرْبَعَةُ إِخْوَةٍ",
+            "correct_answer": "Four brothers",
+            "options": [
+                "Letter of the alphabet",
+                "Letters of the alphabet",
+                "Four brothers",
+                "Two (feminine)"
+            ]
+        },
+        {
+            "arabic_word": "خَمْسَةُ آبَاءٍ",
+            "correct_answer": "Five fathers",
+            "options": [
+                "Letter of the alphabet",
+                "Letters of the alphabet",
+                "Five fathers",
+                "Two (feminine)"
+            ]
+        },
+        {
+            "arabic_word": "سِتَّةُ رِجَالٍ",
+            "correct_answer": "Six men",
+            "options": [
+                "Word",
+                "Six men",
+                "Ten (feminine)",
+                "Eight houses"
+            ]
+        },
+        {
+            "arabic_word": "سَبْعَةُ طُلَّابٍ",
+            "correct_answer": "Seven students",
+            "options": [
+                "Seven students",
+                "Rooms",
+                "Two (feminine)",
+                "Four brothers"
+            ]
+        },
+        {
+            "arabic_word": "ثَمَانِيَةُ بُيُوتٍ",
+            "correct_answer": "Eight houses",
+            "options": [
+                "Eight houses",
+                "Words",
+                "Salma",
+                "Magazine/journal"
+            ]
+        },
+        {
+            "arabic_word": "عَشْرٌ",
+            "correct_answer": "Ten (masculine)",
+            "options": [
+                "Eight houses",
+                "Ten (masculine)",
+                "Ten (feminine)",
+                "Six men"
+            ]
+        },
+        {
+            "arabic_word": "إِثْنَانِ",
+            "correct_answer": "Two (masculine)",
+            "options": [
+                "Word",
+                "Six men",
+                "Two (masculine)",
+                "Three daughters"
+            ]
+        },
+        {
+            "arabic_word": "وَاحِدٌ",
+            "correct_answer": "One (masculine)",
+            "options": [
+                "Eight houses",
+                "Universities",
+                "Six men",
+                "One (masculine)"
+            ]
+        },
+        {
+            "arabic_word": "كَلِمَةٌ",
+            "correct_answer": "Word",
+            "options": [
+                "Four sisters",
+                "Eight houses",
+                "Word",
+                "Five mothers"
+            ]
+        },
+        {
+            "arabic_word": "كَلِمَاتٌ",
+            "correct_answer": "Words",
+            "options": [
+                "Ten (feminine)",
+                "Chicken",
+                "Six men",
+                "Words"
+            ]
+        },
+        {
+            "arabic_word": "مَجَلَّةٌ",
+            "correct_answer": "Magazine/journal",
+            "options": [
+                "Four brothers",
+                "Three daughters",
+                "Words",
+                "Magazine/journal"
+            ]
+        },
+        {
+            "arabic_word": "مَجَلاَّتٌ",
+            "correct_answer": "Magazines/journals",
+            "options": [
+                "Chickens",
+                "Four brothers",
+                "Magazines/journals",
+                "Three daughters"
+            ]
+        },
+        {
+            "arabic_word": "حَرْفٌ",
+            "correct_answer": "Letter of the alphabet",
+            "options": [
+                "Six men",
+                "Word",
+                "Letter of the alphabet",
+                "Chickens"
+            ]
+        },
+        {
+            "arabic_word": "حُرُوفٌ",
+            "correct_answer": "Letters of the alphabet",
+            "options": [
+                "Eight rooms",
+                "Letters of the alphabet",
+                "Rooms",
+                "Salma"
+            ]
+        }
+    ]
+}

@@ -1,0 +1,149 @@
+{
+    "title": "Test L17",
+    "description": "Lesson 17 Vocabulary",
+    "weight": 10,
+    "enabled": false,
+    "record_score": false,
+    "questions": [
+        {
+            "arabic_word": "مَفْتُوحَةٌ",
+            "correct_answer": "Open",
+            "options": [
+                "Cheap",
+                "Broken",
+                "Open",
+                "Handkerchief"
+            ]
+        },
+        {
+            "arabic_word": "لُغَةٌ",
+            "correct_answer": "Language",
+            "options": [
+                "Director of company",
+                "Library",
+                "Shirts",
+                "Language"
+            ]
+        },
+        {
+            "arabic_word": "لُغَاتٌ",
+            "correct_answer": "Languages",
+            "options": [
+                "Languages",
+                "Language",
+                "Shirts",
+                "Firms/companies"
+            ]
+        },
+        {
+            "arabic_word": "كَثِيرَةٌ",
+            "correct_answer": "Many",
+            "options": [
+                "Handkerchiefs",
+                "Handkerchief",
+                "Street",
+                "Many"
+            ]
+        },
+        {
+            "arabic_word": "مَكْتَبَةٌ",
+            "correct_answer": "Library",
+            "options": [
+                "Library",
+                "Language",
+                "Shirts",
+                "Firms/companies"
+            ]
+        },
+        {
+            "arabic_word": "مَكْسُورَةٌ",
+            "correct_answer": "Broken",
+            "options": [
+                "Broken",
+                "Language",
+                "Shirts",
+                "Firms/companies"
+            ]
+        },
+        {
+            "arabic_word": "رَخِيصَةٌ",
+            "correct_answer": "Cheap",
+            "options": [
+                "Cheap",
+                "Language",
+                "Shirts",
+                "Firms/companies"
+            ]
+        },
+        {
+            "arabic_word": "شَارِعٌ",
+            "correct_answer": "Street",
+            "options": [
+                "Shirts",
+                "Firms/companies",
+                "Street",
+                "Broken"
+            ]
+        },
+        {
+            "arabic_word": "مِنْدِيلٌ",
+            "correct_answer": "Handkerchief",
+            "options": [
+                "Handkerchief",
+                "Broken",
+                "Shirts",
+                "Many"
+            ]
+        },
+        {
+            "arabic_word": "مَنَادِيلُ",
+            "correct_answer": "Handkerchiefs",
+            "options": [
+                "Street",
+                "Handkerchief",
+                "Many",
+                "Handkerchiefs"
+            ]
+        },
+        {
+            "arabic_word": "شَرِكَةٌ",
+            "correct_answer": "Firm/company",
+            "options": [
+                "Street",
+                "Handkerchief",
+                "Many",
+                "Firm/company"
+            ]
+        },
+        {
+            "arabic_word": "شَرِكَاتٌ",
+            "correct_answer": "Firms/companies",
+            "options": [
+                "Handkerchiefs",
+                "Director of company",
+                "Language",
+                "Firms/companies"
+            ]
+        },
+        {
+            "arabic_word": "قُمْصَانٌ",
+            "correct_answer": "Shirts",
+            "options": [
+                "Library",
+                "Shirts",
+                "Languages",
+                "Open"
+            ]
+        },
+        {
+            "arabic_word": "مُدِيرُ الشَّرِكَةِ",
+            "correct_answer": "Director of company",
+            "options": [
+                "Street",
+                "Library",
+                "Open",
+                "Director of company"
+            ]
+        }
+    ]
+}

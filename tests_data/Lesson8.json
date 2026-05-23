@@ -1,0 +1,159 @@
+{
+    "title": "Test L8",
+    "description": "Lesson 8 Vocabulary",
+    "weight": 10,
+    "enabled": false,
+    "record_score": false,
+    "questions": [
+        {
+            "arabic_word": "خَلْفَ",
+            "correct_answer": "Behind",
+            "options": [
+                "Germany",
+                "Now/just now",
+                "Hospital",
+                "Behind"
+            ]
+        },
+        {
+            "arabic_word": "أَمَامَ",
+            "correct_answer": "In front of",
+            "options": [
+                "Now/just now",
+                "In front of",
+                "Hospital",
+                "Eesa"
+            ]
+        },
+        {
+            "arabic_word": "أَمْرِيكَا",
+            "correct_answer": "America",
+            "options": [
+                "White/black board",
+                "England",
+                "America",
+                "Germany"
+            ]
+        },
+        {
+            "arabic_word": "سِكِّينٌ",
+            "correct_answer": "Knife",
+            "options": [
+                "White/black board",
+                "England",
+                "Abdullah",
+                "Knife"
+            ]
+        },
+        {
+            "arabic_word": "إِنْكَلْتَرَّا",
+            "correct_answer": "England",
+            "options": [
+                "England",
+                "In front of",
+                "White/black board",
+                "Musa"
+            ]
+        },
+        {
+            "arabic_word": "مُسْتَشْفَى",
+            "correct_answer": "Hospital",
+            "options": [
+                "Musa",
+                "Eesa",
+                "Hospital",
+                "Switzerland"
+            ]
+        },
+        {
+            "arabic_word": "سُوِيسَرَا",
+            "correct_answer": "Switzerland",
+            "options": [
+                "Switzerland",
+                "White/black board",
+                "Abdullah",
+                "Niche"
+            ]
+        },
+        {
+            "arabic_word": "أَلْمَانِيَا",
+            "correct_answer": "Germany",
+            "options": [
+                "Germany",
+                "Abdullah",
+                "Musa",
+                "America"
+            ]
+        },
+        {
+            "arabic_word": "فَرَنْسَا",
+            "correct_answer": "France",
+            "options": [
+                "France",
+                "Abdullah",
+                "Musa",
+                "America"
+            ]
+        },
+        {
+            "arabic_word": "الآنَ",
+            "correct_answer": "Now/just now",
+            "options": [
+                "Germany",
+                "Now/just now",
+                "In front of",
+                "Behind"
+            ]
+        },
+        {
+            "arabic_word": "عَبْدُ اللهِ",
+            "correct_answer": "Abdullah",
+            "options": [
+                "Musa",
+                "Abdullah",
+                "America",
+                "Behind"
+            ]
+        },
+        {
+            "arabic_word": "عِيسَى",
+            "correct_answer": "Eesa",
+            "options": [
+                "Hospital",
+                "Behind",
+                "Niche",
+                "Eesa"
+            ]
+        },
+        {
+            "arabic_word": "مُوسَى",
+            "correct_answer": "Musa",
+            "options": [
+                "Musa",
+                "Knife",
+                "England",
+                "In front of"
+            ]
+        },
+        {
+            "arabic_word": "سَبُّورَةٌ",
+            "correct_answer": "White/black board",
+            "options": [
+                "Hospital",
+                "Abdullah",
+                "White/black board",
+                "England"
+            ]
+        },
+        {
+            "arabic_word": "مِحْرَابٌ",
+            "correct_answer": "Niche",
+            "options": [
+                "Musa",
+                "Niche",
+                "Abdullah",
+                "White/black board"
+            ]
+        }
+    ]
+}

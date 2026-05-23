@@ -1,0 +1,219 @@
+{
+    "title": "Test L18",
+    "description": "Lesson 18 Vocabulary",
+    "weight": 10,
+    "enabled": false,
+    "record_score": false,
+    "questions": [
+        {
+            "arabic_word": "عِيدُ الْفِطْرِ",
+            "correct_answer": "Eid ul fitr",
+            "options": [
+                "This is (dual masculine)",
+                "Rakahs",
+                "Eid ul fitr",
+                "Year"
+            ]
+        },
+        {
+            "arabic_word": "عِيدُ الأَضْحَى",
+            "correct_answer": "Eid ul adha",
+            "options": [
+                "Ruler",
+                "This is (dual feminine)",
+                "Eid ul adha",
+                "Window"
+            ]
+        },
+        {
+            "arabic_word": "هٰذَانِ",
+            "correct_answer": "This is (dual masculine)",
+            "options": [
+                "This is (dual masculine)",
+                "Festival/celebration",
+                "Window",
+                "Areas"
+            ]
+        },
+        {
+            "arabic_word": "هَاتَانِ",
+            "correct_answer": "This is (dual feminine)",
+            "options": [
+                "This is (dual feminine)",
+                "Festival/celebration",
+                "Window",
+                "Areas"
+            ]
+        },
+        {
+            "arabic_word": "هُمَا",
+            "correct_answer": "They (dual)",
+            "options": [
+                "This is (dual masculine)",
+                "They (dual)",
+                "Wheels",
+                "Rakah"
+            ]
+        },
+        {
+            "arabic_word": "كَمْ",
+            "correct_answer": "How many/much",
+            "options": [
+                "Eid ul fitr",
+                "Window",
+                "They (dual)",
+                "How many/much"
+            ]
+        },
+        {
+            "arabic_word": "أَخَوَانِ",
+            "correct_answer": "Two brothers",
+            "options": [
+                "Eid ul fitr",
+                "Window",
+                "They (dual)",
+                "Two brothers"
+            ]
+        },
+        {
+            "arabic_word": "رِيَالٌ",
+            "correct_answer": "Riyal",
+            "options": [
+                "Ruler",
+                "This is (dual masculine)",
+                "Riyal",
+                "Window"
+            ]
+        },
+        {
+            "arabic_word": "مَتْجَرٌ",
+            "correct_answer": "Business",
+            "options": [
+                "Areas",
+                "Rakah",
+                "Business",
+                "This is (dual masculine)"
+            ]
+        },
+        {
+            "arabic_word": "رَكْعَةٌ",
+            "correct_answer": "Rakah",
+            "options": [
+                "Riyals",
+                "Rakah",
+                "Window",
+                "Area"
+            ]
+        },
+        {
+            "arabic_word": "رَكَعَاتٌ",
+            "correct_answer": "Rakahs",
+            "options": [
+                "Areas",
+                "Business",
+                "Rakahs",
+                "This is (dual masculine)"
+            ]
+        },
+        {
+            "arabic_word": "عَجَلَةٌ",
+            "correct_answer": "Wheel",
+            "options": [
+                "Areas",
+                "Business",
+                "Wheel",
+                "This is (dual masculine)"
+            ]
+        },
+        {
+            "arabic_word": "عِيدٌ",
+            "correct_answer": "Festival/celebration",
+            "options": [
+                "Business",
+                "Festival/celebration",
+                "Riyals",
+                "Two brothers"
+            ]
+        },
+        {
+            "arabic_word": "سَنَةٌ",
+            "correct_answer": "Year",
+            "options": [
+                "How many/much",
+                "Riyals",
+                "Rakahs",
+                "Year"
+            ]
+        },
+        {
+            "arabic_word": "نَافِذَةٌ",
+            "correct_answer": "Window",
+            "options": [
+                "Business",
+                "Eid ul adha",
+                "Window",
+                "Riyal"
+            ]
+        },
+        {
+            "arabic_word": "مِسْطَرَةٌ",
+            "correct_answer": "Ruler",
+            "options": [
+                "Business",
+                "Eid ul adha",
+                "Ruler",
+                "Riyal"
+            ]
+        },
+        {
+            "arabic_word": "حَيٌّ",
+            "correct_answer": "Area",
+            "options": [
+                "Business",
+                "Eid ul adha",
+                "Area",
+                "Riyal"
+            ]
+        },
+        {
+            "arabic_word": "أَحْيَاءٌ",
+            "correct_answer": "Areas",
+            "options": [
+                "Riyal",
+                "Rulers",
+                "Areas",
+                "Wheels"
+            ]
+        },
+        {
+            "arabic_word": "عَجَلاَتٌ",
+            "correct_answer": "Wheels",
+            "options": [
+                "Wheels",
+                "Year",
+                "Window",
+                "They (dual)"
+            ]
+        },
+        {
+            "arabic_word": "رِيَالاَتٌ",
+            "correct_answer": "Riyals",
+            "options": [
+                "Festival/celebration",
+                "Riyals",
+                "They (dual)",
+                "Ruler"
+            ]
+        },
+        {
+            "arabic_word": "مَسَاطِرُ",
+            "correct_answer": "Rulers",
+            "options": [
+                "Rulers",
+                "Wheel",
+                "Year",
+                "Area"
+            ]
+        }
+    ]
+}

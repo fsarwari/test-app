@@ -1,0 +1,20 @@
+{
+    "title": "Paper Test 1",
+    "description": "First paper test1",
+    "weight": 1,
+    "enabled": true,
+    "record_score": true,
+    "questions": [
+        {
+            "arabic_word": "Hello there",
+            "correct_answer": "Hello",
+            "options": [
+                "Wrong",
+                "No",
+                "Select the other one",
+                "Hello",
+                "Not this one"
+            ]
+        }
+    ]
+}

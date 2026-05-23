@@ -1,0 +1,360 @@
+{
+    "title": "Test L9",
+    "description": "Lesson 9 Vocabulary",
+    "weight": 10,
+    "enabled": false,
+    "record_score": false,
+    "questions": [
+        {
+            "arabic_word": "شَهِيرٌ",
+            "correct_answer": "Famous",
+            "options": [
+                "Full",
+                "Hard/difficult (masculine)",
+                "Famous",
+                "Why"
+            ]
+        },
+        {
+            "arabic_word": "صَعْبَةٌ",
+            "correct_answer": "Hard/difficult (feminine)",
+            "options": [
+                "Sharp",
+                "Cairo",
+                "English language",
+                "Hard/difficult (feminine)"
+            ]
+        },
+        {
+            "arabic_word": "صَعْبٌ",
+            "correct_answer": "Hard/difficult (masculine)",
+            "options": [
+                "Hard/difficult (masculine)",
+                "New",
+                "Delicious",
+                "Hungry"
+            ]
+        },
+        {
+            "arabic_word": "اللُّغَةُ الإِنْجِلِيزِيَّةُ",
+            "correct_answer": "English language",
+            "options": [
+                "Cup",
+                "New",
+                "Cairo",
+                "English language"
+            ]
+        },
+        {
+            "arabic_word": "طَالِبَةٌ",
+            "correct_answer": "Student",
+            "options": [
+                "Hard/difficult (masculine)",
+                "Small",
+                "Student",
+                "Clinic/small hospital"
+            ]
+        },
+        {
+            "arabic_word": "كُوبٌ",
+            "correct_answer": "Cup",
+            "options": [
+                "Easy",
+                "Cup",
+                "Why",
+                "Today"
+            ]
+        },
+        {
+            "arabic_word": "لِمَاذَا",
+            "correct_answer": "Why",
+            "options": [
+                "English language",
+                "Small",
+                "New",
+                "Why"
+            ]
+        },
+        {
+            "arabic_word": "الْيَوْمَ",
+            "correct_answer": "Today",
+            "options": [
+                "Full",
+                "Today",
+                "Indonesia",
+                "Hardworking"
+            ]
+        },
+        {
+            "arabic_word": "عِنْدَ",
+            "correct_answer": "With/restrictions",
+            "options": [
+                "With/restrictions",
+                "Easy",
+                "Cup",
+                "Hardworking"
+            ]
+        },
+        {
+            "arabic_word": "مَكْتَبَةٌ",
+            "correct_answer": "Library",
+            "options": [
+                "City",
+                "English language",
+                "Famous",
+                "Library"
+            ]
+        },
+        {
+            "arabic_word": "الَّذِي",
+            "correct_answer": "Who/which (masculine singular)",
+            "options": [
+                "New",
+                "Who/which (masculine singular)",
+                "Indonesia",
+                "Cairo"
+            ]
+        },
+        {
+            "arabic_word": "صَغِيرَةٌ",
+            "correct_answer": "Small",
+            "options": [
+                "Small",
+                "Famous",
+                "City",
+                "English language"
+            ]
+        },
+        {
+            "arabic_word": "مُسْتَوْصَفٌ",
+            "correct_answer": "Clinic/small hospital",
+            "options": [
+                "With/restrictions",
+                "Small",
+                "Library",
+                "Clinic/small hospital"
+            ]
+        },
+        {
+            "arabic_word": "مِرْوَحَةٌ",
+            "correct_answer": "Fan",
+            "options": [
+                "City",
+                "Fan",
+                "English language",
+                "Famous"
+            ]
+        },
+        {
+            "arabic_word": "جَدِيدَةٌ",
+            "correct_answer": "New",
+            "options": [
+                "Big",
+                "Clinic/small hospital",
+                "New",
+                "Language"
+            ]
+        },
+        {
+            "arabic_word": "كَبِيرَةٌ",
+            "correct_answer": "Big",
+            "options": [
+                "Easy",
+                "Big",
+                "Cairo",
+                "Indonesia"
+            ]
+        },
+        {
+            "arabic_word": "إِنْدُونِيسِيَا",
+            "correct_answer": "Indonesia",
+            "options": [
+                "Cup",
+                "Hardworking",
+                "Easy",
+                "Indonesia"
+            ]
+        },
+        {
+            "arabic_word": "ثَانَوِيَّةٌ",
+            "correct_answer": "Secondary",
+            "options": [
+                "Cairo",
+                "Hard/difficult (masculine)",
+                "Secondary",
+                "Sharp"
+            ]
+        },
+        {
+            "arabic_word": "فَاكِهَةٌ",
+            "correct_answer": "Fruit",
+            "options": [
+                "Today",
+                "Fruit",
+                "Cairo",
+                "Thirsty"
+            ]
+        },
+        {
+            "arabic_word": "لَذِيذٌ",
+            "correct_answer": "Delicious",
+            "options": [
+                "Fan",
+                "Hungry",
+                "Fruit",
+                "Delicious"
+            ]
+        },
+        {
+            "arabic_word": "عُصْفُورٌ",
+            "correct_answer": "Sparrow",
+            "options": [
+                "Angry",
+                "With/restrictions",
+                "City",
+                "Sparrow"
+            ]
+        },
+        {
+            "arabic_word": "طَائِرٌ",
+            "correct_answer": "Bird",
+            "options": [
+                "Bird",
+                "Cup",
+                "Hardworking",
+                "Easy"
+            ]
+        },
+        {
+            "arabic_word": "الْعَرَبِيَّةُ",
+            "correct_answer": "Arabic",
+            "options": [
+                "Fruit",
+                "Arabic",
+                "Hungry",
+                "Fan"
+            ]
+        },
+        {
+            "arabic_word": "لُغَةٌ",
+            "correct_answer": "Language",
+            "options": [
+                "Indonesia",
+                "Fruit",
+                "Language",
+                "Why"
+            ]
+        },
+        {
+            "arabic_word": "سَهْلَةٌ",
+            "correct_answer": "Easy",
+            "options": [
+                "Fan",
+                "Hungry",
+                "Fruit",
+                "Easy"
+            ]
+        },
+        {
+            "arabic_word": "مُجْتَهِدٌ",
+            "correct_answer": "Hardworking",
+            "options": [
+                "Fruit",
+                "Easy",
+                "Hardworking",
+                "Sparrow"
+            ]
+        },
+        {
+            "arabic_word": "كَسْلَانُ",
+            "correct_answer": "Lazy",
+            "options": [
+                "Today",
+                "Library",
+                "With/restrictions",
+                "Lazy"
+            ]
+        },
+        {
+            "arabic_word": "سَهْلٌ",
+            "correct_answer": "Easy",
+            "options": [
+                "Why",
+                "Fruit",
+                "Indonesia",
+                "Easy"
+            ]
+        },
+        {
+            "arabic_word": "الْقَاهِرَةُ",
+            "correct_answer": "Cairo",
+            "options": [
+                "Library",
+                "Small",
+                "With/restrictions",
+                "Cairo"
+            ]
+        },
+        {
+            "arabic_word": "مَدِينَةٌ",
+            "correct_answer": "City",
+            "options": [
+                "City",
+                "Small",
+                "Library",
+                "With/restrictions"
+            ]
+        },
+        {
+            "arabic_word": "جَوْعَانُ",
+            "correct_answer": "Hungry",
+            "options": [
+                "Easy",
+                "Hungry",
+                "Sparrow",
+                "Fruit"
+            ]
+        },
+        {
+            "arabic_word": "عَطْشَانُ",
+            "correct_answer": "Thirsty",
+            "options": [
+                "Bird",
+                "Fruit",
+                "Delicious",
+                "Thirsty"
+            ]
+        },
+        {
+            "arabic_word": "غَضْبَانُ",
+            "correct_answer": "Angry",
+            "options": [
+                "Hard/difficult (masculine)",
+                "Angry",
+                "Who/which (masculine singular)",
+                "Sparrow"
+            ]
+        },
+        {
+            "arabic_word": "مَلآنُ",
+            "correct_answer": "Full",
+            "options": [
+                "Full",
+                "Who/which (masculine singular)",
+                "Sparrow",
+                "Hard/difficult (masculine)"
+            ]
+        },
+        {
+            "arabic_word": "حَادٌّ",
+            "correct_answer": "Sharp",
+            "options": [
+                "Cairo",
+                "Hard/difficult (masculine)",
+                "New",
+                "Sharp"
+            ]
+        }
+    ],
+    "max_questions": 30
+}

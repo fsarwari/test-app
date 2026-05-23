@@ -1,0 +1,209 @@
+{
+    "title": "Test L5",
+    "description": "Lesson 5 Vocabulary",
+    "weight": 10,
+    "enabled": false,
+    "record_score": false,
+    "questions": [
+        {
+            "arabic_word": "فَيْصَلٌ",
+            "correct_answer": "Faisal",
+            "options": [
+                "Name",
+                "Teacher/professor",
+                "Faisal",
+                "Illuminated"
+            ]
+        },
+        {
+            "arabic_word": "مَسْعُودٌ",
+            "correct_answer": "Masood",
+            "options": [
+                "Here",
+                "Street",
+                "Masood",
+                "Paternal uncle"
+            ]
+        },
+        {
+            "arabic_word": "وَزِيرٌ",
+            "correct_answer": "Minister",
+            "options": [
+                "There",
+                "Faisal",
+                "Street",
+                "Minister"
+            ]
+        },
+        {
+            "arabic_word": "أُسْتَاذٌ",
+            "correct_answer": "Teacher/professor",
+            "options": [
+                "Street",
+                "Maternal uncle",
+                "Teacher/professor",
+                "Masood"
+            ]
+        },
+        {
+            "arabic_word": "سَيَّارَةٌ",
+            "correct_answer": "Car",
+            "options": [
+                "Here",
+                "Street",
+                "Car",
+                "Paternal uncle"
+            ]
+        },
+        {
+            "arabic_word": "ابْنٌ",
+            "correct_answer": "Son",
+            "options": [
+                "Teacher/professor",
+                "Name",
+                "Son",
+                "Illuminated"
+            ]
+        },
+        {
+            "arabic_word": "اللهُ",
+            "correct_answer": "Allah",
+            "options": [
+                "Street",
+                "O",
+                "Son",
+                "Allah"
+            ]
+        },
+        {
+            "arabic_word": "اسْمٌ",
+            "correct_answer": "Name",
+            "options": [
+                "Street",
+                "O",
+                "Son",
+                "Name"
+            ]
+        },
+        {
+            "arabic_word": "الْعِرَاقُ",
+            "correct_answer": "Iraq",
+            "options": [
+                "Under/beneath",
+                "Minister",
+                "Iraq",
+                "Paternal uncle"
+            ]
+        },
+        {
+            "arabic_word": "مُنَوَّرَةٌ",
+            "correct_answer": "Illuminated",
+            "options": [
+                "Street",
+                "Maternal uncle",
+                "Illuminated",
+                "Masood"
+            ]
+        },
+        {
+            "arabic_word": "يَا",
+            "correct_answer": "O",
+            "options": [
+                "Street",
+                "Illuminated",
+                "Son",
+                "O"
+            ]
+        },
+        {
+            "arabic_word": "هُنَاكَ",
+            "correct_answer": "There",
+            "options": [
+                "Closed",
+                "Iraq",
+                "There",
+                "Minister"
+            ]
+        },
+        {
+            "arabic_word": "هُنَا",
+            "correct_answer": "Here",
+            "options": [
+                "Closed",
+                "Iraq",
+                "Here",
+                "Minister"
+            ]
+        },
+        {
+            "arabic_word": "حَقِيبَةٌ",
+            "correct_answer": "Bag",
+            "options": [
+                "Closed",
+                "Iraq",
+                "Bag",
+                "Minister"
+            ]
+        },
+        {
+            "arabic_word": "تَحْتَ",
+            "correct_answer": "Under/beneath",
+            "options": [
+                "Name",
+                "Under/beneath",
+                "Girl/daughter",
+                "Masood"
+            ]
+        },
+        {
+            "arabic_word": "بِنْتٌ",
+            "correct_answer": "Girl/daughter",
+            "options": [
+                "O",
+                "Minister",
+                "Car",
+                "Girl/daughter"
+            ]
+        },
+        {
+            "arabic_word": "عَمٌّ",
+            "correct_answer": "Paternal uncle",
+            "options": [
+                "Paternal uncle",
+                "There",
+                "Here",
+                "Illuminated"
+            ]
+        },
+        {
+            "arabic_word": "مُغْلَقٌ",
+            "correct_answer": "Closed",
+            "options": [
+                "Name",
+                "Masood",
+                "Closed",
+                "Bag"
+            ]
+        },
+        {
+            "arabic_word": "خَالٌ",
+            "correct_answer": "Maternal uncle",
+            "options": [
+                "Iraq",
+                "Maternal uncle",
+                "Street",
+                "Allah"
+            ]
+        },
+        {
+            "arabic_word": "شَارِعٌ",
+            "correct_answer": "Street",
+            "options": [
+                "Iraq",
+                "Street",
+                "Car",
+                "There"
+            ]
+        }
+    ]
+}

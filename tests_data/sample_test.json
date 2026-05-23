@@ -1,0 +1,59 @@
+{
+    "title": "Basic Arabic Vocabulary",
+    "description": "Test your knowledge of basic Arabic words",
+    "weight": 1,
+    "enabled": false,
+    "record_score": false,
+    "questions": [
+        {
+            "arabic_word": "مرحبا",
+            "correct_answer": "Hello",
+            "options": [
+                "Thank you",
+                "No",
+                "Yes",
+                "Hello"
+            ]
+        },
+        {
+            "arabic_word": "شكرا",
+            "correct_answer": "Thank you",
+            "options": [
+                "Thank you",
+                "Goodbye",
+                "Sorry",
+                "Please"
+            ]
+        },
+        {
+            "arabic_word": "نعم",
+            "correct_answer": "Yes",
+            "options": [
+                "Yes",
+                "No",
+                "Always",
+                "Maybe"
+            ]
+        },
+        {
+            "arabic_word": "لا",
+            "correct_answer": "No",
+            "options": [
+                "Sometimes",
+                "Yes",
+                "No",
+                "Never"
+            ]
+        },
+        {
+            "arabic_word": "صباح الخير",
+            "correct_answer": "Good morning",
+            "options": [
+                "Sleep well",
+                "Good morning",
+                "Good evening",
+                "Good afternoon"
+            ]
+        }
+    ]
+}

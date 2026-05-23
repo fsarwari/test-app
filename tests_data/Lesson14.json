@@ -1,0 +1,649 @@
+{
+    "title": "Test L14",
+    "description": "Lesson 14 Vocabulary",
+    "weight": 10,
+    "enabled": false,
+    "record_score": false,
+    "questions": [
+        {
+            "arabic_word": "أَنْتُمْ",
+            "correct_answer": "You (masculine plural)",
+            "options": [
+                "You (masculine plural)",
+                "Ishaaq",
+                "Grandsons",
+                "Saturday"
+            ]
+        },
+        {
+            "arabic_word": "كُمْ",
+            "correct_answer": "Your (masculine plural attached pronoun)",
+            "options": [
+                "Ishaaq",
+                "Your (masculine plural attached pronoun)",
+                "Grandsons",
+                "Mikaeel"
+            ]
+        },
+        {
+            "arabic_word": "أَنَا",
+            "correct_answer": "I",
+            "options": [
+                "I",
+                "Lut",
+                "Countries",
+                "Christian"
+            ]
+        },
+        {
+            "arabic_word": "نَحْنُ",
+            "correct_answer": "We",
+            "options": [
+                "We",
+                "Christians",
+                "George",
+                "Grandsons"
+            ]
+        },
+        {
+            "arabic_word": "بَيْتُنَا",
+            "correct_answer": "Our house",
+            "options": [
+                "London",
+                "Our house",
+                "Law court",
+                "Child"
+            ]
+        },
+        {
+            "arabic_word": "إِخْوَانٌ",
+            "correct_answer": "Brothers",
+            "options": [
+                "London",
+                "Brothers",
+                "Law court",
+                "Child"
+            ]
+        },
+        {
+            "arabic_word": "اللهُ رَبُّنَا",
+            "correct_answer": "Allah is our Lord",
+            "options": [
+                "I",
+                "Christians",
+                "Allah is our Lord",
+                "Garden"
+            ]
+        },
+        {
+            "arabic_word": "الإِسْلاَمُ دِينُنَا",
+            "correct_answer": "Islam is our religion",
+            "options": [
+                "Child",
+                "Ishaaq",
+                "Islam is our religion",
+                "Yaqub"
+            ]
+        },
+        {
+            "arabic_word": "مُحَمَّدٌ نَبِيُّنَا",
+            "correct_answer": "Muhammad is our prophet",
+            "options": [
+                "London",
+                "Which?",
+                "He went",
+                "Muhammad is our prophet"
+            ]
+        },
+        {
+            "arabic_word": "ذَهَبْتُمْ",
+            "correct_answer": "You went (masculine plural)",
+            "options": [
+                "Which?",
+                "You went (masculine plural)",
+                "London",
+                "Lut"
+            ]
+        },
+        {
+            "arabic_word": "ذَهَبَ",
+            "correct_answer": "He went",
+            "options": [
+                "He went",
+                "Brothers",
+                "Sulaiman",
+                "I"
+            ]
+        },
+        {
+            "arabic_word": "بَلَدٌ",
+            "correct_answer": "Country",
+            "options": [
+                "Greece",
+                "Country",
+                "Ishaaq",
+                "Child"
+            ]
+        },
+        {
+            "arabic_word": "بِلادٌ",
+            "correct_answer": "Countries",
+            "options": [
+                "Lut",
+                "Countries",
+                "He went",
+                "Doctor/professor"
+            ]
+        },
+        {
+            "arabic_word": "وِلْيَمُ",
+            "correct_answer": "William",
+            "options": [
+                "William",
+                "Pharaoh",
+                "Lord",
+                "Jibraeel"
+            ]
+        },
+        {
+            "arabic_word": "هِتْلَرُ",
+            "correct_answer": "Hitler",
+            "options": [
+                "Hitler",
+                "Pharaoh",
+                "Lord",
+                "Jibraeel"
+            ]
+        },
+        {
+            "arabic_word": "لَنْدَنُ",
+            "correct_answer": "London",
+            "options": [
+                "Lut",
+                "London",
+                "He went",
+                "Doctor/professor"
+            ]
+        },
+        {
+            "arabic_word": "آدَمُ",
+            "correct_answer": "Adam",
+            "options": [
+                "Adam",
+                "Pharaoh",
+                "Lord",
+                "Jibraeel"
+            ]
+        },
+        {
+            "arabic_word": "الْيُونَانُ",
+            "correct_answer": "Greece",
+            "options": [
+                "I",
+                "Christians",
+                "Greece",
+                "Garden"
+            ]
+        },
+        {
+            "arabic_word": "طِفْلَةٌ",
+            "correct_answer": "Child",
+            "options": [
+                "I",
+                "Christians",
+                "Child",
+                "Garden"
+            ]
+        },
+        {
+            "arabic_word": "دُكْتُورٌ",
+            "correct_answer": "Doctor/professor",
+            "options": [
+                "Which?",
+                "Doctor/professor",
+                "Month",
+                "Ishaaq"
+            ]
+        },
+        {
+            "arabic_word": "الْيَوْمُ",
+            "correct_answer": "The day",
+            "options": [
+                "Saturday",
+                "Doctor/professor",
+                "Edward",
+                "The day"
+            ]
+        },
+        {
+            "arabic_word": "لِزِيَارَةِ",
+            "correct_answer": "To visit",
+            "options": [
+                "Garden",
+                "We",
+                "Idrees",
+                "To visit"
+            ]
+        },
+        {
+            "arabic_word": "إِدْوَرْدُ",
+            "correct_answer": "Edward",
+            "options": [
+                "Greece",
+                "Ishaaq",
+                "Edward",
+                "Yaqub"
+            ]
+        },
+        {
+            "arabic_word": "بَارِيسُ",
+            "correct_answer": "Paris",
+            "options": [
+                "Greece",
+                "Ishaaq",
+                "Paris",
+                "Yaqub"
+            ]
+        },
+        {
+            "arabic_word": "بَاكِسْتَانُ",
+            "correct_answer": "Pakistan",
+            "options": [
+                "Allah is our Lord",
+                "Pakistan",
+                "Faculty of medicine",
+                "Religion"
+            ]
+        },
+        {
+            "arabic_word": "إِصْطَنْبُولُ",
+            "correct_answer": "Istanbul",
+            "options": [
+                "Islam is our religion",
+                "Istanbul",
+                "Yunus",
+                "Doctor/professor"
+            ]
+        },
+        {
+            "arabic_word": "أَيُّوبُ",
+            "correct_answer": "Ayub",
+            "options": [
+                "Ayub",
+                "Ishaaq",
+                "Which?",
+                "Adam"
+            ]
+        },
+        {
+            "arabic_word": "سُلَيْمَانُ",
+            "correct_answer": "Sulaiman",
+            "options": [
+                "Which?",
+                "Sulaiman",
+                "Month",
+                "Ishaaq"
+            ]
+        },
+        {
+            "arabic_word": "دَاوُدُ",
+            "correct_answer": "Dawud",
+            "options": [
+                "Islam is our religion",
+                "Dawud",
+                "Yunus",
+                "Doctor/professor"
+            ]
+        },
+        {
+            "arabic_word": "يُونُسُ",
+            "correct_answer": "Yunus",
+            "options": [
+                "Saturday",
+                "Dawud",
+                "Yunus",
+                "Lut"
+            ]
+        },
+        {
+            "arabic_word": "إِدْرِيسُ",
+            "correct_answer": "Idrees",
+            "options": [
+                "Which?",
+                "Idrees",
+                "Hitler",
+                "Lut"
+            ]
+        },
+        {
+            "arabic_word": "جِبْرَائِيلُ",
+            "correct_answer": "Jibraeel",
+            "options": [
+                "Lord",
+                "Pakistan",
+                "Jibraeel",
+                "Child"
+            ]
+        },
+        {
+            "arabic_word": "مِيكَائِيلُ",
+            "correct_answer": "Mikaeel",
+            "options": [
+                "Lord",
+                "Pakistan",
+                "Mikaeel",
+                "Child"
+            ]
+        },
+        {
+            "arabic_word": "فِرْعَوْنُ",
+            "correct_answer": "Pharaoh",
+            "options": [
+                "Faculty of commerce",
+                "Pharaoh",
+                "Islam is our religion",
+                "Prayer direction"
+            ]
+        },
+        {
+            "arabic_word": "أَيُّ؟",
+            "correct_answer": "Which?",
+            "options": [
+                "Faculty of commerce",
+                "Which?",
+                "Islam is our religion",
+                "Prayer direction"
+            ]
+        },
+        {
+            "arabic_word": "إِبْرَاهِيمُ",
+            "correct_answer": "Ibraheem",
+            "options": [
+                "Islam is our religion",
+                "Ismaeel",
+                "Ibraheem",
+                "Doctor/professor"
+            ]
+        },
+        {
+            "arabic_word": "إِسْحَاقُ",
+            "correct_answer": "Ishaaq",
+            "options": [
+                "Hitler",
+                "Grandsons",
+                "Ishaaq",
+                "Allah is our Lord"
+            ]
+        },
+        {
+            "arabic_word": "إِسْمَاعِيلُ",
+            "correct_answer": "Ismaeel",
+            "options": [
+                "Our house",
+                "Faculty of commerce",
+                "Ismaeel",
+                "Countries"
+            ]
+        },
+        {
+            "arabic_word": "يَعْقُوبُ",
+            "correct_answer": "Yaqub",
+            "options": [
+                "Islam is our religion",
+                "Ishaaq",
+                "Yaqub",
+                "Doctor/professor"
+            ]
+        },
+        {
+            "arabic_word": "كُلِّيَّةٌ",
+            "correct_answer": "Faculty/college",
+            "options": [
+                "Faculty of Islamic law",
+                "Saturday",
+                "Ayub",
+                "Faculty/college"
+            ]
+        },
+        {
+            "arabic_word": "كُلِّيَّةُ الطِّبِّ",
+            "correct_answer": "Faculty of medicine",
+            "options": [
+                "Faculty of medicine",
+                "Sulaiman",
+                "Idrees",
+                "Your (masculine plural attached pronoun)"
+            ]
+        },
+        {
+            "arabic_word": "كُلِّيَّةُ الهَنْدَسَةِ",
+            "correct_answer": "Faculty of engineering",
+            "options": [
+                "Brothers",
+                "Country",
+                "Faculty of engineering",
+                "Adam"
+            ]
+        },
+        {
+            "arabic_word": "كُلِّيَّةُ التِّجَارَةِ",
+            "correct_answer": "Faculty of commerce",
+            "options": [
+                "Month",
+                "Faculty of commerce",
+                "Idrees",
+                "Mikaeel"
+            ]
+        },
+        {
+            "arabic_word": "كُلِّيَّةُ الشَّرِيعَةِ",
+            "correct_answer": "Faculty of Islamic law",
+            "options": [
+                "Allah is our Lord",
+                "Faculty of Islamic law",
+                "Yunus",
+                "William"
+            ]
+        },
+        {
+            "arabic_word": "نَصْرَانِيٌّ",
+            "correct_answer": "Christian",
+            "options": [
+                "Grandsons",
+                "Law court",
+                "Christian",
+                "You went (masculine plural)"
+            ]
+        },
+        {
+            "arabic_word": "نَصَارَى",
+            "correct_answer": "Christians",
+            "options": [
+                "Christians",
+                "Airport",
+                "Grandsons",
+                "Which?"
+            ]
+        },
+        {
+            "arabic_word": "نَبِيٌّ",
+            "correct_answer": "Prophet",
+            "options": [
+                "Grandsons",
+                "Law court",
+                "Prophet",
+                "You went (masculine plural)"
+            ]
+        },
+        {
+            "arabic_word": "دِينٌ",
+            "correct_answer": "Religion",
+            "options": [
+                "Religion",
+                "Airport",
+                "Grandsons",
+                "Which?"
+            ]
+        },
+        {
+            "arabic_word": "شَهْرٌ",
+            "correct_answer": "Month",
+            "options": [
+                "Grandsons",
+                "Law court",
+                "Month",
+                "You went (masculine plural)"
+            ]
+        },
+        {
+            "arabic_word": "شَهْرُ رَجَبٍ",
+            "correct_answer": "Month of Rajab",
+            "options": [
+                "Brothers",
+                "Country",
+                "Month of Rajab",
+                "Adam"
+            ]
+        },
+        {
+            "arabic_word": "شَفَاهُ اللهُ",
+            "correct_answer": "May Allah cure him",
+            "options": [
+                "George",
+                "Christians",
+                "May Allah cure him",
+                "Your (masculine plural attached pronoun)"
+            ]
+        },
+        {
+            "arabic_word": "نُوحٌ",
+            "correct_answer": "Nuh",
+            "options": [
+                "Faculty of commerce",
+                "Saturday",
+                "Ayub",
+                "Nuh"
+            ]
+        },
+        {
+            "arabic_word": "لُوطٌ",
+            "correct_answer": "Lut",
+            "options": [
+                "Lut",
+                "Airport",
+                "Grandsons",
+                "Which?"
+            ]
+        },
+        {
+            "arabic_word": "جُرْجٌ",
+            "correct_answer": "George",
+            "options": [
+                "George",
+                "Sulaiman",
+                "Idrees",
+                "Your (masculine plural attached pronoun)"
+            ]
+        },
+        {
+            "arabic_word": "خَانٌ",
+            "correct_answer": "Khan",
+            "options": [
+                "Faculty/college",
+                "Khan",
+                "To visit",
+                "Religion"
+            ]
+        },
+        {
+            "arabic_word": "دُسْتُورٌ",
+            "correct_answer": "Constitution/law",
+            "options": [
+                "George",
+                "Pakistan",
+                "Constitution/law",
+                "Religion"
+            ]
+        },
+        {
+            "arabic_word": "قِبْلَةٌ",
+            "correct_answer": "Prayer direction",
+            "options": [
+                "Prayer direction",
+                "Muhammad is our prophet",
+                "Pharaoh",
+                "Ayub"
+            ]
+        },
+        {
+            "arabic_word": "مَحْكَمَةٌ",
+            "correct_answer": "Law court",
+            "options": [
+                "Yaqub",
+                "Doctor/professor",
+                "Law court",
+                "Jibraeel"
+            ]
+        },
+        {
+            "arabic_word": "حَفِيدٌ",
+            "correct_answer": "Grandson",
+            "options": [
+                "Yaqub",
+                "Doctor/professor",
+                "Grandson",
+                "Jibraeel"
+            ]
+        },
+        {
+            "arabic_word": "حَفَدَةٌ",
+            "correct_answer": "Grandsons",
+            "options": [
+                "Lut",
+                "Christians",
+                "Grandsons",
+                "Your (masculine plural attached pronoun)"
+            ]
+        },
+        {
+            "arabic_word": "حَدِيقَةٌ",
+            "correct_answer": "Garden",
+            "options": [
+                "Yaqub",
+                "Doctor/professor",
+                "Garden",
+                "Jibraeel"
+            ]
+        },
+        {
+            "arabic_word": "رَبٌّ",
+            "correct_answer": "Lord",
+            "options": [
+                "Allah is our Lord",
+                "Lord",
+                "Yunus",
+                "William"
+            ]
+        },
+        {
+            "arabic_word": "يَوْمُ السَّبْتِ",
+            "correct_answer": "Saturday",
+            "options": [
+                "Islam is our religion",
+                "Garden",
+                "Child",
+                "Saturday"
+            ]
+        },
+        {
+            "arabic_word": "مَطَارٌ",
+            "correct_answer": "Airport",
+            "options": [
+                "Islam is our religion",
+                "Garden",
+                "Child",
+                "Airport"
+            ]
+        }
+    ]
+}

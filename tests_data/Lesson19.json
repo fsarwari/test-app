@@ -1,0 +1,339 @@
+{
+    "title": "Test L19",
+    "description": "Lesson 19 Vocabulary",
+    "weight": 10,
+    "enabled": false,
+    "record_score": false,
+    "questions": [
+        {
+            "arabic_word": "رَاكِبٌ",
+            "correct_answer": "Passenger",
+            "options": [
+                "Passenger",
+                "All",
+                "Days",
+                "One tenth of riyals"
+            ]
+        },
+        {
+            "arabic_word": "رُكَّابٌ",
+            "correct_answer": "Passengers",
+            "options": [
+                "All of them",
+                "Passengers",
+                "Pocket",
+                "Different"
+            ]
+        },
+        {
+            "arabic_word": "قُدَامَى",
+            "correct_answer": "Old (plural)",
+            "options": [
+                "Two (masculine)",
+                "Eight (feminine)",
+                "Yugoslavia",
+                "Old (plural)"
+            ]
+        },
+        {
+            "arabic_word": "جَيْبٌ",
+            "correct_answer": "Pocket",
+            "options": [
+                "Pocket",
+                "All",
+                "Days",
+                "One tenth of riyals"
+            ]
+        },
+        {
+            "arabic_word": "كُلُّ",
+            "correct_answer": "All",
+            "options": [
+                "Bus",
+                "All",
+                "All of them",
+                "Nine (feminine)"
+            ]
+        },
+        {
+            "arabic_word": "كُلُّهُمْ",
+            "correct_answer": "All of them",
+            "options": [
+                "All of them",
+                "Two (masculine)",
+                "Half",
+                "Pocket"
+            ]
+        },
+        {
+            "arabic_word": "كُلُّكُمْ",
+            "correct_answer": "All of you",
+            "options": [
+                "All of you",
+                "Two (masculine)",
+                "Half",
+                "Pocket"
+            ]
+        },
+        {
+            "arabic_word": "كُلُّنَا",
+            "correct_answer": "All of us",
+            "options": [
+                "All of us",
+                "Two (masculine)",
+                "Half",
+                "Pocket"
+            ]
+        },
+        {
+            "arabic_word": "مُخْتَلِفٌ",
+            "correct_answer": "Different",
+            "options": [
+                "Passengers",
+                "Different",
+                "Old (plural)",
+                "Europe"
+            ]
+        },
+        {
+            "arabic_word": "حَافِلَةٌ",
+            "correct_answer": "Bus",
+            "options": [
+                "Bus",
+                "Europe",
+                "Ten (feminine)",
+                "Eight (feminine)"
+            ]
+        },
+        {
+            "arabic_word": "مِنْهُمْ",
+            "correct_answer": "From them",
+            "options": [
+                "Questions",
+                "Ten (feminine)",
+                "Two (masculine)",
+                "From them"
+            ]
+        },
+        {
+            "arabic_word": "أُورُبَّا",
+            "correct_answer": "Europe",
+            "options": [
+                "Passengers",
+                "Europe",
+                "Old (plural)",
+                "From them"
+            ]
+        },
+        {
+            "arabic_word": "يُوغُسْلاَفِيَا",
+            "correct_answer": "Yugoslavia",
+            "options": [
+                "Four (feminine)",
+                "Ten (feminine)",
+                "Bus",
+                "Yugoslavia"
+            ]
+        },
+        {
+            "arabic_word": "سُؤَالٌ",
+            "correct_answer": "Question",
+            "options": [
+                "Question",
+                "Days",
+                "Passengers",
+                "All of you"
+            ]
+        },
+        {
+            "arabic_word": "أَسْئِلَةٌ",
+            "correct_answer": "Questions",
+            "options": [
+                "Questions",
+                "All of you",
+                "Four (feminine)",
+                "Two (masculine)"
+            ]
+        },
+        {
+            "arabic_word": "حَافِلاَتٌ",
+            "correct_answer": "Buses",
+            "options": [
+                "Three (feminine)",
+                "Buses",
+                "Passengers",
+                "Half"
+            ]
+        },
+        {
+            "arabic_word": "جُيُوبٌ",
+            "correct_answer": "Pockets",
+            "options": [
+                "Pockets",
+                "All of you",
+                "Four (feminine)",
+                "Two (masculine)"
+            ]
+        },
+        {
+            "arabic_word": "عَشَرَةٌ",
+            "correct_answer": "Ten (feminine)",
+            "options": [
+                "All of you",
+                "Ten (feminine)",
+                "Three (feminine)",
+                "All of us"
+            ]
+        },
+        {
+            "arabic_word": "ثَلاَثَةٌ",
+            "correct_answer": "Three (feminine)",
+            "options": [
+                "Different",
+                "All",
+                "Ten (feminine)",
+                "Three (feminine)"
+            ]
+        },
+        {
+            "arabic_word": "أَرْبَعَةٌ",
+            "correct_answer": "Four (feminine)",
+            "options": [
+                "Different",
+                "All",
+                "Ten (feminine)",
+                "Four (feminine)"
+            ]
+        },
+        {
+            "arabic_word": "وَاحِدٌ",
+            "correct_answer": "One (masculine)",
+            "options": [
+                "One tenth of a riyal",
+                "Four (feminine)",
+                "Questions",
+                "One (masculine)"
+            ]
+        },
+        {
+            "arabic_word": "سَبْعَةٌ",
+            "correct_answer": "Seven (feminine)",
+            "options": [
+                "Question",
+                "One tenth of a riyal",
+                "Seven (feminine)",
+                "Thanks"
+            ]
+        },
+        {
+            "arabic_word": "خَمْسٌ",
+            "correct_answer": "Five (masculine)",
+            "options": [
+                "Three (feminine)",
+                "Four (feminine)",
+                "Five (masculine)",
+                "Seven (feminine)"
+            ]
+        },
+        {
+            "arabic_word": "ثَمَانِيَةٌ",
+            "correct_answer": "Eight (feminine)",
+            "options": [
+                "Thanks",
+                "From them",
+                "Pockets",
+                "Eight (feminine)"
+            ]
+        },
+        {
+            "arabic_word": "سِتَّةٌ",
+            "correct_answer": "Six (feminine)",
+            "options": [
+                "Three (feminine)",
+                "Four (feminine)",
+                "Six (feminine)",
+                "Seven (feminine)"
+            ]
+        },
+        {
+            "arabic_word": "تِسْعَةٌ",
+            "correct_answer": "Nine (feminine)",
+            "options": [
+                "Nine (feminine)",
+                "Buses",
+                "Two (masculine)",
+                "Question"
+            ]
+        },
+        {
+            "arabic_word": "إِثْنَانِ",
+            "correct_answer": "Two (masculine)",
+            "options": [
+                "Two (masculine)",
+                "Buses",
+                "Five (masculine)",
+                "Days"
+            ]
+        },
+        {
+            "arabic_word": "شُكْرًا",
+            "correct_answer": "Thanks",
+            "options": [
+                "Thanks",
+                "Passengers",
+                "Half",
+                "Bus"
+            ]
+        },
+        {
+            "arabic_word": "أَيَّامٌ",
+            "correct_answer": "Days",
+            "options": [
+                "One tenth of a riyal",
+                "Pocket",
+                "All of us",
+                "Days"
+            ]
+        },
+        {
+            "arabic_word": "ثَمَنٌ",
+            "correct_answer": "Price",
+            "options": [
+                "Different",
+                "All",
+                "Ten (feminine)",
+                "Price"
+            ]
+        },
+        {
+            "arabic_word": "نِصْفٌ",
+            "correct_answer": "Half",
+            "options": [
+                "Different",
+                "All",
+                "Ten (feminine)",
+                "Half"
+            ]
+        },
+        {
+            "arabic_word": "قِرْشٌ",
+            "correct_answer": "One tenth of a riyal",
+            "options": [
+                "Ten (feminine)",
+                "One tenth of a riyal",
+                "Passengers",
+                "Question"
+            ]
+        },
+        {
+            "arabic_word": "قُرُوشٌ",
+            "correct_answer": "One tenth of riyals",
+            "options": [
+                "Ten (feminine)",
+                "One tenth of riyals",
+                "Passengers",
+                "Question"
+            ]
+        }
+    ]
+}

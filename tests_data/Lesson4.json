@@ -1,0 +1,269 @@
+{
+    "title": "Test L4",
+    "description": "Lesson 4 Vocabulary",
+    "weight": 10,
+    "enabled": false,
+    "record_score": false,
+    "questions": [
+        {
+            "arabic_word": "فِي",
+            "correct_answer": "In",
+            "options": [
+                "From",
+                "He",
+                "I",
+                "In"
+            ]
+        },
+        {
+            "arabic_word": "عَلَى",
+            "correct_answer": "On",
+            "options": [
+                "China",
+                "From",
+                "On",
+                "School"
+            ]
+        },
+        {
+            "arabic_word": "أَيْنَ",
+            "correct_answer": "Where",
+            "options": [
+                "Aa’isha",
+                "Safiyyah",
+                "Where",
+                "From"
+            ]
+        },
+        {
+            "arabic_word": "هُوَ",
+            "correct_answer": "He",
+            "options": [
+                "He",
+                "Ali",
+                "Philippines",
+                "Aaminah"
+            ]
+        },
+        {
+            "arabic_word": "غُرْفَةٌ",
+            "correct_answer": "Room",
+            "options": [
+                "Room",
+                "Philippines",
+                "Sky",
+                "Headmaster"
+            ]
+        },
+        {
+            "arabic_word": "حَمَّامٌ",
+            "correct_answer": "Bathroom",
+            "options": [
+                "Classroom",
+                "Bathroom",
+                "Room",
+                "Kitchen"
+            ]
+        },
+        {
+            "arabic_word": "مَطْبَخٌ",
+            "correct_answer": "Kitchen",
+            "options": [
+                "Kitchen",
+                "Bathroom",
+                "She",
+                "School"
+            ]
+        },
+        {
+            "arabic_word": "هِيَ",
+            "correct_answer": "She",
+            "options": [
+                "China",
+                "Toilet",
+                "He",
+                "She"
+            ]
+        },
+        {
+            "arabic_word": "سَاعَةٌ",
+            "correct_answer": "Watch",
+            "options": [
+                "Watch",
+                "Bathroom",
+                "Kitchen",
+                "School"
+            ]
+        },
+        {
+            "arabic_word": "مَدْرَسَةٌ",
+            "correct_answer": "School",
+            "options": [
+                "Bathroom",
+                "She",
+                "School",
+                "Kitchen"
+            ]
+        },
+        {
+            "arabic_word": "جَامِعَةٌ",
+            "correct_answer": "University",
+            "options": [
+                "University",
+                "Student",
+                "You (masculine singular)",
+                "Philippines"
+            ]
+        },
+        {
+            "arabic_word": "فَصْلٌ",
+            "correct_answer": "Classroom",
+            "options": [
+                "Headmaster",
+                "Where",
+                "Sky",
+                "Classroom"
+            ]
+        },
+        {
+            "arabic_word": "أَنَا",
+            "correct_answer": "I",
+            "options": [
+                "Where",
+                "Muhammad",
+                "I",
+                "Room"
+            ]
+        },
+        {
+            "arabic_word": "الْيَابَانُ",
+            "correct_answer": "Japan",
+            "options": [
+                "I",
+                "China",
+                "Watch",
+                "Japan"
+            ]
+        },
+        {
+            "arabic_word": "الصِّينُ",
+            "correct_answer": "China",
+            "options": [
+                "China",
+                "Aa’isha",
+                "You (masculine singular)",
+                "Philippines"
+            ]
+        },
+        {
+            "arabic_word": "مِرْحَاضٌ",
+            "correct_answer": "Toilet",
+            "options": [
+                "From",
+                "Toilet",
+                "China",
+                "Headmaster"
+            ]
+        },
+        {
+            "arabic_word": "سَمَاءٌ",
+            "correct_answer": "Sky",
+            "options": [
+                "Sky",
+                "Moon",
+                "You (masculine singular)",
+                "Philippines"
+            ]
+        },
+        {
+            "arabic_word": "مِنْ",
+            "correct_answer": "From",
+            "options": [
+                "You (masculine singular)",
+                "From",
+                "University",
+                "On"
+            ]
+        },
+        {
+            "arabic_word": "إِلَى",
+            "correct_answer": "To",
+            "options": [
+                "Sky",
+                "To",
+                "You (masculine singular)",
+                "India"
+            ]
+        },
+        {
+            "arabic_word": "أَنْتَ",
+            "correct_answer": "You (masculine singular)",
+            "options": [
+                "From",
+                "To",
+                "You (masculine singular)",
+                "China"
+            ]
+        },
+        {
+            "arabic_word": "خَرَجَ",
+            "correct_answer": "He left",
+            "options": [
+                "To",
+                "Yaasir",
+                "He",
+                "He left"
+            ]
+        },
+        {
+            "arabic_word": "ذَهَبَ",
+            "correct_answer": "He went",
+            "options": [
+                "Yaasir",
+                "On",
+                "Muhammad",
+                "He went"
+            ]
+        },
+        {
+            "arabic_word": "مُدِيرٌ",
+            "correct_answer": "Headmaster",
+            "options": [
+                "Philippines",
+                "Classroom",
+                "Headmaster",
+                "In"
+            ]
+        },
+        {
+            "arabic_word": "الْهِنْدُ",
+            "correct_answer": "India",
+            "options": [
+                "China",
+                "On",
+                "Sky",
+                "India"
+            ]
+        },
+        {
+            "arabic_word": "سُوقٌ",
+            "correct_answer": "Market",
+            "options": [
+                "Toilet",
+                "Store",
+                "Market",
+                "Earth"
+            ]
+        },
+        {
+            "arabic_word": "الْفِلِبِّينُ",
+            "correct_answer": "Philippines",
+            "options": [
+                "She",
+                "China",
+                "Philippines",
+                "Kitchen"
+            ]
+        }
+    ]
+}

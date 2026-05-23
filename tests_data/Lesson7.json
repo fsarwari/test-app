@@ -1,0 +1,119 @@
+{
+    "title": "Test L7",
+    "description": "Lesson 7 Vocabulary",
+    "weight": 10,
+    "enabled": false,
+    "record_score": false,
+    "questions": [
+        {
+            "arabic_word": "تِلْكَ",
+            "correct_answer": "That is",
+            "options": [
+                "Caller to prayer",
+                "That is",
+                "Teacher",
+                "She camel"
+            ]
+        },
+        {
+            "arabic_word": "مُمَرِّضَةٌ",
+            "correct_answer": "Nurse",
+            "options": [
+                "Nurse",
+                "Duck",
+                "Teacher",
+                "Garden"
+            ]
+        },
+        {
+            "arabic_word": "طَوِيلَةٌ",
+            "correct_answer": "Tall",
+            "options": [
+                "Tall",
+                "Duck",
+                "Teacher",
+                "Garden"
+            ]
+        },
+        {
+            "arabic_word": "دَجَاجَةٌ",
+            "correct_answer": "Chicken",
+            "options": [
+                "Garden",
+                "That is",
+                "Chicken",
+                "Tall"
+            ]
+        },
+        {
+            "arabic_word": "نَاقَةٌ",
+            "correct_answer": "She camel",
+            "options": [
+                "Nurse",
+                "She camel",
+                "Short",
+                "Teacher"
+            ]
+        },
+        {
+            "arabic_word": "حَدِيقَةٌ",
+            "correct_answer": "Garden",
+            "options": [
+                "Egg",
+                "Tall",
+                "Garden",
+                "Teacher"
+            ]
+        },
+        {
+            "arabic_word": "قَصِيرَةٌ",
+            "correct_answer": "Short",
+            "options": [
+                "Egg",
+                "Tall",
+                "Short",
+                "Teacher"
+            ]
+        },
+        {
+            "arabic_word": "بَطَّةٌ",
+            "correct_answer": "Duck",
+            "options": [
+                "Egg",
+                "Tall",
+                "Duck",
+                "Teacher"
+            ]
+        },
+        {
+            "arabic_word": "بَيْضَةٌ",
+            "correct_answer": "Egg",
+            "options": [
+                "Duck",
+                "Tall",
+                "Egg",
+                "Teacher"
+            ]
+        },
+        {
+            "arabic_word": "مُؤَذِّنٌ",
+            "correct_answer": "Caller to prayer",
+            "options": [
+                "Garden",
+                "Caller to prayer",
+                "Duck",
+                "Teacher"
+            ]
+        },
+        {
+            "arabic_word": "مُدَرِّسَةٌ",
+            "correct_answer": "Teacher",
+            "options": [
+                "Garden",
+                "Caller to prayer",
+                "Teacher",
+                "Nurse"
+            ]
+        }
+    ]
+}

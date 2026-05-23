@@ -1,0 +1,399 @@
+{
+    "title": "Test L12",
+    "description": "Lesson 12 Vocabulary",
+    "weight": 10,
+    "enabled": false,
+    "record_score": false,
+    "questions": [
+        {
+            "arabic_word": "كَيْفَ حَالُكَ؟",
+            "correct_answer": "How are you?",
+            "options": [
+                "Scholars",
+                "Ministers",
+                "How are you?",
+                "She went"
+            ]
+        },
+        {
+            "arabic_word": "أَنَا بِخَيْرٍ",
+            "correct_answer": "I am fine",
+            "options": [
+                "Sir",
+                "Scholar",
+                "Doctor",
+                "I am fine"
+            ]
+        },
+        {
+            "arabic_word": "مُوَجِّهٌ",
+            "correct_answer": "Director",
+            "options": [
+                "Sir",
+                "Scholar",
+                "Doctor",
+                "Director"
+            ]
+        },
+        {
+            "arabic_word": "طَبِيبَةٌ",
+            "correct_answer": "Doctor",
+            "options": [
+                "Maternity",
+                "Doctor",
+                "Strong",
+                "Minister"
+            ]
+        },
+        {
+            "arabic_word": "وِلادَةٌ",
+            "correct_answer": "Maternity",
+            "options": [
+                "Maternal aunt",
+                "Peace be upon you and Allah’s mercy and blessings",
+                "Maternity",
+                "Young woman"
+            ]
+        },
+        {
+            "arabic_word": "فَتَاةٌ",
+            "correct_answer": "Young woman",
+            "options": [
+                "Peace be upon you and Allah’s mercy and blessings",
+                "How are you?",
+                "Young woman",
+                "Tree"
+            ]
+        },
+        {
+            "arabic_word": "سَعَادٌ",
+            "correct_answer": "Sa’ad",
+            "options": [
+                "Kingdom of Saudi Arabia",
+                "Sa’ad",
+                "You went",
+                "Peace be upon you and Allah’s mercy and blessings"
+            ]
+        },
+        {
+            "arabic_word": "خَرَجَتْ",
+            "correct_answer": "She left",
+            "options": [
+                "Bilal",
+                "She left",
+                "Syria",
+                "Fathers"
+            ]
+        },
+        {
+            "arabic_word": "شَجَرَةٌ",
+            "correct_answer": "Tree",
+            "options": [
+                "Scholars",
+                "Ministers",
+                "Tree",
+                "She went"
+            ]
+        },
+        {
+            "arabic_word": "سُورِيَا",
+            "correct_answer": "Syria",
+            "options": [
+                "Syria",
+                "Weak (plural)",
+                "Middle school",
+                "She left"
+            ]
+        },
+        {
+            "arabic_word": "الْمَدْرَسَةُ الْمُتَوَسِّطَةُ",
+            "correct_answer": "Middle school",
+            "options": [
+                "Kingdom of Saudi Arabia",
+                "Who/which (feminine singular)",
+                "Middle school",
+                "Father"
+            ]
+        },
+        {
+            "arabic_word": "مُفَتِّشٌ",
+            "correct_answer": "Inspector",
+            "options": [
+                "Maternal aunt",
+                "Inspector",
+                "Kingdom of Saudi Arabia",
+                "Peace be upon you and Allah’s mercy and blessings"
+            ]
+        },
+        {
+            "arabic_word": "أَنْتِ",
+            "correct_answer": "You (feminine singular)",
+            "options": [
+                "She went",
+                "Madam",
+                "You (feminine singular)",
+                "Inspector"
+            ]
+        },
+        {
+            "arabic_word": "بِلالٌ",
+            "correct_answer": "Bilal",
+            "options": [
+                "Middle school",
+                "Mother",
+                "She left",
+                "Bilal"
+            ]
+        },
+        {
+            "arabic_word": "ذَهَبْتُ",
+            "correct_answer": "I went",
+            "options": [
+                "Maternal aunt",
+                "I went",
+                "Kingdom of Saudi Arabia",
+                "Peace be upon you and Allah’s mercy and blessings"
+            ]
+        },
+        {
+            "arabic_word": "قَوِيٌّ",
+            "correct_answer": "Strong",
+            "options": [
+                "You (feminine singular)",
+                "Director",
+                "Syria",
+                "Strong"
+            ]
+        },
+        {
+            "arabic_word": "أَقْوِيَاءُ",
+            "correct_answer": "Strong (plural)",
+            "options": [
+                "Strong (plural)",
+                "Scholars",
+                "After",
+                "She went"
+            ]
+        },
+        {
+            "arabic_word": "بَعْدَ",
+            "correct_answer": "After",
+            "options": [
+                "Strong (plural)",
+                "Peace be upon you and Allah’s mercy and blessings",
+                "Inspector",
+                "After"
+            ]
+        },
+        {
+            "arabic_word": "السَّلامُ عَلَيْكُمْ وَرَحْمَةُ اللهِ وَبَرَكَاتُهُ",
+            "correct_answer": "Peace be upon you and Allah’s mercy and blessings",
+            "options": [
+                "Peace be upon you and Allah’s mercy and blessings",
+                "Weak (plural)",
+                "Ministers",
+                "Tree"
+            ]
+        },
+        {
+            "arabic_word": "ذَهَبْتَ",
+            "correct_answer": "You went",
+            "options": [
+                "You went",
+                "Malaysia",
+                "Doctor",
+                "Scholars"
+            ]
+        },
+        {
+            "arabic_word": "ذَهَبَتْ",
+            "correct_answer": "She went",
+            "options": [
+                "She left",
+                "Strong",
+                "Tree",
+                "She went"
+            ]
+        },
+        {
+            "arabic_word": "أُسْتَاذِي",
+            "correct_answer": "My teacher",
+            "options": [
+                "My teacher",
+                "Scholars",
+                "Strong (plural)",
+                "You went"
+            ]
+        },
+        {
+            "arabic_word": "مَالِيزِيَا",
+            "correct_answer": "Malaysia",
+            "options": [
+                "Tree",
+                "Ministers",
+                "Malaysia",
+                "Mothers"
+            ]
+        },
+        {
+            "arabic_word": "الَّتِي",
+            "correct_answer": "Who/which (feminine singular)",
+            "options": [
+                "Scholar",
+                "Ministers",
+                "Weak (plural)",
+                "Who/which (feminine singular)"
+            ]
+        },
+        {
+            "arabic_word": "أَبٌ",
+            "correct_answer": "Father",
+            "options": [
+                "Tree",
+                "Ministers",
+                "Father",
+                "Mothers"
+            ]
+        },
+        {
+            "arabic_word": "آبَاءٌ",
+            "correct_answer": "Fathers",
+            "options": [
+                "You went",
+                "She left",
+                "Fathers",
+                "Kingdom of Saudi Arabia"
+            ]
+        },
+        {
+            "arabic_word": "شَيْخٌ",
+            "correct_answer": "Scholar",
+            "options": [
+                "Ministers",
+                "Tree",
+                "Father",
+                "Scholar"
+            ]
+        },
+        {
+            "arabic_word": "شُيُوخٌ",
+            "correct_answer": "Scholars",
+            "options": [
+                "You went",
+                "Madam",
+                "Scholars",
+                "Inspector"
+            ]
+        },
+        {
+            "arabic_word": "ضَعِيفٌ",
+            "correct_answer": "Weak",
+            "options": [
+                "You went",
+                "She left",
+                "Weak",
+                "Kingdom of Saudi Arabia"
+            ]
+        },
+        {
+            "arabic_word": "ضِعَافٌ",
+            "correct_answer": "Weak (plural)",
+            "options": [
+                "After",
+                "Minister",
+                "I went",
+                "Weak (plural)"
+            ]
+        },
+        {
+            "arabic_word": "عَمَّةٌ",
+            "correct_answer": "Paternal aunt",
+            "options": [
+                "Doctor",
+                "I am fine",
+                "Sa’ad",
+                "Paternal aunt"
+            ]
+        },
+        {
+            "arabic_word": "خَالَةٌ",
+            "correct_answer": "Maternal aunt",
+            "options": [
+                "Peace be upon you and Allah’s mercy and blessings",
+                "Ministers",
+                "Maternal aunt",
+                "Tree"
+            ]
+        },
+        {
+            "arabic_word": "سَيِّدٌ",
+            "correct_answer": "Sir",
+            "options": [
+                "You went",
+                "Madam",
+                "Sir",
+                "Inspector"
+            ]
+        },
+        {
+            "arabic_word": "سَيِّدَةٌ",
+            "correct_answer": "Madam",
+            "options": [
+                "How are you?",
+                "She went",
+                "Doctor",
+                "Madam"
+            ]
+        },
+        {
+            "arabic_word": "أُمٌّ",
+            "correct_answer": "Mother",
+            "options": [
+                "Bilal",
+                "Minister",
+                "Mother",
+                "Weak (plural)"
+            ]
+        },
+        {
+            "arabic_word": "أُمَّهَاتٌ",
+            "correct_answer": "Mothers",
+            "options": [
+                "After",
+                "Minister",
+                "I went",
+                "Mothers"
+            ]
+        },
+        {
+            "arabic_word": "وَزِيرٌ",
+            "correct_answer": "Minister",
+            "options": [
+                "Peace be upon you and Allah’s mercy and blessings",
+                "Ministers",
+                "Minister",
+                "Tree"
+            ]
+        },
+        {
+            "arabic_word": "وُزَرَاءُ",
+            "correct_answer": "Ministers",
+            "options": [
+                "Maternity",
+                "Ministers",
+                "She left",
+                "Minister"
+            ]
+        },
+        {
+            "arabic_word": "المَمْلَكَةُ الْعَرَبِيَّةُ السُّعُودِيَّةُ",
+            "correct_answer": "Kingdom of Saudi Arabia",
+            "options": [
+                "Maternal aunt",
+                "I am fine",
+                "Madam",
+                "Kingdom of Saudi Arabia"
+            ]
+        }
+    ]
+}

@@ -1,0 +1,309 @@
+{
+    "title": "Test L10",
+    "description": "Lesson 10 Vocabulary",
+    "weight": 10,
+    "enabled": false,
+    "record_score": false,
+    "questions": [
+        {
+            "arabic_word": "اسْمٌ",
+            "correct_answer": "Name",
+            "options": [
+                "Usaamah",
+                "Name",
+                "Japanese language",
+                "Your brother"
+            ]
+        },
+        {
+            "arabic_word": "مَا لُغَتُكَ؟",
+            "correct_answer": "What is your language?",
+            "options": [
+                "What is your language?",
+                "Colleague/classmate",
+                "Urdu",
+                "Mu’aawiyah"
+            ]
+        },
+        {
+            "arabic_word": "اسْمِي",
+            "correct_answer": "My name is",
+            "options": [
+                "My name is",
+                "Kuwait",
+                "It/she has",
+                "Hamzah"
+            ]
+        },
+        {
+            "arabic_word": "مَا اسْمُهُ؟",
+            "correct_answer": "What is his name?",
+            "options": [
+                "Mahmood",
+                "What is his name?",
+                "Taif",
+                "No, I don’t have"
+            ]
+        },
+        {
+            "arabic_word": "الأُرْدِيَّةُ",
+            "correct_answer": "Urdu",
+            "options": [
+                "His father",
+                "Also",
+                "Mu’aawiyah",
+                "Urdu"
+            ]
+        },
+        {
+            "arabic_word": "مَعَ",
+            "correct_answer": "With/without restrictions",
+            "options": [
+                "Mu’aawiyah",
+                "Sister",
+                "With/without restrictions",
+                "Japanese language"
+            ]
+        },
+        {
+            "arabic_word": "زَمِيلٌ",
+            "correct_answer": "Colleague/classmate",
+            "options": [
+                "Kuwait",
+                "Child",
+                "Colleague/classmate",
+                "Taif"
+            ]
+        },
+        {
+            "arabic_word": "أَيْضًا",
+            "correct_answer": "Also",
+            "options": [
+                "Taif",
+                "Japanese language",
+                "Also",
+                "Husband"
+            ]
+        },
+        {
+            "arabic_word": "الْيَابَانِيَّةُ",
+            "correct_answer": "Japanese language",
+            "options": [
+                "Kuwait",
+                "Child",
+                "Japanese language",
+                "Taif"
+            ]
+        },
+        {
+            "arabic_word": "وَاحِدٌ",
+            "correct_answer": "One",
+            "options": [
+                "One",
+                "Kuwait",
+                "It/she has",
+                "Hamzah"
+            ]
+        },
+        {
+            "arabic_word": "الْكُوَيْتُ",
+            "correct_answer": "Kuwait",
+            "options": [
+                "Kuwait",
+                "Your brother",
+                "Mahmood",
+                "What is his name?"
+            ]
+        },
+        {
+            "arabic_word": "أُمُّكَ",
+            "correct_answer": "Your mother",
+            "options": [
+                "It/she has",
+                "Usaamah",
+                "Husband",
+                "Your mother"
+            ]
+        },
+        {
+            "arabic_word": "ذَهَبْتُ",
+            "correct_answer": "I went",
+            "options": [
+                "Mu’aawiyah",
+                "I have",
+                "I went",
+                "Your mother"
+            ]
+        },
+        {
+            "arabic_word": "أَبُوهُ",
+            "correct_answer": "His father",
+            "options": [
+                "His father",
+                "With/without restrictions",
+                "What is his name?",
+                "Mu’aawiyah"
+            ]
+        },
+        {
+            "arabic_word": "أَعِنْدَكَ؟",
+            "correct_answer": "Do you have?",
+            "options": [
+                "It/she has",
+                "Do you have?",
+                "Colleague/classmate",
+                "I have"
+            ]
+        },
+        {
+            "arabic_word": "أُسَامَةُ",
+            "correct_answer": "Usaamah",
+            "options": [
+                "It/she has",
+                "Do you have?",
+                "Husband",
+                "Usaamah"
+            ]
+        },
+        {
+            "arabic_word": "زَوْجٌ",
+            "correct_answer": "Husband",
+            "options": [
+                "Husband",
+                "With/without restrictions",
+                "What is his name?",
+                "Mu’aawiyah"
+            ]
+        },
+        {
+            "arabic_word": "حَمْزَةُ",
+            "correct_answer": "Hamzah",
+            "options": [
+                "Hamzah",
+                "With/without restrictions",
+                "What is his name?",
+                "Mu’aawiyah"
+            ]
+        },
+        {
+            "arabic_word": "عِكْرِمَةُ",
+            "correct_answer": "Iqrimah",
+            "options": [
+                "One",
+                "Child",
+                "Iqrimah",
+                "Taif"
+            ]
+        },
+        {
+            "arabic_word": "أَخُوكَ",
+            "correct_answer": "Your brother",
+            "options": [
+                "Colleague/classmate",
+                "One",
+                "I have",
+                "Your brother"
+            ]
+        },
+        {
+            "arabic_word": "لِي",
+            "correct_answer": "I have",
+            "options": [
+                "It/she has",
+                "I have",
+                "Colleague/classmate",
+                "Your brother"
+            ]
+        },
+        {
+            "arabic_word": "لاَ مَا عِنْدِي",
+            "correct_answer": "No, I don’t have",
+            "options": [
+                "I have",
+                "No, I don’t have",
+                "Colleague/classmate",
+                "Your brother"
+            ]
+        },
+        {
+            "arabic_word": "مَحْمُودٌ",
+            "correct_answer": "Mahmood",
+            "options": [
+                "What is your language?",
+                "I have",
+                "Mahmood",
+                "My name is"
+            ]
+        },
+        {
+            "arabic_word": "طِفْلٌ",
+            "correct_answer": "Child",
+            "options": [
+                "Child",
+                "Also",
+                "Urdu",
+                "Riyadh"
+            ]
+        },
+        {
+            "arabic_word": "لَهَا",
+            "correct_answer": "It/she has",
+            "options": [
+                "It/she has",
+                "His father",
+                "Colleague/classmate",
+                "Husband"
+            ]
+        },
+        {
+            "arabic_word": "الرِّيَاضُ",
+            "correct_answer": "Riyadh",
+            "options": [
+                "Colleague/classmate",
+                "One",
+                "Your brother",
+                "Riyadh"
+            ]
+        },
+        {
+            "arabic_word": "الطَّائِفُ",
+            "correct_answer": "Taif",
+            "options": [
+                "Mu’aawiyah",
+                "Sister",
+                "Taif",
+                "Also"
+            ]
+        },
+        {
+            "arabic_word": "طَلْحَةُ",
+            "correct_answer": "Talha",
+            "options": [
+                "What is his name?",
+                "Iqrimah",
+                "Sister",
+                "Talha"
+            ]
+        },
+        {
+            "arabic_word": "مُعَاوِيَةُ",
+            "correct_answer": "Mu’aawiyah",
+            "options": [
+                "Child",
+                "Your brother",
+                "Mu’aawiyah",
+                "Name"
+            ]
+        },
+        {
+            "arabic_word": "أُخْتٌ",
+            "correct_answer": "Sister",
+            "options": [
+                "Sister",
+                "Your mother",
+                "His father",
+                "No, I don’t have"
+            ]
+        }
+    ]
+}

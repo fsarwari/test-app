@@ -1,0 +1,149 @@
+{
+    "title": "Test L11",
+    "description": "Lesson 11 Vocabulary",
+    "weight": 10,
+    "enabled": false,
+    "record_score": false,
+    "questions": [
+        {
+            "arabic_word": "أَمَامَ",
+            "correct_answer": "In front",
+            "options": [
+                "Under",
+                "Open",
+                "I have",
+                "In front"
+            ]
+        },
+        {
+            "arabic_word": "فِيهَا",
+            "correct_answer": "In it (feminine)",
+            "options": [
+                "In it (feminine)",
+                "Sa’d",
+                "One",
+                "I have"
+            ]
+        },
+        {
+            "arabic_word": "فِيهِ",
+            "correct_answer": "In it (masculine)",
+            "options": [
+                "In it (masculine)",
+                "Under",
+                "Sa’d",
+                "Su’aad"
+            ]
+        },
+        {
+            "arabic_word": "تَحْتَ",
+            "correct_answer": "Under",
+            "options": [
+                "In it (masculine)",
+                "Open",
+                "I have",
+                "Under"
+            ]
+        },
+        {
+            "arabic_word": "مَفْتُوحَةٌ",
+            "correct_answer": "Open",
+            "options": [
+                "In it (masculine)",
+                "Under",
+                "I have",
+                "Open"
+            ]
+        },
+        {
+            "arabic_word": "عِنْدِي",
+            "correct_answer": "I have",
+            "options": [
+                "In it (feminine)",
+                "I love",
+                "I have",
+                "Prophet"
+            ]
+        },
+        {
+            "arabic_word": "خَرَجَتْ",
+            "correct_answer": "She left",
+            "options": [
+                "She left",
+                "I love",
+                "I have",
+                "In it (masculine)"
+            ]
+        },
+        {
+            "arabic_word": "سُعَادُ",
+            "correct_answer": "Su’aad",
+            "options": [
+                "You love",
+                "Prophet",
+                "Su’aad",
+                "I have"
+            ]
+        },
+        {
+            "arabic_word": "أُحِبُّ",
+            "correct_answer": "I love",
+            "options": [
+                "I love",
+                "Su’aad",
+                "I have",
+                "In it (masculine)"
+            ]
+        },
+        {
+            "arabic_word": "أَحَدٌ",
+            "correct_answer": "One",
+            "options": [
+                "Su’aad",
+                "One",
+                "In it (feminine)",
+                "Sa’d"
+            ]
+        },
+        {
+            "arabic_word": "نَبِيٌّ",
+            "correct_answer": "Prophet",
+            "options": [
+                "Prophet",
+                "Sa’d",
+                "I love",
+                "Open"
+            ]
+        },
+        {
+            "arabic_word": "تُحِبُّ",
+            "correct_answer": "You love",
+            "options": [
+                "You love",
+                "In it (masculine)",
+                "Sa’d",
+                "She left"
+            ]
+        },
+        {
+            "arabic_word": "وَاحِدٌ",
+            "correct_answer": "One",
+            "options": [
+                "Sa’d",
+                "In front",
+                "I have",
+                "One"
+            ]
+        },
+        {
+            "arabic_word": "سَعْدٌ",
+            "correct_answer": "Sa’d",
+            "options": [
+                "Sa’d",
+                "You love",
+                "I love",
+                "Open"
+            ]
+        }
+    ]
+}

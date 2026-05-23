@@ -1,0 +1,49 @@
+{
+    "title": "Test L23",
+    "description": "Lesson 23 Vocabulary",
+    "weight": 10,
+    "enabled": false,
+    "record_score": false,
+    "questions": [
+        {
+            "arabic_word": "كَعْبَةٌ",
+            "correct_answer": "Kabah",
+            "options": [
+                "Kabah",
+                "Lewis",
+                "Bring (command)",
+                "Washington"
+            ]
+        },
+        {
+            "arabic_word": "لُوِيسُ",
+            "correct_answer": "Lewis",
+            "options": [
+                "Kabah",
+                "Lewis",
+                "Washington",
+                "Bring (command)"
+            ]
+        },
+        {
+            "arabic_word": "وَاشِنْطُنُ",
+            "correct_answer": "Washington",
+            "options": [
+                "Kabah",
+                "Washington",
+                "Lewis",
+                "Bring (command)"
+            ]
+        },
+        {
+            "arabic_word": "هَاتِ",
+            "correct_answer": "Bring (command)",
+            "options": [
+                "Kabah",
+                "Lewis",
+                "Washington",
+                "Bring (command)"
+            ]
+        }
+    ]
+}

@@ -1,0 +1,650 @@
+{
+    "title": "Test L3",
+    "description": "Lesson 3 Vocabulary",
+    "weight": 10,
+    "enabled": true,
+    "record_score": false,
+    "max_questions": 30,
+    "questions": [
+        {
+            "arabic_word": "مَكْسُورٌ",
+            "correct_answer": "Broken",
+            "options": [
+                "Sick",
+                "Near",
+                "Broken",
+                "Old"
+            ]
+        },
+        {
+            "arabic_word": "مَفْتُوحٌ",
+            "correct_answer": "Open",
+            "options": [
+                "Closed",
+                "Dirty",
+                "Clean",
+                "Open"
+            ]
+        },
+        {
+            "arabic_word": "جَالِسٌ",
+            "correct_answer": "Sitting",
+            "options": [
+                "Standing",
+                "Walking",
+                "Old",
+                "Sitting"
+            ]
+        },
+        {
+            "arabic_word": "وَاقِفٌ",
+            "correct_answer": "Standing",
+            "options": [
+                "Sitting",
+                "Afternoon time",
+                "Messenger",
+                "Standing"
+            ]
+        },
+        {
+            "arabic_word": "جَدِيدٌ",
+            "correct_answer": "New",
+            "options": [
+                "Hand",
+                "Sun",
+                "New",
+                "Heavy"
+            ]
+        },
+        {
+            "arabic_word": "قَدِيمٌ",
+            "correct_answer": "Old",
+            "options": [
+                "Eye",
+                "Old",
+                "Father",
+                "Moon"
+            ]
+        },
+        {
+            "arabic_word": "مَاءٌ",
+            "correct_answer": "Water",
+            "options": [
+                "Moon",
+                "Afternoon time",
+                "Messenger",
+                "Water"
+            ]
+        },
+        {
+            "arabic_word": "بَارِدٌ",
+            "correct_answer": "Cold",
+            "options": [
+                "Windy",
+                "Afternoon time",
+                "Hot",
+                "Cold"
+            ]
+        },
+        {
+            "arabic_word": "قَرِيبٌ",
+            "correct_answer": "Near",
+            "options": [
+                "Cold",
+                "Near",
+                "Rich",
+                "Far"
+            ]
+        },
+        {
+            "arabic_word": "بَعِيدٌ",
+            "correct_answer": "Far",
+            "options": [
+                "Cold",
+                "Far",
+                "Rich",
+                "Near"
+            ]
+        },
+        {
+            "arabic_word": "حَارٌّ",
+            "correct_answer": "Hot",
+            "options": [
+                "Cold",
+                "Moon",
+                "Hot",
+                "Finger"
+            ]
+        },
+        {
+            "arabic_word": "صَغِيرٌ",
+            "correct_answer": "Small",
+            "options": [
+                "Small",
+                "New",
+                "Big",
+                "Short"
+            ]
+        },
+        {
+            "arabic_word": "كَبِيرٌ",
+            "correct_answer": "Big",
+            "options": [
+                "Tall",
+                "Bread",
+                "Big",
+                "Small"
+            ]
+        },
+        {
+            "arabic_word": "وَسِخٌ",
+            "correct_answer": "Dirty",
+            "options": [
+                "Gold",
+                "Dirty",
+                "Finger",
+                "Clean"
+            ]
+        },
+        {
+            "arabic_word": "جَمِيلٌ",
+            "correct_answer": "Beautiful",
+            "options": [
+                "Camel",
+                "Sun",
+                "Beautiful",
+                "Moon"
+            ]
+        },
+        {
+            "arabic_word": "خُبْزٌ",
+            "correct_answer": "Bread",
+            "options": [
+                "Air",
+                "Bread",
+                "Far",
+                "Moon"
+            ]
+        },
+        {
+            "arabic_word": "عَيْنٌ",
+            "correct_answer": "Eye",
+            "options": [
+                "Poor",
+                "Eye",
+                "Fish",
+                "Lunch/dinner"
+            ]
+        },
+        {
+            "arabic_word": "ثَقِيلٌ",
+            "correct_answer": "Heavy",
+            "options": [
+                "Open",
+                "Meat",
+                "Heavy",
+                "Chest"
+            ]
+        },
+        {
+            "arabic_word": "قَمَرٌ",
+            "correct_answer": "Moon",
+            "options": [
+                "Open",
+                "Meat",
+                "Moon",
+                "Chest"
+            ]
+        },
+        {
+            "arabic_word": "خَفِيفٌ",
+            "correct_answer": "Light",
+            "options": [
+                "Near",
+                "Shop",
+                "Quraan",
+                "Light"
+            ]
+        },
+        {
+            "arabic_word": "نَظِيفٌ",
+            "correct_answer": "Clean",
+            "options": [
+                "Flower",
+                "Sun",
+                "Near",
+                "Clean"
+            ]
+        },
+        {
+            "arabic_word": "فَقِيرٌ",
+            "correct_answer": "Poor",
+            "options": [
+                "Flower",
+                "Sun",
+                "Near",
+                "Poor"
+            ]
+        },
+        {
+            "arabic_word": "حُلْوٌ",
+            "correct_answer": "Sweet",
+            "options": [
+                "Eye",
+                "Messenger",
+                "Sweet",
+                "Friend"
+            ]
+        },
+        {
+            "arabic_word": "مَرِيضٌ",
+            "correct_answer": "Sick",
+            "options": [
+                "Eye",
+                "Messenger",
+                "Sick",
+                "Friend"
+            ]
+        },
+        {
+            "arabic_word": "دَفْتَرٌ",
+            "correct_answer": "Notebook",
+            "options": [
+                "Water",
+                "Notebook",
+                "Sun",
+                "Tall"
+            ]
+        },
+        {
+            "arabic_word": "دُكَّانٌ",
+            "correct_answer": "Shop",
+            "options": [
+                "Delicious",
+                "Shop",
+                "Light",
+                "Doctor"
+            ]
+        },
+        {
+            "arabic_word": "غَنِيٌّ",
+            "correct_answer": "Rich",
+            "options": [
+                "Dirty",
+                "Evening",
+                "Near",
+                "Rich"
+            ]
+        },
+        {
+            "arabic_word": "أَبٌ",
+            "correct_answer": "Father",
+            "options": [
+                "Doctor",
+                "Father",
+                "Bread",
+                "Rich"
+            ]
+        },
+        {
+            "arabic_word": "وَرَقٌ",
+            "correct_answer": "Paper",
+            "options": [
+                "Doctor",
+                "Paper",
+                "Bread",
+                "Rich"
+            ]
+        },
+        {
+            "arabic_word": "تُفَّاحٌ",
+            "correct_answer": "Apple",
+            "options": [
+                "Midday",
+                "Apple",
+                "Light",
+                "Brother"
+            ]
+        },
+        {
+            "arabic_word": "لَذِيذٌ",
+            "correct_answer": "Delicious",
+            "options": [
+                "Paper",
+                "Sitting",
+                "Delicious",
+                "Notebook"
+            ]
+        },
+        {
+            "arabic_word": "طَبِيبٌ",
+            "correct_answer": "Doctor",
+            "options": [
+                "Broken",
+                "Friend",
+                "Doctor",
+                "Face"
+            ]
+        },
+        {
+            "arabic_word": "طَوِيلٌ",
+            "correct_answer": "Tall",
+            "options": [
+                "Head",
+                "Sitting",
+                "Tall",
+                "Mouth"
+            ]
+        },
+        {
+            "arabic_word": "قَصِيرٌ",
+            "correct_answer": "Short",
+            "options": [
+                "Hot",
+                "Sick",
+                "Short",
+                "Heavy"
+            ]
+        },
+        {
+            "arabic_word": "أَخٌ",
+            "correct_answer": "Brother",
+            "options": [
+                "Dirty",
+                "Fish",
+                "Brother",
+                "Old"
+            ]
+        },
+        {
+            "arabic_word": "رَسُولٌ",
+            "correct_answer": "Messenger",
+            "options": [
+                "Messenger",
+                "Near",
+                "Broken",
+                "Sun"
+            ]
+        },
+        {
+            "arabic_word": "وَجْهٌ",
+            "correct_answer": "Face",
+            "options": [
+                "Prayer",
+                "Face",
+                "Sun",
+                "Messenger"
+            ]
+        },
+        {
+            "arabic_word": "صَدِيقٌ",
+            "correct_answer": "Friend",
+            "options": [
+                "Standing",
+                "Soap",
+                "Friend",
+                "Bread"
+            ]
+        },
+        {
+            "arabic_word": "قُرْآنٌ",
+            "correct_answer": "Quraan",
+            "options": [
+                "Quraan",
+                "Near",
+                "Broken",
+                "Sun"
+            ]
+        },
+        {
+            "arabic_word": "صَلاَةٌ",
+            "correct_answer": "Prayer",
+            "options": [
+                "Beautiful",
+                "Prayer",
+                "Quraan",
+                "Poor"
+            ]
+        },
+        {
+            "arabic_word": "كَعْبَةٌ",
+            "correct_answer": "Kabah",
+            "options": [
+                "Beautiful",
+                "Kabah",
+                "Quraan",
+                "Poor"
+            ]
+        },
+        {
+            "arabic_word": "رَأْسٌ",
+            "correct_answer": "Head",
+            "options": [
+                "Beautiful",
+                "Head",
+                "Quraan",
+                "Poor"
+            ]
+        },
+        {
+            "arabic_word": "إِصْبَعٌ",
+            "correct_answer": "Finger",
+            "options": [
+                "Afternoon time",
+                "Dirty",
+                "Finger",
+                "Heavy"
+            ]
+        },
+        {
+            "arabic_word": "صَابُونٌ",
+            "correct_answer": "Soap",
+            "options": [
+                "Garment",
+                "Light",
+                "Back",
+                "Soap"
+            ]
+        },
+        {
+            "arabic_word": "ظُفْرٌ",
+            "correct_answer": "Nail",
+            "options": [
+                "Afternoon time",
+                "Dirty",
+                "Nail",
+                "Heavy"
+            ]
+        },
+        {
+            "arabic_word": "فَجْرٌ",
+            "correct_answer": "Dawn",
+            "options": [
+                "Messenger",
+                "Dawn",
+                "Air",
+                "Guest"
+            ]
+        },
+        {
+            "arabic_word": "ظُهْرٌ",
+            "correct_answer": "Midday",
+            "options": [
+                "Meat",
+                "Chest",
+                "Midday",
+                "Near"
+            ]
+        },
+        {
+            "arabic_word": "عَصْرٌ",
+            "correct_answer": "Afternoon time",
+            "options": [
+                "Afternoon time",
+                "Morning",
+                "Garment",
+                "Night"
+            ]
+        },
+        {
+            "arabic_word": "مَغْرِبٌ",
+            "correct_answer": "Sunset",
+            "options": [
+                "Sunset",
+                "Morning",
+                "Midday",
+                "Short"
+            ]
+        },
+        {
+            "arabic_word": "عِشَاءٌ",
+            "correct_answer": "Evening",
+            "options": [
+                "Morning",
+                "Day time",
+                "Evening",
+                "Dark"
+            ]
+        },
+        {
+            "arabic_word": "جَنَّةٌ",
+            "correct_answer": "Garden/paradise",
+            "options": [
+                "Park",
+                "Forrest",
+                "Garden/paradise",
+                "Evening"
+            ]
+        },
+        {
+            "arabic_word": "غَدَاءٌ",
+            "correct_answer": "Lunch/dinner",
+            "options": [
+                "Breakfast",
+                "Lunch/dinner",
+                "Prayer",
+                "Food"
+            ]
+        },
+        {
+            "arabic_word": "فَمٌ",
+            "correct_answer": "Mouth",
+            "options": [
+                "Prayer",
+                "Mouth",
+                "Face",
+                "Finger"
+            ]
+        },
+        {
+            "arabic_word": "هَوَاءٌ",
+            "correct_answer": "Air",
+            "options": [
+                "Hand",
+                "Wind",
+                "Air",
+                "Tall"
+            ]
+        },
+        {
+            "arabic_word": "يَدٌ",
+            "correct_answer": "Hand",
+            "options": [
+                "Hand",
+                "Rich",
+                "Apple",
+                "Broken"
+            ]
+        },
+        {
+            "arabic_word": "ثَوْبٌ",
+            "correct_answer": "Garment",
+            "options": [
+                "Back",
+                "Eye",
+                "Garment",
+                "Paper"
+            ]
+        },
+        {
+            "arabic_word": "ذَهَبٌ",
+            "correct_answer": "Gold",
+            "options": [
+                "Dawn",
+                "Open",
+                "Gold",
+                "Rich"
+            ]
+        },
+        {
+            "arabic_word": "زَهْرَةٌ",
+            "correct_answer": "Flower",
+            "options": [
+                "Tree",
+                "Flower",
+                "Prayer",
+                "Broken"
+            ]
+        },
+        {
+            "arabic_word": "سَمَكٌ",
+            "correct_answer": "Fish",
+            "options": [
+                "Back",
+                "Eye",
+                "Fish",
+                "Paper"
+            ]
+        },
+        {
+            "arabic_word": "شَمْسٌ",
+            "correct_answer": "Sun",
+            "options": [
+                "Moon",
+                "Eye",
+                "Sun",
+                "Paper"
+            ]
+        },
+        {
+            "arabic_word": "صَدْرٌ",
+            "correct_answer": "Chest",
+            "options": [
+                "Friend",
+                "Moon",
+                "Chest",
+                "Delicious"
+            ]
+        },
+        {
+            "arabic_word": "ضَيْفٌ",
+            "correct_answer": "Guest",
+            "options": [
+                "Freind",
+                "Hand",
+                "Guest",
+                "Eye"
+            ]
+        },
+        {
+            "arabic_word": "ظَهْرٌ",
+            "correct_answer": "Back",
+            "options": [
+                "Afternoon time",
+                "Morning",
+                "Light",
+                "Eye"
+            ]
+        },
+        {
+            "arabic_word": "لَحْمٌ",
+            "correct_answer": "Meat",
+            "options": [
+                "Back",
+                "Nail",
+                "Meat",
+                "Broken"
+            ]
+        }
+    ]
+}

@@ -1,0 +1,169 @@
+{
+    "title": "Test L3-A",
+    "description": "Lesson 3 (A) Vocabulary",
+    "weight": 10,
+    "enabled": true,
+    "record_score": false,
+    "questions": [
+        {
+            "arabic_word": "مَكْسُورٌ",
+            "correct_answer": "Broken",
+            "options": [
+                "Sick",
+                "Near",
+                "Broken",
+                "Old"
+            ]
+        },
+        {
+            "arabic_word": "مَفْتُوحٌ",
+            "correct_answer": "Open",
+            "options": [
+                "Closed",
+                "Dirty",
+                "Clean",
+                "Open"
+            ]
+        },
+        {
+            "arabic_word": "جَالِسٌ",
+            "correct_answer": "Sitting",
+            "options": [
+                "Standing",
+                "Walking",
+                "Old",
+                "Sitting"
+            ]
+        },
+        {
+            "arabic_word": "وَاقِفٌ",
+            "correct_answer": "Standing",
+            "options": [
+                "Sitting",
+                "Afternoon time",
+                "Messenger",
+                "Standing"
+            ]
+        },
+        {
+            "arabic_word": "جَدِيدٌ",
+            "correct_answer": "New",
+            "options": [
+                "Hand",
+                "Sun",
+                "New",
+                "Heavy"
+            ]
+        },
+        {
+            "arabic_word": "قَدِيمٌ",
+            "correct_answer": "Old",
+            "options": [
+                "Eye",
+                "Old",
+                "Father",
+                "Moon"
+            ]
+        },
+        {
+            "arabic_word": "مَاءٌ",
+            "correct_answer": "Water",
+            "options": [
+                "Moon",
+                "Afternoon time",
+                "Messenger",
+                "Water"
+            ]
+        },
+        {
+            "arabic_word": "بَارِدٌ",
+            "correct_answer": "Cold",
+            "options": [
+                "Windy",
+                "Afternoon time",
+                "Hot",
+                "Cold"
+            ]
+        },
+        {
+            "arabic_word": "قَرِيبٌ",
+            "correct_answer": "Near",
+            "options": [
+                "Cold",
+                "Near",
+                "Rich",
+                "Far"
+            ]
+        },
+        {
+            "arabic_word": "بَعِيدٌ",
+            "correct_answer": "Far",
+            "options": [
+                "Cold",
+                "Far",
+                "Rich",
+                "Near"
+            ]
+        },
+        {
+            "arabic_word": "حَارٌّ",
+            "correct_answer": "Hot",
+            "options": [
+                "Cold",
+                "Moon",
+                "Hot",
+                "Finger"
+            ]
+        },
+        {
+            "arabic_word": "صَغِيرٌ",
+            "correct_answer": "Small",
+            "options": [
+                "Small",
+                "New",
+                "Big",
+                "Short"
+            ]
+        },
+        {
+            "arabic_word": "كَبِيرٌ",
+            "correct_answer": "Big",
+            "options": [
+                "Tall",
+                "Bread",
+                "Big",
+                "Small"
+            ]
+        },
+        {
+            "arabic_word": "وَسِخٌ",
+            "correct_answer": "Dirty",
+            "options": [
+                "Gold",
+                "Dirty",
+                "Finger",
+                "Clean"
+            ]
+        },
+        {
+            "arabic_word": "جَمِيلٌ",
+            "correct_answer": "Beautiful",
+            "options": [
+                "Camel",
+                "Sun",
+                "Beautiful",
+                "Moon"
+            ]
+        },
+        {
+            "arabic_word": "خُبْزٌ",
+            "correct_answer": "Bread",
+            "options": [
+                "Air",
+                "Bread",
+                "Far",
+                "Moon"
+            ]
+        }
+    ]
+}

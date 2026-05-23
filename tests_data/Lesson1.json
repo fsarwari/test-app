@@ -1,0 +1,319 @@
+{
+    "title": "Test L1",
+    "description": "Lesson 1 Vocabulary",
+    "weight": 10,
+    "enabled": true,
+    "record_score": false,
+    "max_questions": 30,
+    "questions": [
+        {
+            "arabic_word": "مَنْ هٰذَا؟",
+            "correct_answer": "Who is this?",
+            "options": [
+                "From here?",
+                "From there?",
+                "Who is that?"
+            ]
+        },
+        {
+            "arabic_word": "طَبِيبٌ",
+            "correct_answer": "Doctor",
+            "options": [
+                "Doctor",
+                "Horse",
+                "Student",
+                "Merchant"
+            ]
+        },
+        {
+            "arabic_word": "وَلَدٌ",
+            "correct_answer": "Boy",
+            "options": [
+                "Doctor",
+                "Book",
+                "Boy",
+                "Donkey"
+            ]
+        },
+        {
+            "arabic_word": "طَالِبٌ",
+            "correct_answer": "Student",
+            "options": [
+                "House",
+                "Student",
+                "Camel",
+                "Doctor"
+            ]
+        },
+        {
+            "arabic_word": "رَجُلٌ",
+            "correct_answer": "Man",
+            "options": [
+                "Man",
+                "Horse",
+                "Boy",
+                "Pen"
+            ]
+        },
+        {
+            "arabic_word": "تَاجِرٌ",
+            "correct_answer": "Merchant",
+            "options": [
+                "Merchant",
+                "Doctor",
+                "Student",
+                "Student"
+            ]
+        },
+        {
+            "arabic_word": "كَلْبٌ",
+            "correct_answer": "Dog",
+            "options": [
+                "Cat",
+                "Teacher",
+                "Dog",
+                "Heart"
+            ]
+        },
+        {
+            "arabic_word": "قِطٌّ",
+            "correct_answer": "Cat",
+            "options": [
+                "House",
+                "Cat",
+                "Camel",
+                "Door"
+            ]
+        },
+        {
+            "arabic_word": "حِمَارٌ",
+            "correct_answer": "Donkey",
+            "options": [
+                "Horse",
+                "Rooster",
+                "Donkey",
+                "Camel"
+            ]
+        },
+        {
+            "arabic_word": "حِصَانٌ",
+            "correct_answer": "Horse",
+            "options": [
+                "Camel",
+                "Rooster",
+                "Horse",
+                "Pen"
+            ]
+        },
+        {
+            "arabic_word": "وَ",
+            "correct_answer": "And",
+            "options": [
+                "And",
+                "Why",
+                "Yes",
+                "or"
+            ]
+        },
+        {
+            "arabic_word": "جَمَلٌ",
+            "correct_answer": "Camel",
+            "options": [
+                "Camel",
+                "Door",
+                "Horse",
+                "Donkey"
+            ]
+        },
+        {
+            "arabic_word": "دِيكٌ",
+            "correct_answer": "Rooster",
+            "options": [
+                "Desk",
+                "Camel",
+                "Donkey",
+                "Rooster"
+            ]
+        },
+        {
+            "arabic_word": "مُدَرِّسٌ",
+            "correct_answer": "Teacher",
+            "options": [
+                "School",
+                "Teacher",
+                "Office?",
+                "Desk"
+            ]
+        },
+        {
+            "arabic_word": "مِنْدِيلٌ",
+            "correct_answer": "Handkerchief",
+            "options": [
+                "Dirty",
+                "Clean",
+                "Handkerchief",
+                "Doctor"
+            ]
+        },
+        {
+            "arabic_word": "نَجْمٌ",
+            "correct_answer": "Star",
+            "options": [
+                "Desk",
+                "This is",
+                "Teacher",
+                "Star"
+            ]
+        },
+        {
+            "arabic_word": "هٰذَا",
+            "correct_answer": "This is",
+            "options": [
+                "Star",
+                "Key",
+                "Camel",
+                "This is"
+            ]
+        },
+        {
+            "arabic_word": "بَيْتٌ",
+            "correct_answer": "House",
+            "options": [
+                "Door",
+                "This is",
+                "Horse",
+                "House"
+            ]
+        },
+        {
+            "arabic_word": "مَسْجِدٌ",
+            "correct_answer": "Mosque",
+            "options": [
+                "House",
+                "Shirt",
+                "Desk",
+                "Mosque"
+            ]
+        },
+        {
+            "arabic_word": "بَابٌ",
+            "correct_answer": "Door",
+            "options": [
+                "Door",
+                "Dog",
+                "Mosque",
+                "Chair"
+            ]
+        },
+        {
+            "arabic_word": "كِتَابٌ",
+            "correct_answer": "Book",
+            "options": [
+                "Notebook",
+                "Office",
+                "Desk",
+                "Book"
+            ]
+        },
+        {
+            "arabic_word": "قَلَمٌ",
+            "correct_answer": "Pen",
+            "options": [
+                "Book",
+                "Shirt",
+                "Desk",
+                "Pen"
+            ]
+        },
+        {
+            "arabic_word": "مِفْتَاحٌ",
+            "correct_answer": "Key",
+            "options": [
+                "Bed",
+                "Desk",
+                "Key",
+                "This is"
+            ]
+        },
+        {
+            "arabic_word": "مَكْتَبٌ",
+            "correct_answer": "Desk",
+            "options": [
+                "Notebook",
+                "House?",
+                "Donkey",
+                "Desk"
+            ]
+        },
+        {
+            "arabic_word": "سَرِيرٌ",
+            "correct_answer": "Bed",
+            "options": [
+                "Shirt",
+                "House?",
+                "Donkey",
+                "Bed"
+            ]
+        },
+        {
+            "arabic_word": "كُرْسِيٌّ",
+            "correct_answer": "Chair",
+            "options": [
+                "Shirt",
+                "No",
+                "Chair",
+                "Cat"
+            ]
+        },
+        {
+            "arabic_word": "مَا هٰذَا؟",
+            "correct_answer": "What is this?",
+            "options": [
+                "Who is this?",
+                "What is this?",
+                "What is that?",
+                "Why is this?"
+            ]
+        },
+        {
+            "arabic_word": "أَهٰذَا؟",
+            "correct_answer": "Is this?",
+            "options": [
+                "Why is this?",
+                "Is that?",
+                "This is",
+                "Is this?"
+            ]
+        },
+        {
+            "arabic_word": "نَعَمْ",
+            "correct_answer": "Yes",
+            "options": [
+                "No",
+                "Yes",
+                "Why",
+                "Or"
+            ]
+        },
+        {
+            "arabic_word": "قَمِيصٌ",
+            "correct_answer": "Shirt",
+            "options": [
+                "Shirt",
+                "Dog",
+                "House",
+                "Donkey"
+            ]
+        },
+        {
+            "arabic_word": "مَنْ",
+            "correct_answer": "Who",
+            "options": [
+                "Who",
+                "From",
+                "Why",
+                "Donkey"
+            ]
+        }
+    ]
+}

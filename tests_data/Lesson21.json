@@ -1,0 +1,279 @@
+{
+    "title": "Test L21",
+    "description": "Lesson 21 Vocabulary",
+    "weight": 10,
+    "enabled": false,
+    "record_score": false,
+    "questions": [
+        {
+            "arabic_word": "كَثِيرًا",
+            "correct_answer": "Very much/many",
+            "options": [
+                "Very much/many",
+                "Desks",
+                "We love",
+                "Africa"
+            ]
+        },
+        {
+            "arabic_word": "أَمْ",
+            "correct_answer": "Or (used for questioning)",
+            "options": [
+                "Bayrum",
+                "Or (used for questioning)",
+                "That",
+                "Two windows"
+            ]
+        },
+        {
+            "arabic_word": "مُغْلَقَةٌ",
+            "correct_answer": "Closed",
+            "options": [
+                "Righteous",
+                "Yusuf",
+                "But",
+                "Closed"
+            ]
+        },
+        {
+            "arabic_word": "إِفْرِيقِيَا",
+            "correct_answer": "Africa",
+            "options": [
+                "Africa",
+                "We love",
+                "Ahmad",
+                "We love him"
+            ]
+        },
+        {
+            "arabic_word": "مَكَاتِبُ",
+            "correct_answer": "Desks",
+            "options": [
+                "Desks",
+                "We love",
+                "Ahmad",
+                "We love him"
+            ]
+        },
+        {
+            "arabic_word": "كَرَاسِيُّ",
+            "correct_answer": "Chairs",
+            "options": [
+                "Righteous",
+                "Abu Bakr",
+                "Chairs",
+                "Ghana"
+            ]
+        },
+        {
+            "arabic_word": "قِبْلَةٌ",
+            "correct_answer": "Direction of prayer",
+            "options": [
+                "Colours",
+                "Ghana",
+                "Direction of prayer",
+                "Abu Bakr"
+            ]
+        },
+        {
+            "arabic_word": "ذَاكَ",
+            "correct_answer": "That",
+            "options": [
+                "Righteous",
+                "Abu Bakr",
+                "That",
+                "Ghana"
+            ]
+        },
+        {
+            "arabic_word": "الْيُونَانُ",
+            "correct_answer": "Greece",
+            "options": [
+                "Greece",
+                "Africa",
+                "We love",
+                "Closed"
+            ]
+        },
+        {
+            "arabic_word": "لَوْنٌ",
+            "correct_answer": "Colour",
+            "options": [
+                "Colour",
+                "Righteous",
+                "Bayrum",
+                "Closed"
+            ]
+        },
+        {
+            "arabic_word": "أَلْوَانٌ",
+            "correct_answer": "Colours",
+            "options": [
+                "Righteous",
+                "Two windows",
+                "Or (used for questioning)",
+                "Colours"
+            ]
+        },
+        {
+            "arabic_word": "نُحِبُّ",
+            "correct_answer": "We love",
+            "options": [
+                "Two windows",
+                "Ghana",
+                "We love",
+                "We love him"
+            ]
+        },
+        {
+            "arabic_word": "نُحِبُّهُ",
+            "correct_answer": "We love him",
+            "options": [
+                "Asia",
+                "Closed",
+                "Africa",
+                "We love him"
+            ]
+        },
+        {
+            "arabic_word": "آسِيَا",
+            "correct_answer": "Asia",
+            "options": [
+                "Righteous",
+                "Two windows",
+                "Or (used for questioning)",
+                "Asia"
+            ]
+        },
+        {
+            "arabic_word": "وَاسِعٌ",
+            "correct_answer": "Spacious",
+            "options": [
+                "Colours",
+                "Ahmad",
+                "Colour",
+                "Spacious"
+            ]
+        },
+        {
+            "arabic_word": "قَرِيبَةٌ",
+            "correct_answer": "Near",
+            "options": [
+                "Yusuf",
+                "Ahmad",
+                "Greece",
+                "Near"
+            ]
+        },
+        {
+            "arabic_word": "فَصْلٌ",
+            "correct_answer": "Classroom",
+            "options": [
+                "Colour",
+                "Ghana",
+                "Classroom",
+                "Abu Bakr"
+            ]
+        },
+        {
+            "arabic_word": "فُصُولٌ",
+            "correct_answer": "Classrooms",
+            "options": [
+                "But",
+                "Bayrum",
+                "Greece",
+                "Classrooms"
+            ]
+        },
+        {
+            "arabic_word": "نَافِذَتَانِ",
+            "correct_answer": "Two windows",
+            "options": [
+                "We love",
+                "That",
+                "Very much/many",
+                "Two windows"
+            ]
+        },
+        {
+            "arabic_word": "أَحْمَدُ",
+            "correct_answer": "Ahmad",
+            "options": [
+                "Yusuf",
+                "That",
+                "Bayrum",
+                "Ahmad"
+            ]
+        },
+        {
+            "arabic_word": "غَانَا",
+            "correct_answer": "Ghana",
+            "options": [
+                "Colour",
+                "Ahmad",
+                "Ghana",
+                "Abu Bakr"
+            ]
+        },
+        {
+            "arabic_word": "نَيْجِيرِيَا",
+            "correct_answer": "Nigeria",
+            "options": [
+                "Nigeria",
+                "That",
+                "Desks",
+                "Bayrum"
+            ]
+        },
+        {
+            "arabic_word": "بَيْرَمُ",
+            "correct_answer": "Bayrum",
+            "options": [
+                "Bayrum",
+                "That",
+                "Desks",
+                "Nigeria"
+            ]
+        },
+        {
+            "arabic_word": "أَبُو بَكْرٍ",
+            "correct_answer": "Abu Bakr",
+            "options": [
+                "Classroom",
+                "Desks",
+                "Africa",
+                "Abu Bakr"
+            ]
+        },
+        {
+            "arabic_word": "وَلَكِنْ",
+            "correct_answer": "But",
+            "options": [
+                "Abu Bakr",
+                "Nigeria",
+                "Greece",
+                "But"
+            ]
+        },
+        {
+            "arabic_word": "يُوسُفُ",
+            "correct_answer": "Yusuf",
+            "options": [
+                "Righteous",
+                "Nigeria",
+                "Yusuf",
+                "Desks"
+            ]
+        },
+        {
+            "arabic_word": "صَالِحٌ",
+            "correct_answer": "Righteous",
+            "options": [
+                "Righteous",
+                "Colours",
+                "Classrooms",
+                "Ahmad"
+            ]
+        }
+    ]
+}

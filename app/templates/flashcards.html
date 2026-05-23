@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flashcards</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>📚 Flashcards </h1>
+            <div class="header-actions">
+                <a href="/app/" class="btn-back">← Back to App</a>
+                <div id="user-info" class="user-info" style="display: none;">
+                    <button onclick="logout()" class="btn-logout">Logout</button>
+                    <span id="username-display"></span>
+                </div>
+            </div>
+        </header>
+
+        <!-- Main Content -->
+        <section class="app-section">
+            <!-- Lesson Selection View -->
+            <div id="lesson-selection-view" style="display: block;">
+                <h2>Choose a Lesson</h2>
+                <div id="lessons-list" class="lessons-list"></div>
+            </div>
+
+            <!-- Mode Selection View -->
+            <div id="mode-selection-view" style="display: none;">
+                <div class="mode-header">
+                    <button onclick="backToLessons()" class="btn-back">← Back to Lessons</button>
+                    <h2 id="selected-lesson-title"></h2>
+                </div>
+                
+                <div class="mode-selection-container">
+                    <div class="mode-card" onclick="startFlashcards('english')">
+                        <div class="mode-icon">🇬🇧</div>
+                        <h3>English First</h3>
+                        <p>See English word first, then reveal Arabic</p>
+                    </div>
+                    <div class="mode-card" onclick="startFlashcards('arabic')">
+                        <div class="mode-icon">🇸🇦</div>
+                        <h3>Arabic First</h3>
+                        <p>See Arabic word first, then reveal English</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Flashcards View -->
+            <div id="flashcards-view" style="display: none;">
+                <div class="flashcards-header">
+                    <button onclick="backToModes()" class="btn-back">← Back</button>
+                    <h2 id="flashcards-title"></h2>
+                    <div class="progress-info">
+                        <span id="card-counter">0 / 0</span>
+                    </div>
+                </div>
+
+                <div class="font-size-settings">
+                    <label for="font-size-slider">Flashcard font size: <span id="font-size-value">32</span>px</label>
+                    <input id="font-size-slider" type="range" min="20" max="56" step="1" value="32" oninput="updateFlashcardFontSize(this.value)">
+                </div>
+
+                <div class="flashcards-container">
+                    <div id="flashcard" class="flashcard" onclick="flipCard()">
+                        <div class="flashcard-inner">
+                            <div class="flashcard-front">
+                                <p id="front-text"></p>
+                            </div>
+                            <div class="flashcard-back">
+                                <p id="back-text"></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="flashcard-hint">
+                    Click card to reveal answer
+                </div>
+
+                <div class="flashcard-controls">
+                    <button onclick="previousCard()" class="btn btn-secondary">← Previous</button>
+                    <button onclick="nextCard()" class="btn btn-secondary">Next →</button>
+                    <div class="progress-bar">
+                        <div id="progress-fill" class="progress-fill"></div>
+                    </div>
+                </div>
+
+                <button onclick="backToModes()" class="btn btn-primary" style="width: 100%; margin-top: 20px;">Back to Lesson Menu</button>
+            </div>
+        </section>
+    </div>
+
+    <script src="{{ url_for('static', filename='flashcards.js') }}"></script>
+</body>
+</html>

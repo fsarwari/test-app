@@ -1,0 +1,89 @@
+{
+    "title": "Test L2",
+    "description": "Lesson 2 Vocabulary",
+    "weight": 2,
+    "enabled": true,
+    "record_score": false,
+    "questions": [
+        {
+            "arabic_word": "مَا؟",
+            "correct_answer": "What?",
+            "options": [
+                "Why?",
+                "What?",
+                "Who?",
+                "Where?"
+            ]
+        },
+        {
+            "arabic_word": "حَجَرٌ",
+            "correct_answer": "Stone",
+            "options": [
+                "Leader",
+                "Stone",
+                "Sugar",
+                "What is that?"
+            ]
+        },
+        {
+            "arabic_word": "لَبَنٌ",
+            "correct_answer": "Milk",
+            "options": [
+                "Leader",
+                "Milk",
+                "Sugar",
+                "Why"
+            ]
+        },
+        {
+            "arabic_word": "ذٰلِكَ",
+            "correct_answer": "That",
+            "options": [
+                "This",
+                "That",
+                "Here",
+                "There"
+            ]
+        },
+        {
+            "arabic_word": "أَذٰلِكَ؟",
+            "correct_answer": "Is that?",
+            "options": [
+                "Is that?",
+                "What?",
+                "Leader",
+                "What is that?"
+            ]
+        },
+        {
+            "arabic_word": "إِمَامٌ",
+            "correct_answer": "Leader",
+            "options": [
+                "Leader",
+                "Sugar",
+                "Stone",
+                "Is that?"
+            ]
+        },
+        {
+            "arabic_word": "سُكَّرٌ",
+            "correct_answer": "Sugar",
+            "options": [
+                "Sugar",
+                "Leader",
+                "Stone",
+                "Is that?"
+            ]
+        },
+        {
+            "arabic_word": "مَا ذٰلِكَ؟",
+            "correct_answer": "What is that?",
+            "options": [
+                "Milk",
+                "Stone",
+                "What is that?",
+                "Leader"
+            ]
+        }
+    ]
+}

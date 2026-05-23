@@ -1,0 +1,299 @@
+{
+    "title": "Test L6",
+    "description": "Lesson 6 Vocabulary",
+    "weight": 10,
+    "enabled": false,
+    "record_score": false,
+    "questions": [
+        {
+            "arabic_word": "أُذُنٌ",
+            "correct_answer": "Ear",
+            "options": [
+                "Fast",
+                "Praise belongs to Allah",
+                "Fridge",
+                "Ear"
+            ]
+        },
+        {
+            "arabic_word": "أَنْفٌ",
+            "correct_answer": "Nose",
+            "options": [
+                "Muslim",
+                "Eye",
+                "Nose",
+                "Mother"
+            ]
+        },
+        {
+            "arabic_word": "مُسْلِمٌ",
+            "correct_answer": "Muslim",
+            "options": [
+                "East",
+                "Fridge",
+                "Eye",
+                "Muslim"
+            ]
+        },
+        {
+            "arabic_word": "شَايٌ",
+            "correct_answer": "Tea",
+            "options": [
+                "East",
+                "Fast",
+                "West",
+                "Tea"
+            ]
+        },
+        {
+            "arabic_word": "سَرِيعٌ",
+            "correct_answer": "Fast",
+            "options": [
+                "East",
+                "Fridge",
+                "Eye",
+                "Fast"
+            ]
+        },
+        {
+            "arabic_word": "نَافِذَةٌ",
+            "correct_answer": "Window",
+            "options": [
+                "Bicycle",
+                "New",
+                "Window",
+                "Beautiful"
+            ]
+        },
+        {
+            "arabic_word": "قَهْوَةٌ",
+            "correct_answer": "Coffee",
+            "options": [
+                "Coffee",
+                "Eye",
+                "Beautiful",
+                "Sister"
+            ]
+        },
+        {
+            "arabic_word": "ثَلَّاجَةٌ",
+            "correct_answer": "Fridge",
+            "options": [
+                "Fridge",
+                "Coffee",
+                "Spoon",
+                "This is (feminine)"
+            ]
+        },
+        {
+            "arabic_word": "أُمٌّ",
+            "correct_answer": "Mother",
+            "options": [
+                "Mother",
+                "Tea",
+                "Cow",
+                "Muslim"
+            ]
+        },
+        {
+            "arabic_word": "فَلَّاحٌ",
+            "correct_answer": "Farmer",
+            "options": [
+                "Farmer",
+                "Praise belongs to Allah",
+                "Very",
+                "Muslim"
+            ]
+        },
+        {
+            "arabic_word": "رِجْلٌ",
+            "correct_answer": "Leg/foot",
+            "options": [
+                "Whose",
+                "New",
+                "Leg/foot",
+                "Cooking pot"
+            ]
+        },
+        {
+            "arabic_word": "بَقَرَةٌ",
+            "correct_answer": "Cow",
+            "options": [
+                "Cow",
+                "Tea",
+                "Leg/foot",
+                "Muslim"
+            ]
+        },
+        {
+            "arabic_word": "قِدْرٌ",
+            "correct_answer": "Cooking pot",
+            "options": [
+                "Cooking pot",
+                "Window",
+                "Tea",
+                "Doctor"
+            ]
+        },
+        {
+            "arabic_word": "مَشْرِقٌ",
+            "correct_answer": "East",
+            "options": [
+                "Whose",
+                "Anas",
+                "Nose",
+                "East"
+            ]
+        },
+        {
+            "arabic_word": "مَغْرِبٌ",
+            "correct_answer": "West",
+            "options": [
+                "Whose",
+                "New",
+                "West",
+                "Cow"
+            ]
+        },
+        {
+            "arabic_word": "هٰذِهِ",
+            "correct_answer": "This is (feminine)",
+            "options": [
+                "New",
+                "Cow",
+                "Sister",
+                "This is (feminine)"
+            ]
+        },
+        {
+            "arabic_word": "أُخْتٌ",
+            "correct_answer": "Sister",
+            "options": [
+                "Anas",
+                "West",
+                "This is (feminine)",
+                "Sister"
+            ]
+        },
+        {
+            "arabic_word": "أَيْضًا",
+            "correct_answer": "Also",
+            "options": [
+                "Eye",
+                "Farmer",
+                "Cow",
+                "Also"
+            ]
+        },
+        {
+            "arabic_word": "لِمَنْ",
+            "correct_answer": "Whose",
+            "options": [
+                "Whose",
+                "Window",
+                "Tea",
+                "Doctor"
+            ]
+        },
+        {
+            "arabic_word": "مِكْوَاةٌ",
+            "correct_answer": "Iron",
+            "options": [
+                "Iron",
+                "Window",
+                "Tea",
+                "Doctor"
+            ]
+        },
+        {
+            "arabic_word": "جَدِيدَةٌ",
+            "correct_answer": "New",
+            "options": [
+                "New",
+                "Window",
+                "Tea",
+                "Doctor"
+            ]
+        },
+        {
+            "arabic_word": "دَرَّاجَةٌ",
+            "correct_answer": "Bicycle",
+            "options": [
+                "Bicycle",
+                "Fridge",
+                "Fast",
+                "Very"
+            ]
+        },
+        {
+            "arabic_word": "طَبِيبَةٌ",
+            "correct_answer": "Doctor",
+            "options": [
+                "Doctor",
+                "Fridge",
+                "Fast",
+                "Very"
+            ]
+        },
+        {
+            "arabic_word": "أَنَسٌ",
+            "correct_answer": "Anas",
+            "options": [
+                "Spoon",
+                "Very",
+                "Mother",
+                "Anas"
+            ]
+        },
+        {
+            "arabic_word": "جِدًّا",
+            "correct_answer": "Very",
+            "options": [
+                "Very",
+                "Fridge",
+                "Fast",
+                "Anas"
+            ]
+        },
+        {
+            "arabic_word": "جَمِيلَةٌ",
+            "correct_answer": "Beautiful",
+            "options": [
+                "West",
+                "Leg/foot",
+                "Whose",
+                "Beautiful"
+            ]
+        },
+        {
+            "arabic_word": "مِلْعَقَةٌ",
+            "correct_answer": "Spoon",
+            "options": [
+                "Coffee",
+                "Farmer",
+                "Eye",
+                "Spoon"
+            ]
+        },
+        {
+            "arabic_word": "عَيْنٌ",
+            "correct_answer": "Eye",
+            "options": [
+                "Praise belongs to Allah",
+                "Eye",
+                "Fridge",
+                "Mother"
+            ]
+        },
+        {
+            "arabic_word": "الحَمْدُ للهِ",
+            "correct_answer": "Praise belongs to Allah",
+            "options": [
+                "Whose",
+                "Cooking pot",
+                "Praise belongs to Allah",
+                "Window"
+            ]
+        }
+    ]
+}
