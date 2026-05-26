@@ -403,6 +403,7 @@ function switchUserTab(tabName) {
     } else if (tabName === 'profile') {
         document.getElementById('profile-tab').style.display = 'block';
         document.getElementById('tab-profile').classList.add('active');
+        loadColorPreferences();
     }
 }
 
@@ -553,4 +554,93 @@ function showMessage(message, type, element) {
     setTimeout(() => {
         element.className = 'message';
     }, 5000);
+}
+
+async function loadColorPreferences() {
+    try {
+        const response = await fetch(`${API_BASE}/user-preferences`, {
+            credentials: 'include'
+        });
+        
+        if (response.ok) {
+            const preferences = await response.json();
+            
+            // Load color values or use defaults
+            const primaryColor = preferences['primary_color'] || '#667eea';
+            const secondaryColor = preferences['secondary_color'] || '#764ba2';
+            const accentColor = preferences['accent_color'] || '#f093fb';
+            
+            // Set color inputs
+            document.getElementById('primary-color').value = primaryColor;
+            document.getElementById('primary-color-value').textContent = primaryColor;
+            
+            document.getElementById('secondary-color').value = secondaryColor;
+            document.getElementById('secondary-color-value').textContent = secondaryColor;
+            
+            document.getElementById('accent-color').value = accentColor;
+            document.getElementById('accent-color-value').textContent = accentColor;
+            
+            // Setup color change listeners
+            setupColorListeners();
+        }
+    } catch (error) {
+        console.error('Failed to load color preferences:', error);
+    }
+}
+
+function setupColorListeners() {
+    const primaryColorInput = document.getElementById('primary-color');
+    const secondaryColorInput = document.getElementById('secondary-color');
+    const accentColorInput = document.getElementById('accent-color');
+    
+    if (primaryColorInput) {
+        primaryColorInput.addEventListener('change', (e) => {
+            document.getElementById('primary-color-value').textContent = e.target.value;
+        });
+    }
+    
+    if (secondaryColorInput) {
+        secondaryColorInput.addEventListener('change', (e) => {
+            document.getElementById('secondary-color-value').textContent = e.target.value;
+        });
+    }
+    
+    if (accentColorInput) {
+        accentColorInput.addEventListener('change', (e) => {
+            document.getElementById('accent-color-value').textContent = e.target.value;
+        });
+    }
+}
+
+async function saveColorPreferences() {
+    const primaryColor = document.getElementById('primary-color').value;
+    const secondaryColor = document.getElementById('secondary-color').value;
+    const accentColor = document.getElementById('accent-color').value;
+    const messageDiv = document.getElementById('color-message');
+    
+    try {
+        const response = await fetch(`${API_BASE}/user-preferences`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            credentials: 'include',
+            body: JSON.stringify({
+                primary_color: primaryColor,
+                secondary_color: secondaryColor,
+                accent_color: accentColor
+            })
+        });
+        
+        const data = await response.json();
+        
+        if (response.ok) {
+            showMessage('Color preferences saved successfully!', 'success', messageDiv);
+        } else {
+            showMessage(data.error || 'Failed to save preferences', 'error', messageDiv);
+        }
+    } catch (error) {
+        console.error('Color preference save error:', error);
+        showMessage('Failed to save preferences', 'error', messageDiv);
+    }
 }

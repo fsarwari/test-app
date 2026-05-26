@@ -120,6 +120,38 @@
                         <button type="button" onclick="changePassword()" class="btn btn-primary">Change Password</button>
                         <div id="password-message" class="message"></div>
                     </div>
+
+                    <div class="profile-panel">
+                        <h3>Color Preferences</h3>
+                        <p style="color: #666; font-size: 14px; margin-bottom: 15px;">Customize your app appearance with color preferences.</p>
+                        
+                        <div class="form-group">
+                            <label for="primary-color">Primary Color:</label>
+                            <div style="display: flex; gap: 10px; align-items: center;">
+                                <input type="color" id="primary-color" value="#667eea" style="width: 50px; height: 40px; cursor: pointer;">
+                                <span id="primary-color-value" style="font-size: 14px; color: #666;">#667eea</span>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="secondary-color">Secondary Color:</label>
+                            <div style="display: flex; gap: 10px; align-items: center;">
+                                <input type="color" id="secondary-color" value="#764ba2" style="width: 50px; height: 40px; cursor: pointer;">
+                                <span id="secondary-color-value" style="font-size: 14px; color: #666;">#764ba2</span>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="accent-color">Accent Color:</label>
+                            <div style="display: flex; gap: 10px; align-items: center;">
+                                <input type="color" id="accent-color" value="#f093fb" style="width: 50px; height: 40px; cursor: pointer;">
+                                <span id="accent-color-value" style="font-size: 14px; color: #666;">#f093fb</span>
+                            </div>
+                        </div>
+
+                        <button type="button" onclick="saveColorPreferences()" class="btn btn-primary">Save Color Preferences</button>
+                        <div id="color-message" class="message"></div>
+                    </div>
                 </div>
             </div>
         </section>
