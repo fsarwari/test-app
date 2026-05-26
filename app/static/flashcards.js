@@ -1,132 +1,165 @@
-// Flashcards Application
 const API_BASE = '/app/api';
 
-// State
 let lessons = [];
 let currentLessonName = null;
 let currentLessonData = null;
-let currentMode = null; // 'english' or 'arabic'
+let currentMode = null;
 let flashcards = [];
 let currentCardIndex = 0;
 let isCardFlipped = false;
 let flashcardFontSize = 32;
 const DEFAULT_FLASHCARD_FONT_SIZE = 32;
 
-// Initialize app
-document.addEventListener('DOMContentLoaded', function() {
+const $ = (id) => document.getElementById(id);
+
+function escapeHtml(text) {
+    const div = document.createElement('div');
+    div.textContent = text == null ? '' : String(text);
+    return div.innerHTML;
+}
+
+function setTopTitle(title) {
+    const el = $('top-title');
+    if (el) el.textContent = title;
+}
+
+function showView(viewId) {
+    ['lesson-selection-view', 'mode-selection-view', 'flashcards-view'].forEach((id) => {
+        const el = $(id);
+        if (!el) return;
+        if (id === viewId) el.removeAttribute('hidden');
+        else el.setAttribute('hidden', '');
+    });
+}
+
+document.addEventListener('DOMContentLoaded', () => {
     initFontSize();
+    $('btn-back-lessons')?.addEventListener('click', backToLessons);
+    $('btn-back-modes')?.addEventListener('click', backToModes);
+    $('btn-prev')?.addEventListener('click', previousCard);
+    $('btn-next')?.addEventListener('click', nextCard);
+    $('flashcard')?.addEventListener('click', flipCard);
+    $('font-size-slider')?.addEventListener('input', (e) => updateFlashcardFontSize(e.target.value));
+
+    document.querySelectorAll('.mode-card[data-mode]').forEach((card) => {
+        const mode = card.dataset.mode;
+        card.addEventListener('click', () => startFlashcards(mode));
+        card.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter' || e.key === ' ') {
+                e.preventDefault();
+                startFlashcards(mode);
+            }
+        });
+    });
+
     checkAuth();
 });
 
 async function checkAuth() {
     try {
-        const response = await fetch(`${API_BASE}/user`, {
-            credentials: 'include'
-        });
-        
+        const response = await fetch(`${API_BASE}/user`, { credentials: 'include' });
         if (response.ok) {
             const data = await response.json();
-            document.getElementById('username-display').textContent = `${data.username}`;
-            document.getElementById('user-info').style.display = 'flex';
+            const chip = $('username-display');
+            if (chip) chip.textContent = data.username;
             loadLessons();
         } else {
-            window.location.href = '/';
+            window.location.href = '/app/';
         }
     } catch (error) {
         console.error('Auth check failed:', error);
-        window.location.href = '/';
-    }
-}
-
-async function logout() {
-    try {
-        await fetch(`${API_BASE}/logout`, {
-            method: 'POST',
-            credentials: 'include'
-        });
-        window.location.href = '/';
-    } catch (error) {
-        console.error('Logout error:', error);
+        window.location.href = '/app/';
     }
 }
 
 async function loadLessons() {
-    const container = document.getElementById('lessons-list');
+    const container = $('lessons-list');
     try {
-        const response = await fetch(`${API_BASE}/tests`, {
-            credentials: 'include'
-        });
-
+        const response = await fetch(`${API_BASE}/tests`, { credentials: 'include' });
         if (response.ok) {
             const data = await response.json();
             lessons = data.tests || [];
             displayLessons();
-        } else {
-            container.innerHTML =
-                '<p class="tests-empty-msg">Could not load lessons. Please refresh or go back and sign in again.</p>';
+        } else if (container) {
+            container.innerHTML = '<div class="empty-state"><p>Could not load lessons.</p></div>';
         }
     } catch (error) {
         console.error('Failed to load lessons:', error);
         if (container) {
-            container.innerHTML =
-                '<p class="tests-empty-msg">Could not load lessons. Check your connection and try again.</p>';
+            container.innerHTML = '<div class="empty-state"><p>Check your connection and try again.</p></div>';
         }
     }
 }
 
 function displayLessons() {
-    const container = document.getElementById('lessons-list');
+    const container = $('lessons-list');
+    if (!container) return;
     container.innerHTML = '';
-    
-    if (lessons.length === 0) {
-        container.innerHTML = '<p class="tests-empty-msg">No lessons available yet.</p>';
+
+    if (!lessons.length) {
+        container.innerHTML = '<div class="empty-state"><div class="icon">🎴</div><p>No lessons available yet.</p></div>';
         return;
     }
 
-    const grid = document.createElement('div');
-    grid.className = 'lessons-grid';
+    lessons.forEach((lesson) => {
+        const card = document.createElement('article');
+        card.className = 'test-card';
+        card.setAttribute('role', 'button');
+        card.tabIndex = 0;
 
-    lessons.forEach(lesson => {
-        const card = document.createElement('div');
-        card.className = 'lesson-card';
-        card.innerHTML = `
-            <div class="lesson-card-content">
-                <h3>${lesson.title || lesson.name}</h3>
-                <p class="lesson-description">${lesson.name}</p>
-            </div>
-        `;
-        card.addEventListener('click', () => selectLesson(lesson.name, lesson.title || lesson.name));
-        grid.appendChild(card);
+        const body = document.createElement('div');
+        body.className = 'test-card-body';
+        const title = document.createElement('p');
+        title.className = 'test-card-title';
+        title.textContent = lesson.title || lesson.name;
+        const slug = document.createElement('p');
+        slug.className = 'test-card-slug';
+        slug.textContent = lesson.name;
+        body.appendChild(title);
+        body.appendChild(slug);
+
+        const arrow = document.createElement('span');
+        arrow.className = 'badge-done';
+        arrow.textContent = '→';
+        arrow.style.background = 'var(--surface-2)';
+        arrow.style.color = 'var(--text-muted)';
+
+        card.appendChild(body);
+        card.appendChild(arrow);
+
+        const open = () => selectLesson(lesson.name, lesson.title || lesson.name);
+        card.addEventListener('click', open);
+        card.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter' || e.key === ' ') {
+                e.preventDefault();
+                open();
+            }
+        });
+
+        container.appendChild(card);
     });
-
-    container.appendChild(grid);
 }
 
 function selectLesson(lessonName, lessonTitle) {
     currentLessonName = lessonName;
-    document.getElementById('selected-lesson-title').textContent = lessonTitle;
-    
-    // Hide lesson selection, show mode selection
-    document.getElementById('lesson-selection-view').style.display = 'none';
-    document.getElementById('mode-selection-view').style.display = 'block';
+    const titleEl = $('selected-lesson-title');
+    if (titleEl) titleEl.textContent = lessonTitle;
+    setTopTitle(lessonTitle);
+    showView('mode-selection-view');
 }
 
 async function startFlashcards(mode) {
     currentMode = mode;
-    
     try {
-        const response = await fetch(`${API_BASE}/tests/${currentLessonName}?flashcards=true`, {
-            credentials: 'include'
-        });
-        
+        const response = await fetch(
+            `${API_BASE}/tests/${encodeURIComponent(currentLessonName)}?flashcards=true`,
+            { credentials: 'include' }
+        );
         if (response.ok) {
             currentLessonData = await response.json();
             prepareFlashcards();
             displayFlashcard();
-            
-            // Hide mode selection, show flashcards
-            document.getElementById('mode-selection-view').style.display = 'none';
-            document.getElementById('flashcards-view').style.display = 'block';
+            showView('flashcards-view');
         }
     } catch (error) {
         console.error('Failed to load lesson:', error);
@@ -135,67 +168,66 @@ async function startFlashcards(mode) {
 
 function prepareFlashcards() {
     flashcards = [];
-    const questions = currentLessonData.questions || [];
-    
-    questions.forEach((question, index) => {
+    const questions = currentLessonData?.questions || [];
+
+    questions.forEach((question) => {
         const arabicWord = question.arabic_word || '';
         const englishWord = question.correct_answer || '';
-        
         if (currentMode === 'english') {
-            flashcards.push({
-                front: englishWord,
-                back: arabicWord,
-                frontLabel: 'English',
-                backLabel: 'Arabic'
-            });
+            flashcards.push({ front: englishWord, back: arabicWord, backRtl: true });
         } else {
-            flashcards.push({
-                front: arabicWord,
-                back: englishWord,
-                frontLabel: 'Arabic',
-                backLabel: 'English'
-            });
+            flashcards.push({ front: arabicWord, back: englishWord, frontRtl: true, backRtl: false });
         }
     });
-    
+
     currentCardIndex = 0;
     isCardFlipped = false;
 }
 
 function displayFlashcard() {
-    if (flashcards.length === 0) return;
-    
+    if (!flashcards.length) return;
+
     const card = flashcards[currentCardIndex];
-    const lessonTitle = document.getElementById('selected-lesson-title').textContent;
-    const modeLabel = currentMode === 'english' ? 'English First' : 'Arabic First';
-    
-    document.getElementById('flashcards-title').textContent = `${lessonTitle} - ${modeLabel}`;
-    document.getElementById('card-counter').textContent = `${currentCardIndex + 1} / ${flashcards.length}`;
-    
-    // Reset flip state
+    const lessonTitle = $('selected-lesson-title')?.textContent || '';
+    const modeLabel = currentMode === 'english' ? 'English first' : 'Arabic first';
+
+    if ($('flashcards-title')) {
+        $('flashcards-title').textContent = `${lessonTitle} · ${modeLabel}`;
+    }
+    if ($('card-counter')) {
+        $('card-counter').textContent = `${currentCardIndex + 1} / ${flashcards.length}`;
+    }
+
     isCardFlipped = false;
-    const flashcard = document.getElementById('flashcard');
-    flashcard.classList.remove('flipped');
-    
+    $('flashcard')?.classList.remove('flipped');
     applyFlashcardFontSize();
-    
-    // Update card content
-    document.getElementById('front-text').textContent = card.front;
-    document.getElementById('back-text').textContent = card.back;
-    
-    // Update progress bar
+
+    const front = $('front-text');
+    const back = $('back-text');
+    if (front) {
+        front.textContent = card.front;
+        front.removeAttribute('dir');
+        if (card.frontRtl) front.setAttribute('dir', 'rtl');
+    }
+    if (back) {
+        back.textContent = card.back;
+        back.removeAttribute('dir');
+        if (card.backRtl) back.setAttribute('dir', 'rtl');
+    }
+
     const progress = ((currentCardIndex + 1) / flashcards.length) * 100;
-    document.getElementById('progress-fill').style.width = progress + '%';
+    const fill = $('progress-fill');
+    if (fill) fill.style.width = `${progress}%`;
 }
 
 function initFontSize() {
-    const savedSize = localStorage.getItem('flashcardFontSize');
-    flashcardFontSize = savedSize ? Number(savedSize) : DEFAULT_FLASHCARD_FONT_SIZE;
+    const saved = localStorage.getItem('flashcardFontSize');
+    flashcardFontSize = saved ? Number(saved) : DEFAULT_FLASHCARD_FONT_SIZE;
     if (!flashcardFontSize || flashcardFontSize < 20 || flashcardFontSize > 56) {
         flashcardFontSize = DEFAULT_FLASHCARD_FONT_SIZE;
     }
-    const slider = document.getElementById('font-size-slider');
-    const valueDisplay = document.getElementById('font-size-value');
+    const slider = $('font-size-slider');
+    const valueDisplay = $('font-size-value');
     if (slider) slider.value = flashcardFontSize;
     if (valueDisplay) valueDisplay.textContent = flashcardFontSize;
     applyFlashcardFontSize();
@@ -203,40 +235,32 @@ function initFontSize() {
 
 function updateFlashcardFontSize(value) {
     flashcardFontSize = Number(value);
-    localStorage.setItem('flashcardFontSize', flashcardFontSize);
-    const valueDisplay = document.getElementById('font-size-value');
+    localStorage.setItem('flashcardFontSize', String(flashcardFontSize));
+    const valueDisplay = $('font-size-value');
     if (valueDisplay) valueDisplay.textContent = flashcardFontSize;
     applyFlashcardFontSize();
 }
 
 function applyFlashcardFontSize() {
-    const flashcard = document.getElementById('flashcard');
-    if (flashcard) {
-        flashcard.style.setProperty('--flashcard-font-size', `${flashcardFontSize}px`);
-    }
+    const el = $('flashcard');
+    if (el) el.style.setProperty('--flashcard-font-size', `${flashcardFontSize}px`);
 }
 
 function flipCard() {
     isCardFlipped = !isCardFlipped;
-    const flashcard = document.getElementById('flashcard');
-    
-    if (isCardFlipped) {
-        flashcard.classList.add('flipped');
-    } else {
-        flashcard.classList.remove('flipped');
-    }
+    $('flashcard')?.classList.toggle('flipped', isCardFlipped);
 }
 
 function nextCard() {
     if (currentCardIndex < flashcards.length - 1) {
-        currentCardIndex++;
+        currentCardIndex += 1;
         displayFlashcard();
     }
 }
 
 function previousCard() {
     if (currentCardIndex > 0) {
-        currentCardIndex--;
+        currentCardIndex -= 1;
         displayFlashcard();
     }
 }
@@ -246,29 +270,26 @@ function backToModes() {
     isCardFlipped = false;
     flashcards = [];
     currentMode = null;
-    
-    document.getElementById('flashcards-view').style.display = 'none';
-    document.getElementById('mode-selection-view').style.display = 'block';
+    setTopTitle($('selected-lesson-title')?.textContent || 'Flashcards');
+    showView('mode-selection-view');
 }
 
 function backToLessons() {
     currentLessonName = null;
     currentLessonData = null;
-    
-    document.getElementById('mode-selection-view').style.display = 'none';
-    document.getElementById('lesson-selection-view').style.display = 'block';
+    setTopTitle('Flashcards');
+    showView('lesson-selection-view');
 }
 
-// Keyboard navigation
-document.addEventListener('keydown', function(event) {
-    if (document.getElementById('flashcards-view').style.display !== 'none') {
-        if (event.key === ' ') {
-            event.preventDefault();
-            flipCard();
-        } else if (event.key === 'ArrowRight') {
-            nextCard();
-        } else if (event.key === 'ArrowLeft') {
-            previousCard();
-        }
+document.addEventListener('keydown', (event) => {
+    const fcView = $('flashcards-view');
+    if (!fcView || fcView.hasAttribute('hidden')) return;
+    if (event.key === ' ') {
+        event.preventDefault();
+        flipCard();
+    } else if (event.key === 'ArrowRight') {
+        nextCard();
+    } else if (event.key === 'ArrowLeft') {
+        previousCard();
     }
 });
