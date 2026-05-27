@@ -6,14 +6,20 @@
     <meta name="theme-color" content="#0f1117">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <title>Flashcards</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='app-shared.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='app-mobile.css') }}">
+    <link id="ui-desktop-styles" rel="stylesheet" href="{{ url_for('static', filename='app-desktop.css') }}" disabled>
+    <script src="{{ url_for('static', filename='ui-mode.js') }}"></script>
 </head>
-<body class="mobile-app">
+<body>
     <div id="main-screen" class="screen">
         <header class="top-bar">
             <a href="/app/" class="link-back">← App</a>
             <h1 id="top-title">Flashcards</h1>
-            <span id="username-display" class="user-chip"></span>
+            <div class="top-bar-actions">
+                <button type="button" class="btn-back ui-mode-toggle-btn" data-ui-mode-toggle>Desktop view</button>
+                <span id="username-display" class="user-chip"></span>
+            </div>
         </header>
 
         <main class="content-area" style="padding-bottom: 16px;">

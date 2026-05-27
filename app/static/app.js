@@ -5,6 +5,10 @@ let currentTest = null;
 
 const $ = (id) => document.getElementById(id);
 
+function isDesktopUIMode() {
+    return document.body.classList.contains('desktop-app');
+}
+
 function escapeHtml(text) {
     const div = document.createElement('div');
     div.textContent = text == null ? '' : String(text);
@@ -32,7 +36,10 @@ document.addEventListener('DOMContentLoaded', () => {
         login();
     });
     $('btn-register')?.addEventListener('click', register);
-    $('btn-menu')?.addEventListener('click', openMenu);
+    $('btn-menu')?.addEventListener('click', (e) => {
+        e.stopPropagation();
+        openMenu();
+    });
     $('sheet-overlay')?.addEventListener('click', (e) => {
         if (e.target === $('sheet-overlay')) closeMenu();
     });
@@ -47,10 +54,14 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     document.querySelectorAll('.sheet-link').forEach((link) => {
-        link.addEventListener('click', (e) => navigateAwayWithConfirm(e, link.href));
+        link.addEventListener('click', (e) => {
+            if (!isTestInProgress()) closeMenu();
+            navigateAwayWithConfirm(e, link.href);
+        });
     });
     $('btn-logout')?.addEventListener('click', (e) => {
         e.preventDefault();
+        closeMenu();
         logoutWithConfirm();
     });
 
@@ -128,6 +139,7 @@ async function navigateAwayWithConfirm(e, href) {
     const ok = await confirmLeaveTest();
     if (ok) {
         abandonTest();
+        closeMenu();
         window.location.href = href;
     }
 }
@@ -141,9 +153,52 @@ async function logoutWithConfirm() {
     await logout();
 }
 
+function positionDesktopMenu() {
+    const btn = $('btn-menu');
+    const sheet = document.querySelector('#sheet-overlay .action-sheet');
+    if (!btn || !sheet) return;
+
+    const rect = btn.getBoundingClientRect();
+    const gap = 8;
+    const menuWidth = 220;
+
+    let top = rect.bottom + gap;
+    let right = window.innerWidth - rect.right;
+
+    if (top + 200 > window.innerHeight) {
+        top = Math.max(8, rect.top - gap - 200);
+    }
+    if (right + menuWidth > window.innerWidth) {
+        right = 8;
+    }
+
+    sheet.style.position = 'fixed';
+    sheet.style.top = `${top}px`;
+    sheet.style.right = `${right}px`;
+    sheet.style.left = 'auto';
+    sheet.style.bottom = 'auto';
+    sheet.style.width = `${menuWidth}px`;
+    sheet.style.maxWidth = `${menuWidth}px`;
+    sheet.style.transform = 'none';
+}
+
 function openMenu() {
     const overlay = $('sheet-overlay');
     if (!overlay) return;
+
+    if (overlay.classList.contains('open') && isDesktopUIMode()) {
+        closeMenu();
+        return;
+    }
+
+    if (isDesktopUIMode()) {
+        overlay.classList.add('menu-desktop');
+        positionDesktopMenu();
+    } else {
+        overlay.classList.remove('menu-desktop');
+        document.querySelector('#sheet-overlay .action-sheet')?.removeAttribute('style');
+    }
+
     overlay.classList.add('open');
     overlay.setAttribute('aria-hidden', 'false');
 }
@@ -151,9 +206,17 @@ function openMenu() {
 function closeMenu() {
     const overlay = $('sheet-overlay');
     if (!overlay) return;
-    overlay.classList.remove('open');
+    overlay.classList.remove('open', 'menu-desktop');
     overlay.setAttribute('aria-hidden', 'true');
+    document.querySelector('#sheet-overlay .action-sheet')?.removeAttribute('style');
 }
+
+window.addEventListener('resize', () => {
+    const overlay = $('sheet-overlay');
+    if (overlay?.classList.contains('open') && isDesktopUIMode()) {
+        positionDesktopMenu();
+    }
+});
 
 async function checkAuth() {
     try {
@@ -309,6 +372,11 @@ function displayTests(tests, completedTests = []) {
         return;
     }
 
+    if (isDesktopUIMode()) {
+        displayTestsTable(list, tests, completedTests);
+        return;
+    }
+
     tests.forEach((test) => {
         const isCompleted = completedTests.includes(test.name);
         const card = document.createElement('article');
@@ -344,6 +412,39 @@ function displayTests(tests, completedTests = []) {
 
         list.appendChild(card);
     });
+}
+
+function displayTestsTable(list, tests, completedTests) {
+    const wrap = document.createElement('div');
+    wrap.className = 'desktop-table-wrap';
+    const table = document.createElement('table');
+    table.className = 'desktop-table';
+    table.innerHTML = '<thead><tr><th>Test</th><th>Status</th><th></th></tr></thead>';
+    const tbody = document.createElement('tbody');
+
+    tests.forEach((test) => {
+        const isCompleted = completedTests.includes(test.name);
+        const tr = document.createElement('tr');
+        const titleTd = document.createElement('td');
+        titleTd.innerHTML = `<strong>${escapeHtml(test.title || test.name)}</strong><div class="test-card-slug">${escapeHtml(test.name)}</div>`;
+        const statusTd = document.createElement('td');
+        statusTd.textContent = isCompleted ? 'Completed' : '—';
+        const actionTd = document.createElement('td');
+        const btn = document.createElement('button');
+        btn.type = 'button';
+        btn.className = 'btn-start';
+        btn.textContent = isCompleted ? 'Retry' : 'Start';
+        btn.addEventListener('click', () => selectTest(test.name));
+        actionTd.appendChild(btn);
+        tr.appendChild(titleTd);
+        tr.appendChild(statusTd);
+        tr.appendChild(actionTd);
+        tbody.appendChild(tr);
+    });
+
+    table.appendChild(tbody);
+    wrap.appendChild(table);
+    list.appendChild(wrap);
 }
 
 async function selectTest(testName) {
@@ -605,6 +706,11 @@ function displayUserScores(scores) {
     });
     const avg = totalWeight > 0 ? totalWeighted / totalWeight : 0;
 
+    if (isDesktopUIMode()) {
+        displayUserScoresTable(container, scores, avg, totalWeight);
+        return;
+    }
+
     const summary = document.createElement('div');
     summary.className = 'summary-card';
     summary.innerHTML = `
@@ -631,6 +737,44 @@ function displayUserScores(scores) {
             <div class="pct" style="color: ${scoreColor(score.score)}">${pct}%</div>`;
         container.appendChild(row);
     });
+}
+
+function displayUserScoresTable(container, scores, avg, totalWeight) {
+    const summary = document.createElement('div');
+    summary.className = 'summary-card';
+    summary.innerHTML = `
+        <div class="big-score" style="color: ${scoreColor(avg)}">${avg.toFixed(0)}%</div>
+        <div class="label">Weighted average</div>
+        <div class="summary-meta">
+            <span>${scores.length} tests</span>
+            <span>Weight ${totalWeight}</span>
+        </div>`;
+    container.appendChild(summary);
+
+    const wrap = document.createElement('div');
+    wrap.className = 'desktop-table-wrap';
+    const table = document.createElement('table');
+    table.className = 'desktop-table';
+    table.innerHTML = '<thead><tr><th>Test</th><th>Weight</th><th>Score</th><th>Correct</th><th>Date</th></tr></thead>';
+    const tbody = document.createElement('tbody');
+
+    scores.forEach((score) => {
+        const tr = document.createElement('tr');
+        const date = new Date(score.created_at).toLocaleDateString();
+        const weight = score.weight || 1;
+        const pct = Math.round(score.score);
+        tr.innerHTML = `
+            <td>${escapeHtml(score.test_name)}</td>
+            <td>${weight}</td>
+            <td style="color:${scoreColor(score.score)};font-weight:700">${pct}%</td>
+            <td>${escapeHtml(String(score.correct))}/${escapeHtml(String(score.total))}</td>
+            <td>${escapeHtml(date)}</td>`;
+        tbody.appendChild(tr);
+    });
+
+    table.appendChild(tbody);
+    wrap.appendChild(table);
+    container.appendChild(wrap);
 }
 
 async function changePassword() {
