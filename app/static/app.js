@@ -55,6 +55,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
     document.querySelectorAll('.sheet-link').forEach((link) => {
         link.addEventListener('click', (e) => {
+            if (link.id === 'link-admin' && currentUser?.role !== 'admin') {
+                e.preventDefault();
+                return;
+            }
             if (!isTestInProgress()) closeMenu();
             navigateAwayWithConfirm(e, link.href);
         });
@@ -234,9 +238,22 @@ async function checkAuth() {
     }
 }
 
+function updateAdminLinkVisibility() {
+    const adminLink = $('link-admin');
+    if (!adminLink) return;
+    const isAdmin = currentUser?.role === 'admin';
+    if (isAdmin) {
+        adminLink.removeAttribute('hidden');
+    } else {
+        adminLink.setAttribute('hidden', '');
+    }
+}
+
 function showAuthScreen() {
     $('auth-screen')?.removeAttribute('hidden');
     $('main-screen')?.setAttribute('hidden', '');
+    currentUser = null;
+    updateAdminLinkVisibility();
     closeMenu();
 }
 
@@ -245,15 +262,7 @@ function showMainScreen() {
     $('main-screen')?.removeAttribute('hidden');
     const chip = $('username-display');
     if (chip && currentUser) chip.textContent = currentUser.username;
-
-    const adminLink = $('link-admin');
-    if (adminLink) {
-        if (currentUser?.role === 'admin') {
-            adminLink.removeAttribute('hidden');
-        } else {
-            adminLink.setAttribute('hidden', '');
-        }
-    }
+    updateAdminLinkVisibility();
     switchUserTab('tests');
     loadColorPreferences();
 }

@@ -1,5 +1,9 @@
 /* Shared UI behavior (mobile + desktop) */
 
+[hidden] {
+    display: none !important;
+}
+
 .panel {
     display: none;
 }

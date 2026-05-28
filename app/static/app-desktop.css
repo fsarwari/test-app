@@ -386,7 +386,7 @@ body.desktop-app .desktop-table tbody tr:last-child td {
     border-bottom: none;
 }
 
-/* Flashcards desktop */
+/* Flashcards desktop — light surfaces, readable text (override mobile dark theme vars) */
 body.desktop-app #lessons-list {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
@@ -412,6 +412,24 @@ body.desktop-app .mode-grid {
     max-width: 700px;
 }
 
+body.desktop-app .mode-card {
+    background: #fafafa;
+    border: 1px solid #e0e0e0;
+}
+
+body.desktop-app .mode-card:hover {
+    background: #f0f4ff;
+    border-color: #667eea;
+}
+
+body.desktop-app .mode-card h3 {
+    color: #222;
+}
+
+body.desktop-app .mode-card p {
+    color: #555;
+}
+
 body.desktop-app #flashcards-view.flashcard-stage {
     margin: 0;
     min-height: 480px;
@@ -423,12 +441,43 @@ body.desktop-app .flashcard-wrap {
 
 body.desktop-app .flashcard-front,
 body.desktop-app .flashcard-back {
-    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+    background: #fff;
+    border: 1px solid #e0e0e0;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
+}
+
+body.desktop-app .flashcard-back {
+    background: linear-gradient(145deg, #fff 0%, #f4f6ff 100%);
 }
 
 body.desktop-app .flashcard-front p,
 body.desktop-app .flashcard-back p {
-    color: #333;
+    color: #1e293b;
+}
+
+body.desktop-app .font-slider-row,
+body.desktop-app .font-slider-row label,
+body.desktop-app .font-slider-row span {
+    color: #555;
+}
+
+body.desktop-app .flashcard-hint {
+    color: #666;
+}
+
+body.desktop-app .counter-pill {
+    background: #eef0f4;
+    color: #444;
+}
+
+body.desktop-app #flashcards-title,
+body.desktop-app .test-view-header h2,
+body.desktop-app #selected-lesson-title {
+    color: #222;
+}
+
+body.desktop-app .flashcard-nav .progress-bar {
+    background: #e5e7eb;
 }
 
 /* Admin desktop */
