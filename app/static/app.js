@@ -31,10 +31,17 @@ function setTopTitle(title) {
 }
 
 document.addEventListener('DOMContentLoaded', () => {
-    $('auth-form')?.addEventListener('submit', (e) => {
-        e.preventDefault();
-        login();
-    });
+    const authForm = $('auth-form');
+    if (authForm) {
+        authForm.setAttribute('method', 'post');
+        authForm.setAttribute('action', '#');
+        authForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            e.stopPropagation();
+            login();
+            return false;
+        });
+    }
     $('btn-register')?.addEventListener('click', register);
     $('btn-menu')?.addEventListener('click', (e) => {
         e.stopPropagation();
@@ -43,7 +50,16 @@ document.addEventListener('DOMContentLoaded', () => {
     $('sheet-overlay')?.addEventListener('click', (e) => {
         if (e.target === $('sheet-overlay')) closeMenu();
     });
-    $('test-form')?.addEventListener('submit', submitTest);
+    const testForm = $('test-form');
+    if (testForm) {
+        testForm.setAttribute('method', 'post');
+        testForm.setAttribute('action', '#');
+        testForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            submitTest(e);
+            return false;
+        });
+    }
     $('btn-back-test')?.addEventListener('click', () => leaveTestWithConfirm());
     $('btn-back-results')?.addEventListener('click', backToTests);
     $('btn-change-password')?.addEventListener('click', changePassword);

@@ -42,10 +42,17 @@ function setTopTitle(title) {
 }
 
 document.addEventListener('DOMContentLoaded', () => {
-    $('auth-form')?.addEventListener('submit', (e) => {
-        e.preventDefault();
-        login();
-    });
+    const authForm = $('auth-form');
+    if (authForm) {
+        authForm.setAttribute('method', 'post');
+        authForm.setAttribute('action', '#');
+        authForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            e.stopPropagation();
+            login();
+            return false;
+        });
+    }
     $('btn-new-test')?.addEventListener('click', showNewTestForm);
     $('btn-close-test-form')?.addEventListener('click', hideTestFormPanel);
     $('btn-cancel-test')?.addEventListener('click', hideTestFormPanel);

@@ -22,7 +22,7 @@
         </div>
         <div class="auth-card">
             <h2>Sign in</h2>
-            <form id="auth-form" autocomplete="on">
+            <form id="auth-form" method="post" action="#" autocomplete="on">
                 <div class="form-field">
                     <label for="username">Username</label>
                     <input type="text" id="username" name="username" autocomplete="username" required>
@@ -63,7 +63,7 @@
                         <button type="button" id="btn-back-test" class="btn-back">← Back</button>
                         <h2 id="test-title"></h2>
                     </div>
-                    <form id="test-form">
+                    <form id="test-form" method="post" action="#">
                         <div id="questions-container"></div>
                         <div class="sticky-footer">
                             <button type="submit" class="btn btn-primary btn-block">Submit test</button>
