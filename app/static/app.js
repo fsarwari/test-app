@@ -1,96 +1,294 @@
-// API endpoints
 const API_BASE = '/app/api';
 
-// Application state
 let currentUser = null;
 let currentTest = null;
 
-// Initialize app
-document.addEventListener('DOMContentLoaded', function() {
+const $ = (id) => document.getElementById(id);
+
+function isDesktopUIMode() {
+    return document.body.classList.contains('desktop-app');
+}
+
+function escapeHtml(text) {
+    const div = document.createElement('div');
+    div.textContent = text == null ? '' : String(text);
+    return div.innerHTML;
+}
+
+function showMessage(message, type, element) {
+    if (!element) return;
+    element.textContent = message;
+    element.className = `message ${type}`;
+    setTimeout(() => {
+        element.className = 'message';
+        element.textContent = '';
+    }, 5000);
+}
+
+function setTopTitle(title) {
+    const el = $('top-title');
+    if (el) el.textContent = title;
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+    $('auth-form')?.addEventListener('submit', (e) => {
+        e.preventDefault();
+        login();
+    });
+    $('btn-register')?.addEventListener('click', register);
+    $('btn-menu')?.addEventListener('click', (e) => {
+        e.stopPropagation();
+        openMenu();
+    });
+    $('sheet-overlay')?.addEventListener('click', (e) => {
+        if (e.target === $('sheet-overlay')) closeMenu();
+    });
+    $('test-form')?.addEventListener('submit', submitTest);
+    $('btn-back-test')?.addEventListener('click', () => leaveTestWithConfirm());
+    $('btn-back-results')?.addEventListener('click', backToTests);
+    $('btn-change-password')?.addEventListener('click', changePassword);
+    $('btn-save-colors')?.addEventListener('click', saveColorPreferences);
+
+    document.querySelectorAll('.nav-item[data-tab]').forEach((btn) => {
+        btn.addEventListener('click', () => switchUserTab(btn.dataset.tab));
+    });
+
+    document.querySelectorAll('.sheet-link').forEach((link) => {
+        link.addEventListener('click', (e) => {
+            if (link.id === 'link-admin' && currentUser?.role !== 'admin') {
+                e.preventDefault();
+                return;
+            }
+            if (!isTestInProgress()) closeMenu();
+            navigateAwayWithConfirm(e, link.href);
+        });
+    });
+    $('btn-logout')?.addEventListener('click', (e) => {
+        e.preventDefault();
+        closeMenu();
+        logoutWithConfirm();
+    });
+
+    window.addEventListener('beforeunload', (e) => {
+        if (isTestInProgress()) {
+            e.preventDefault();
+            e.returnValue = '';
+        }
+    });
+
+    $('btn-leave-cancel')?.addEventListener('click', () => closeLeaveTestDialog(false));
+    $('btn-leave-confirm')?.addEventListener('click', () => closeLeaveTestDialog(true));
+    $('leave-test-dialog')?.addEventListener('click', (e) => {
+        if (e.target === $('leave-test-dialog')) closeLeaveTestDialog(false);
+    });
+
     checkAuth();
-    setupEventListeners();
 });
 
-function setupEventListeners() {
-    const testForm = document.getElementById('test-form');
-    if (testForm) {
-        testForm.addEventListener('submit', submitTest);
-    }
-    
-    const authForm = document.getElementById('auth-form');
-    if (authForm) {
-        authForm.addEventListener('submit', function(event) {
-            event.preventDefault();
-            login();
-        });
+function isTestInProgress() {
+    const testView = $('test-view');
+    return !!(currentTest && testView && !testView.hasAttribute('hidden'));
+}
+
+function setTestActive(active) {
+    document.body.classList.toggle('test-active', !!active);
+}
+
+let leaveTestResolve = null;
+
+function confirmLeaveTest() {
+    if (!isTestInProgress()) return Promise.resolve(true);
+
+    return new Promise((resolve) => {
+        if (leaveTestResolve) {
+            resolve(false);
+            return;
+        }
+        leaveTestResolve = resolve;
+        const dialog = $('leave-test-dialog');
+        dialog?.removeAttribute('hidden');
+        dialog?.setAttribute('aria-hidden', 'false');
+    });
+}
+
+function closeLeaveTestDialog(result) {
+    const dialog = $('leave-test-dialog');
+    dialog?.setAttribute('hidden', '');
+    dialog?.setAttribute('aria-hidden', 'true');
+    if (leaveTestResolve) {
+        leaveTestResolve(result);
+        leaveTestResolve = null;
     }
 }
+
+function abandonTest() {
+    currentTest = null;
+    setTestActive(false);
+    $('tests-list-view')?.removeAttribute('hidden');
+    $('test-view')?.setAttribute('hidden', '');
+    $('results-view')?.setAttribute('hidden', '');
+}
+
+async function leaveTestWithConfirm() {
+    const ok = await confirmLeaveTest();
+    if (!ok) return;
+    abandonTest();
+    setTopTitle('Tests');
+    loadTests();
+}
+
+async function navigateAwayWithConfirm(e, href) {
+    if (!isTestInProgress()) return;
+    e.preventDefault();
+    const ok = await confirmLeaveTest();
+    if (ok) {
+        abandonTest();
+        closeMenu();
+        window.location.href = href;
+    }
+}
+
+async function logoutWithConfirm() {
+    if (isTestInProgress()) {
+        const ok = await confirmLeaveTest();
+        if (!ok) return;
+        abandonTest();
+    }
+    await logout();
+}
+
+function positionDesktopMenu() {
+    const btn = $('btn-menu');
+    const sheet = document.querySelector('#sheet-overlay .action-sheet');
+    if (!btn || !sheet) return;
+
+    const rect = btn.getBoundingClientRect();
+    const gap = 8;
+    const menuWidth = 220;
+
+    let top = rect.bottom + gap;
+    let right = window.innerWidth - rect.right;
+
+    if (top + 200 > window.innerHeight) {
+        top = Math.max(8, rect.top - gap - 200);
+    }
+    if (right + menuWidth > window.innerWidth) {
+        right = 8;
+    }
+
+    sheet.style.position = 'fixed';
+    sheet.style.top = `${top}px`;
+    sheet.style.right = `${right}px`;
+    sheet.style.left = 'auto';
+    sheet.style.bottom = 'auto';
+    sheet.style.width = `${menuWidth}px`;
+    sheet.style.maxWidth = `${menuWidth}px`;
+    sheet.style.transform = 'none';
+}
+
+function openMenu() {
+    const overlay = $('sheet-overlay');
+    if (!overlay) return;
+
+    if (overlay.classList.contains('open') && isDesktopUIMode()) {
+        closeMenu();
+        return;
+    }
+
+    if (isDesktopUIMode()) {
+        overlay.classList.add('menu-desktop');
+        positionDesktopMenu();
+    } else {
+        overlay.classList.remove('menu-desktop');
+        document.querySelector('#sheet-overlay .action-sheet')?.removeAttribute('style');
+    }
+
+    overlay.classList.add('open');
+    overlay.setAttribute('aria-hidden', 'false');
+}
+
+function closeMenu() {
+    const overlay = $('sheet-overlay');
+    if (!overlay) return;
+    overlay.classList.remove('open', 'menu-desktop');
+    overlay.setAttribute('aria-hidden', 'true');
+    document.querySelector('#sheet-overlay .action-sheet')?.removeAttribute('style');
+}
+
+window.addEventListener('resize', () => {
+    const overlay = $('sheet-overlay');
+    if (overlay?.classList.contains('open') && isDesktopUIMode()) {
+        positionDesktopMenu();
+    }
+});
 
 async function checkAuth() {
     try {
-        const response = await fetch(`${API_BASE}/user`, {
-            credentials: 'include'
-        });
-        
+        const response = await fetch(`${API_BASE}/user`, { credentials: 'include' });
         if (response.ok) {
-            const data = await response.json();
-            currentUser = data;
-            showAppSection();
+            currentUser = await response.json();
+            showMainScreen();
             loadTests();
         } else {
-            showAuthSection();
+            showAuthScreen();
         }
     } catch (error) {
         console.error('Auth check failed:', error);
-        showAuthSection();
+        showAuthScreen();
     }
 }
 
-function showAuthSection() {
-    document.getElementById('auth-section').style.display = 'block';
-    document.getElementById('app-section').style.display = 'none';
-    document.getElementById('user-info').style.display = 'none';
+function updateAdminLinkVisibility() {
+    const adminLink = $('link-admin');
+    if (!adminLink) return;
+    const isAdmin = currentUser?.role === 'admin';
+    if (isAdmin) {
+        adminLink.removeAttribute('hidden');
+    } else {
+        adminLink.setAttribute('hidden', '');
+    }
 }
 
-function showAppSection() {
-    document.getElementById('auth-section').style.display = 'none';
-    document.getElementById('app-section').style.display = 'block';
-    document.getElementById('user-info').style.display = 'flex';
-    document.getElementById('username-display').textContent = `${currentUser.username}`;
-    
-    // Show admin button only for admin users
-    const adminBtn = document.querySelector('.btn-admin');
-    if (adminBtn) {
-        adminBtn.style.display = 'inline-block';
-        adminBtn.style.display = currentUser.role === 'admin' ? 'inline-block' : 'none';
-    }
+function showAuthScreen() {
+    $('auth-screen')?.removeAttribute('hidden');
+    $('main-screen')?.setAttribute('hidden', '');
+    currentUser = null;
+    updateAdminLinkVisibility();
+    closeMenu();
+}
+
+function showMainScreen() {
+    $('auth-screen')?.setAttribute('hidden', '');
+    $('main-screen')?.removeAttribute('hidden');
+    const chip = $('username-display');
+    if (chip && currentUser) chip.textContent = currentUser.username;
+    updateAdminLinkVisibility();
+    switchUserTab('tests');
+    loadColorPreferences();
 }
 
 async function register() {
-    const username = document.getElementById('username').value.trim();
-    const password = document.getElementById('password').value.trim();
-    const messageDiv = document.getElementById('auth-message');
-    
+    const username = $('username')?.value.trim();
+    const password = $('password')?.value.trim();
+    const messageDiv = $('auth-message');
+
     if (!username || !password) {
         showMessage('Please fill in all fields', 'error', messageDiv);
         return;
     }
-    
+
     try {
         const response = await fetch(`${API_BASE}/register`, {
             method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
+            headers: { 'Content-Type': 'application/json' },
             credentials: 'include',
             body: JSON.stringify({ username, password })
         });
-        
         const data = await response.json();
-        
+
         if (response.ok) {
-            showMessage('Registration successful! You can now login.', 'success', messageDiv);
-            document.getElementById('auth-form').reset();
+            showMessage('Registration successful! You can now log in.', 'success', messageDiv);
+            $('auth-form')?.reset();
         } else {
             showMessage(data.error || 'Registration failed', 'error', messageDiv);
         }
@@ -101,35 +299,32 @@ async function register() {
 }
 
 async function login() {
-    const username = document.getElementById('username').value.trim();
-    const password = document.getElementById('password').value.trim();
-    const messageDiv = document.getElementById('auth-message');
-    
+    const username = $('username')?.value.trim();
+    const password = $('password')?.value.trim();
+    const messageDiv = $('auth-message');
+
     if (!username || !password) {
         showMessage('Please fill in all fields', 'error', messageDiv);
         return;
     }
-    
+
     try {
         const response = await fetch(`${API_BASE}/login`, {
             method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
+            headers: { 'Content-Type': 'application/json' },
             credentials: 'include',
             body: JSON.stringify({ username, password })
         });
-        
         const data = await response.json();
-        
+
         if (response.ok) {
             currentUser = { username: data.username, role: data.role };
-            showMessage('Login successful!', 'success', messageDiv);
-            document.getElementById('auth-form').reset();
+            showMessage('Welcome back!', 'success', messageDiv);
+            $('auth-form')?.reset();
             setTimeout(() => {
-                showAppSection();
+                showMainScreen();
                 loadTests();
-            }, 500);
+            }, 400);
         } else {
             showMessage(data.error || 'Login failed', 'error', messageDiv);
         }
@@ -141,14 +336,11 @@ async function login() {
 
 async function logout() {
     try {
-        await fetch(`${API_BASE}/logout`, {
-            method: 'POST',
-            credentials: 'include'
-        });
-        
+        await fetch(`${API_BASE}/logout`, { method: 'POST', credentials: 'include' });
         currentUser = null;
-        showAuthSection();
-        document.getElementById('auth-form').reset();
+        closeMenu();
+        showAuthScreen();
+        $('auth-form')?.reset();
     } catch (error) {
         console.error('Logout error:', error);
     }
@@ -160,14 +352,15 @@ async function loadTests() {
             fetch(`${API_BASE}/tests`, { credentials: 'include' }),
             fetch(`${API_BASE}/completed-tests`, { credentials: 'include' })
         ]);
-        
-        if (testsResponse.ok && completedResponse.ok) {
+
+        if (testsResponse.ok) {
             const testsData = await testsResponse.json();
-            const completedData = await completedResponse.json();
-            displayTests(testsData.tests, completedData.completed_tests);
-        } else if (testsResponse.ok) {
-            const testsData = await testsResponse.json();
-            displayTests(testsData.tests, []);
+            let completed = [];
+            if (completedResponse.ok) {
+                const completedData = await completedResponse.json();
+                completed = completedData.completed_tests || [];
+            }
+            displayTests(testsData.tests, completed);
         }
     } catch (error) {
         console.error('Failed to load tests:', error);
@@ -175,83 +368,109 @@ async function loadTests() {
 }
 
 function displayTests(tests, completedTests = []) {
-    const testsList = document.getElementById('tests-list');
-    testsList.innerHTML = '';
-    
-    if (tests.length === 0) {
-        const empty = document.createElement('p');
-        empty.className = 'tests-empty-msg';
-        empty.textContent = 'No tests available yet.';
-        testsList.appendChild(empty);
+    const list = $('tests-list');
+    if (!list) return;
+    list.innerHTML = '';
+
+    if (!tests.length) {
+        list.innerHTML = `
+            <div class="empty-state">
+                <div class="icon">📝</div>
+                <p>No tests available yet.</p>
+            </div>`;
         return;
     }
 
-    const table = document.createElement('table');
-    table.className = 'scores-table tests-available-table';
-    const thead = document.createElement('thead');
-    thead.innerHTML =
-        '<tr><th>Test</th><th></th><th></th></tr>';
-    table.appendChild(thead);
-    const tbody = document.createElement('tbody');
+    if (isDesktopUIMode()) {
+        displayTestsTable(list, tests, completedTests);
+        return;
+    }
 
-    tests.forEach(test => {
+    tests.forEach((test) => {
         const isCompleted = completedTests.includes(test.name);
-        const row = document.createElement('tr');
-        row.className = isCompleted ? 'test-row completed' : 'test-row';
+        const card = document.createElement('article');
+        card.className = `test-card${isCompleted ? ' completed' : ''}`;
 
-        const titleCell = document.createElement('td');
-        const strong = document.createElement('strong');
-        strong.textContent = test.title || test.name;
-        titleCell.appendChild(strong);
-        const sub = document.createElement('div');
-        sub.className = 'test-row-slug';
-        sub.textContent = test.name;
-        titleCell.appendChild(sub);
+        const body = document.createElement('div');
+        body.className = 'test-card-body';
+        const title = document.createElement('p');
+        title.className = 'test-card-title';
+        title.textContent = test.title || test.name;
+        const slug = document.createElement('p');
+        slug.className = 'test-card-slug';
+        slug.textContent = test.name;
+        body.appendChild(title);
+        body.appendChild(slug);
 
-        const statusCell = document.createElement('td');
         if (isCompleted) {
             const badge = document.createElement('span');
-            badge.className = 'completed-badge';
-            badge.textContent = '✓';
-            statusCell.appendChild(badge);
+            badge.className = 'badge-done';
+            badge.textContent = 'Done';
+            card.appendChild(body);
+            card.appendChild(badge);
         } else {
-            statusCell.textContent = '';
+            card.appendChild(body);
         }
 
-        const actionCell = document.createElement('td');
-        actionCell.className = 'tests-table-actions';
         const btn = document.createElement('button');
         btn.type = 'button';
-        btn.className = 'btn btn-primary btn-small';
-        btn.textContent = 'Start';
+        btn.className = 'btn-start';
+        btn.textContent = isCompleted ? 'Retry' : 'Start';
         btn.addEventListener('click', () => selectTest(test.name));
-        actionCell.appendChild(btn);
+        card.appendChild(btn);
 
-        row.appendChild(titleCell);
-        row.appendChild(statusCell);
-        row.appendChild(actionCell);
-        tbody.appendChild(row);
+        list.appendChild(card);
+    });
+}
+
+function displayTestsTable(list, tests, completedTests) {
+    const wrap = document.createElement('div');
+    wrap.className = 'desktop-table-wrap';
+    const table = document.createElement('table');
+    table.className = 'desktop-table';
+    table.innerHTML = '<thead><tr><th>Test</th><th>Status</th><th></th></tr></thead>';
+    const tbody = document.createElement('tbody');
+
+    tests.forEach((test) => {
+        const isCompleted = completedTests.includes(test.name);
+        const tr = document.createElement('tr');
+        const titleTd = document.createElement('td');
+        titleTd.innerHTML = `<strong>${escapeHtml(test.title || test.name)}</strong><div class="test-card-slug">${escapeHtml(test.name)}</div>`;
+        const statusTd = document.createElement('td');
+        statusTd.textContent = isCompleted ? 'Completed' : '—';
+        const actionTd = document.createElement('td');
+        const btn = document.createElement('button');
+        btn.type = 'button';
+        btn.className = 'btn-start';
+        btn.textContent = isCompleted ? 'Retry' : 'Start';
+        btn.addEventListener('click', () => selectTest(test.name));
+        actionTd.appendChild(btn);
+        tr.appendChild(titleTd);
+        tr.appendChild(statusTd);
+        tr.appendChild(actionTd);
+        tbody.appendChild(tr);
     });
 
     table.appendChild(tbody);
-    testsList.appendChild(table);
+    wrap.appendChild(table);
+    list.appendChild(wrap);
 }
 
 async function selectTest(testName) {
     try {
-        const response = await fetch(`${API_BASE}/tests/${testName}`, {
+        const response = await fetch(`${API_BASE}/tests/${encodeURIComponent(testName)}`, {
             credentials: 'include'
         });
-        
+
         if (response.ok) {
             const testData = await response.json();
             currentTest = { name: testName, data: testData };
             displayTest(testData);
-            
-            // Switch to test view
-            document.getElementById('tests-list-view').style.display = 'none';
-            document.getElementById('test-view').style.display = 'block';
-            document.getElementById('results-view').style.display = 'none';
+            $('tests-list-view')?.setAttribute('hidden', '');
+            $('test-view')?.removeAttribute('hidden');
+            $('results-view')?.setAttribute('hidden', '');
+            setTestActive(true);
+            setTopTitle(testData.title || 'Test');
         }
     } catch (error) {
         console.error('Failed to load test:', error);
@@ -259,160 +478,205 @@ async function selectTest(testName) {
 }
 
 function displayTest(testData) {
-    document.getElementById('test-title').textContent = testData.title || 'Test';
+    const titleEl = $('test-title');
+    if (titleEl) titleEl.textContent = testData.title || 'Test';
 
-    const container = document.getElementById('questions-container');
+    const container = $('questions-container');
+    if (!container) return;
     container.innerHTML = '';
 
     const requireAllAnswers = testData.record_score === true;
 
     testData.questions.forEach((question, index) => {
-        const div = document.createElement('div');
-        div.className = 'question-block';
+        const card = document.createElement('div');
+        card.className = 'question-card';
 
-        let optionsHtml = '';
+        const num = document.createElement('div');
+        num.className = 'q-num';
+        num.textContent = `Question ${index + 1}`;
+        card.appendChild(num);
+
+        const arabic = document.createElement('p');
+        arabic.className = 'arabic';
+        arabic.textContent = question.arabic_word || '';
+        card.appendChild(arabic);
+
+        const optionsWrap = document.createElement('div');
+        optionsWrap.className = 'option-list';
+
         const rawOptions = Array.isArray(question.options) ? question.options.slice() : [];
         const correctAnswer = question.correct_answer || '';
-
         if (correctAnswer && !rawOptions.includes(correctAnswer)) {
             rawOptions.push(correctAnswer);
         }
+        const uniqueOptions = [...new Set(
+            rawOptions.filter((opt) => opt !== null && opt !== undefined && String(opt).trim() !== '')
+        )];
 
-        const uniqueOptions = [...new Set(rawOptions.filter(opt => opt !== null && opt !== undefined && String(opt).trim() !== ''))];
+        uniqueOptions.forEach((option) => {
+            const label = document.createElement('label');
+            label.className = 'option-item';
 
-        if (uniqueOptions.length > 0) {
-            const requiredAttr = requireAllAnswers ? ' required' : '';
-            optionsHtml = uniqueOptions.map(option => `
-                <label class="option-label">
-                    <input type="radio" name="answer-${index}" value="${option}"${requiredAttr}>
-                    <span>${option}</span>
-                </label>
-            `).join('');
-        }
-        
-        div.innerHTML = `
-            <label>Question ${index + 1}</label>
-            <p style="font-size: 2.3em; color: #667eea; margin: 15px 0;">${question.arabic_word}</p>
-            <div class="options-group">
-                ${optionsHtml}
-            </div>
-        `;
-        container.appendChild(div);
+            const input = document.createElement('input');
+            input.type = 'radio';
+            input.name = `answer-${index}`;
+            input.value = String(option);
+            if (requireAllAnswers) input.required = true;
+
+            const span = document.createElement('span');
+            span.textContent = String(option);
+
+            label.appendChild(input);
+            label.appendChild(span);
+            optionsWrap.appendChild(label);
+        });
+
+        card.appendChild(optionsWrap);
+        container.appendChild(card);
     });
 }
 
 async function submitTest(e) {
     e.preventDefault();
-    
     if (!currentTest) return;
-    
+
     const answers = [];
     currentTest.data.questions.forEach((_, index) => {
         const selected = document.querySelector(`input[name="answer-${index}"]:checked`);
         answers.push(selected ? selected.value : '');
     });
-    
+
     try {
-        const response = await fetch(`${API_BASE}/tests/${currentTest.name}/submit`, {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            credentials: 'include',
-            body: JSON.stringify({ answers })
-        });
-        
+        const response = await fetch(
+            `${API_BASE}/tests/${encodeURIComponent(currentTest.name)}/submit`,
+            {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                credentials: 'include',
+                body: JSON.stringify({ answers })
+            }
+        );
+
         if (response.ok) {
             const results = await response.json();
             displayResults(results);
-            
-            // Switch to results view
-            document.getElementById('test-view').style.display = 'none';
-            document.getElementById('results-view').style.display = 'block';
+            $('test-view')?.setAttribute('hidden', '');
+            $('results-view')?.removeAttribute('hidden');
+            setTestActive(false);
+            setTopTitle('Results');
+            scrollToResultsTop();
         }
     } catch (error) {
         console.error('Failed to submit test:', error);
     }
 }
 
+function parsePercentage(pctStr) {
+    const n = parseFloat(String(pctStr).replace('%', ''));
+    return Number.isFinite(n) ? Math.min(100, Math.max(0, n)) : 0;
+}
+
+function scrollToResultsTop() {
+    requestAnimationFrame(() => {
+        const scrollEl = document.querySelector('.content-area');
+        if (scrollEl) scrollEl.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+}
+
 function displayResults(results) {
-    document.getElementById('result-percentage').textContent = results.percentage;
-    document.getElementById('result-correct').textContent = results.correct;
-    document.getElementById('result-total').textContent = results.total;
-    
-    // Display detailed answer breakdown
-    if (results.answers && results.answers.length > 0) {
-        const container = document.getElementById('answers-breakdown');
-        container.innerHTML = '';
-        
-        results.answers.forEach(answer => {
-            const div = document.createElement('div');
-            div.className = `answer-item ${answer.is_correct ? 'correct' : 'incorrect'}`;
-            
-            const statusIcon = answer.is_correct ? '✓' : '✗';
-            const statusText = answer.is_correct ? 'Correct' : 'Incorrect';
-            
-            div.innerHTML = `
-                <div class="answer-header">
-                    <span class="status-badge ${answer.is_correct ? 'badge-correct' : 'badge-incorrect'}">${statusIcon}</span>
-                    <div class="answer-question">
-                        <strong>Question ${answer.question_number}:</strong> ${answer.arabic_word}
-                    </div>
-                </div>
-                <div class="answer-body">
-                    <div class="answer-row">
-                        <span class="answer-label">Your answer:</span>
-                        <span class="answer-value ${answer.is_correct ? 'correct-text' : 'incorrect-text'}">${answer.user_answer || '(blank)'}</span>
-                    </div>
-                    ${!answer.is_correct ? `<div class="answer-row">
-                        <span class="answer-label">Correct answer:</span>
-                        <span class="answer-value correct-text">${answer.correct_answer}</span>
-                    </div>` : ''}
-                </div>
-            `;
-            container.appendChild(div);
-        });
-    }
+    const pctEl = $('result-percentage');
+    const ring = $('score-ring');
+    const pct = Math.round(parsePercentage(results.percentage));
+
+    if (pctEl) pctEl.textContent = `${pct}%`;
+    if (ring) ring.style.setProperty('--pct', String(pct));
+    if ($('result-correct')) $('result-correct').textContent = results.correct;
+    if ($('result-total')) $('result-total').textContent = results.total;
+
+    const container = $('answers-breakdown');
+    if (!container || !results.answers?.length) return;
+    container.innerHTML = '';
+
+    results.answers.forEach((answer) => {
+        const card = document.createElement('article');
+        card.className = `answer-card ${answer.is_correct ? 'correct' : 'incorrect'}`;
+
+        const head = document.createElement('div');
+        head.className = 'a-head';
+
+        const icon = document.createElement('span');
+        icon.className = 'a-icon';
+        icon.textContent = answer.is_correct ? '✓' : '✗';
+
+        const qText = document.createElement('div');
+        qText.innerHTML = `<strong>Q${answer.question_number}</strong>
+            <div class="arabic-sm">${escapeHtml(answer.arabic_word)}</div>`;
+
+        head.appendChild(icon);
+        head.appendChild(qText);
+        card.appendChild(head);
+
+        const yourRow = document.createElement('div');
+        yourRow.className = 'answer-row';
+        yourRow.innerHTML = `Your answer: <strong>${escapeHtml(answer.user_answer || '(blank)')}</strong>`;
+        card.appendChild(yourRow);
+
+        if (!answer.is_correct) {
+            const correctRow = document.createElement('div');
+            correctRow.className = 'answer-row';
+            correctRow.innerHTML = `Correct: <strong>${escapeHtml(answer.correct_answer)}</strong>`;
+            card.appendChild(correctRow);
+        }
+
+        container.appendChild(card);
+    });
 }
 
 function backToTests() {
-    document.getElementById('tests-list-view').style.display = 'block';
-    document.getElementById('test-view').style.display = 'none';
-    document.getElementById('results-view').style.display = 'none';
+    setTestActive(false);
+    $('tests-list-view')?.removeAttribute('hidden');
+    $('test-view')?.setAttribute('hidden', '');
+    $('results-view')?.setAttribute('hidden', '');
+    setTopTitle('Tests');
+    loadTests();
 }
 
-function switchUserTab(tabName) {
-    // Hide all tabs
-    document.getElementById('tests-tab').style.display = 'none';
-    document.getElementById('scores-tab').style.display = 'none';
-    document.getElementById('profile-tab').style.display = 'none';
-    
-    // Remove active class from all buttons
-    document.getElementById('tab-tests').classList.remove('active');
-    document.getElementById('tab-scores').classList.remove('active');
-    document.getElementById('tab-profile').classList.remove('active');
-    
-    // Show selected tab and activate button
+const TAB_TITLES = { tests: 'Tests', scores: 'My scores', profile: 'Profile' };
+
+async function switchUserTab(tabName) {
+    if (isTestInProgress()) {
+        const ok = await confirmLeaveTest();
+        if (!ok) return;
+        abandonTest();
+        closeMenu();
+    }
+
+    document.querySelectorAll('.panel').forEach((p) => p.classList.remove('active'));
+    document.querySelectorAll('.nav-item[data-tab]').forEach((n) => n.classList.remove('active'));
+
+    const panel = $(`panel-${tabName}`);
+    const nav = $(`nav-${tabName}`);
+    if (panel) panel.classList.add('active');
+    if (nav) nav.classList.add('active');
+
+    setTopTitle(TAB_TITLES[tabName] || 'Tester App');
+
     if (tabName === 'tests') {
-        document.getElementById('tests-tab').style.display = 'block';
-        document.getElementById('tab-tests').classList.add('active');
+        if (!$('results-view')?.hasAttribute('hidden')) {
+            backToTests();
+        } else {
+            loadTests();
+        }
     } else if (tabName === 'scores') {
-        document.getElementById('scores-tab').style.display = 'block';
-        document.getElementById('tab-scores').classList.add('active');
         loadUserScores();
     } else if (tabName === 'profile') {
-        document.getElementById('profile-tab').style.display = 'block';
-        document.getElementById('tab-profile').classList.add('active');
         loadColorPreferences();
     }
 }
 
 async function loadUserScores() {
     try {
-        const response = await fetch(`${API_BASE}/scores`, {
-            credentials: 'include'
-        });
-        
+        const response = await fetch(`${API_BASE}/scores`, { credentials: 'include' });
         if (response.ok) {
             const data = await response.json();
             displayUserScores(data.scores);
@@ -422,108 +686,129 @@ async function loadUserScores() {
     }
 }
 
+function scoreColor(score) {
+    if (score >= 70) return 'var(--success)';
+    if (score >= 50) return 'var(--warning)';
+    return 'var(--danger)';
+}
+
 function displayUserScores(scores) {
-    const container = document.getElementById('scores-list');
+    const container = $('scores-list');
+    if (!container) return;
     container.innerHTML = '';
-    
-    if (scores.length === 0) {
-        container.innerHTML = '<p style="text-align: center; padding: 20px;">No scores recorded yet.</p>';
+
+    if (!scores.length) {
+        container.innerHTML = `
+            <div class="empty-state">
+                <div class="icon">📊</div>
+                <p>No scores recorded yet.</p>
+            </div>`;
         return;
     }
-    
-    // Calculate weighted average
-    let totalWeightedScore = 0;
+
+    let totalWeighted = 0;
     let totalWeight = 0;
-    scores.forEach(score => {
-        const weight = score.weight || 1;
-        totalWeightedScore += score.score * weight;
-        totalWeight += weight;
+    scores.forEach((s) => {
+        const w = s.weight || 1;
+        totalWeighted += s.score * w;
+        totalWeight += w;
     });
-    const weightedAverage = totalWeightedScore / totalWeight;
-    const avgColor = weightedAverage >= 70 ? '#4caf50' : weightedAverage >= 50 ? '#ff9800' : '#f44336';
-    
-    // Create weighted average summary
-    let html = `
-        <div style="margin-bottom: 30px; padding: 20px; background-color: #f5f5f5; border-radius: 8px;">
-            <h3 style="margin-top: 0;">📊 Weighted Average</h3>
-            <div style="display: flex; align-items: center; gap: 20px;">
-                <div style="text-align: center;">
-                    <div style="font-size: 48px; color: ${avgColor}; font-weight: bold;">${weightedAverage.toFixed(2)}%</div>
-                    <div style="font-size: 14px; color: #666; margin-top: 5px;">Overall Score</div>
-                </div>
-                <div style="flex: 1; padding: 10px; background: white; border-radius: 5px;">
-                    <div style="margin-bottom: 8px;"><strong>Summary:</strong></div>
-                    <div style="font-size: 14px; color: #666;">Tests Completed: <strong>${scores.length}</strong></div>
-                    <div style="font-size: 14px; color: #666;">Total Weight: <strong>${totalWeight}</strong></div>
-                </div>
-            </div>
-        </div>
-    `;
-    
-    html += `
-        <table class="scores-table">
-            <thead>
-                <tr>
-                    <th>Test Name</th>
-                    <th>Weight</th>
-                    <th>Score</th>
-                    <th>Correct Answers</th>
-                    <th>Date</th>
-                </tr>
-            </thead>
-            <tbody>
-    `;
-    
-    scores.forEach(score => {
+    const avg = totalWeight > 0 ? totalWeighted / totalWeight : 0;
+
+    if (isDesktopUIMode()) {
+        displayUserScoresTable(container, scores, avg, totalWeight);
+        return;
+    }
+
+    const summary = document.createElement('div');
+    summary.className = 'summary-card';
+    summary.innerHTML = `
+        <div class="big-score" style="color: ${scoreColor(avg)}">${avg.toFixed(1)}%</div>
+        <div class="label">Weighted average</div>
+        <div class="summary-meta">
+            <span>${scores.length} tests</span>
+            <span>Weight ${totalWeight}</span>
+        </div>`;
+    container.appendChild(summary);
+
+    scores.forEach((score) => {
+        const row = document.createElement('div');
+        row.className = 'score-row';
         const date = new Date(score.created_at).toLocaleDateString();
-        const scoreColor = score.score >= 70 ? '#4caf50' : score.score >= 50 ? '#ff9800' : '#f44336';
         const weight = score.weight || 1;
-        html += `
-            <tr>
-                <td>${score.test_name}</td>
-                <td>${weight}</td>
-                <td style="color: ${scoreColor}; font-weight: bold;">${score.score.toFixed(2)}%</td>
-                <td>${score.correct}/${score.total}</td>
-                <td>${date}</td>
-            </tr>
-        `;
+        const pct = score.score.toFixed(1);
+
+        row.innerHTML = `
+            <div>
+                <div class="name">${escapeHtml(score.test_name)}</div>
+                <div class="meta">${escapeHtml(String(score.correct))}/${escapeHtml(String(score.total))} · weight ${weight} · ${escapeHtml(date)}</div>
+            </div>
+            <div class="pct" style="color: ${scoreColor(score.score)}">${pct}%</div>`;
+        container.appendChild(row);
     });
-    
-    html += `
-            </tbody>
-        </table>
-    `;
-    
-    container.innerHTML = html;
+}
+
+function displayUserScoresTable(container, scores, avg, totalWeight) {
+    const summary = document.createElement('div');
+    summary.className = 'summary-card';
+    summary.innerHTML = `
+        <div class="big-score" style="color: ${scoreColor(avg)}">${avg.toFixed(0)}%</div>
+        <div class="label">Weighted average</div>
+        <div class="summary-meta">
+            <span>${scores.length} tests</span>
+            <span>Weight ${totalWeight}</span>
+        </div>`;
+    container.appendChild(summary);
+
+    const wrap = document.createElement('div');
+    wrap.className = 'desktop-table-wrap';
+    const table = document.createElement('table');
+    table.className = 'desktop-table';
+    table.innerHTML = '<thead><tr><th>Test</th><th>Weight</th><th>Score</th><th>Correct</th><th>Date</th></tr></thead>';
+    const tbody = document.createElement('tbody');
+
+    scores.forEach((score) => {
+        const tr = document.createElement('tr');
+        const date = new Date(score.created_at).toLocaleDateString();
+        const weight = score.weight || 1;
+        const pct = Math.round(score.score);
+        tr.innerHTML = `
+            <td>${escapeHtml(score.test_name)}</td>
+            <td>${weight}</td>
+            <td style="color:${scoreColor(score.score)};font-weight:700">${pct}%</td>
+            <td>${escapeHtml(String(score.correct))}/${escapeHtml(String(score.total))}</td>
+            <td>${escapeHtml(date)}</td>`;
+        tbody.appendChild(tr);
+    });
+
+    table.appendChild(tbody);
+    wrap.appendChild(table);
+    container.appendChild(wrap);
 }
 
 async function changePassword() {
-    const currentPassword = document.getElementById('current-password').value.trim();
-    const newPassword = document.getElementById('new-password').value.trim();
-    const confirmPassword = document.getElementById('confirm-password').value.trim();
-    const messageDiv = document.getElementById('password-message');
-    
+    const currentPassword = $('current-password')?.value.trim();
+    const newPassword = $('new-password')?.value.trim();
+    const confirmPassword = $('confirm-password')?.value.trim();
+    const messageDiv = $('password-message');
+
     if (!currentPassword || !newPassword || !confirmPassword) {
         showMessage('Please fill in all fields', 'error', messageDiv);
         return;
     }
-    
     if (newPassword !== confirmPassword) {
         showMessage('New passwords do not match', 'error', messageDiv);
         return;
     }
-    
     if (newPassword.length < 4) {
         showMessage('Password must be at least 4 characters', 'error', messageDiv);
         return;
     }
-    
+
     try {
         const response = await fetch(`${API_BASE}/change-password`, {
             method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
+            headers: { 'Content-Type': 'application/json' },
             credentials: 'include',
             body: JSON.stringify({
                 current_password: currentPassword,
@@ -531,14 +816,13 @@ async function changePassword() {
                 confirm_password: confirmPassword
             })
         });
-        
         const data = await response.json();
-        
+
         if (response.ok) {
-            showMessage('Password changed successfully!', 'success', messageDiv);
-            document.getElementById('current-password').value = '';
-            document.getElementById('new-password').value = '';
-            document.getElementById('confirm-password').value = '';
+            showMessage('Password updated', 'success', messageDiv);
+            $('current-password').value = '';
+            $('new-password').value = '';
+            $('confirm-password').value = '';
         } else {
             showMessage(data.error || 'Failed to change password', 'error', messageDiv);
         }
@@ -548,82 +832,58 @@ async function changePassword() {
     }
 }
 
-function showMessage(message, type, element) {
-    element.textContent = message;
-    element.className = `message ${type}`;
-    setTimeout(() => {
-        element.className = 'message';
-    }, 5000);
-}
-
 async function loadColorPreferences() {
     try {
-        const response = await fetch(`${API_BASE}/user-preferences`, {
-            credentials: 'include'
-        });
-        
-        if (response.ok) {
-            const preferences = await response.json();
-            
-            // Load color values or use defaults
-            const primaryColor = preferences['primary_color'] || '#667eea';
-            const secondaryColor = preferences['secondary_color'] || '#764ba2';
-            const accentColor = preferences['accent_color'] || '#f093fb';
-            
-            // Set color inputs
-            document.getElementById('primary-color').value = primaryColor;
-            document.getElementById('primary-color-value').textContent = primaryColor;
-            
-            document.getElementById('secondary-color').value = secondaryColor;
-            document.getElementById('secondary-color-value').textContent = secondaryColor;
-            
-            document.getElementById('accent-color').value = accentColor;
-            document.getElementById('accent-color-value').textContent = accentColor;
-            
-            // Setup color change listeners
-            setupColorListeners();
-        }
+        const response = await fetch(`${API_BASE}/user-preferences`, { credentials: 'include' });
+        if (!response.ok) return;
+
+        const preferences = await response.json();
+        const primary = preferences.primary_color || '#5b6cff';
+        const secondary = preferences.secondary_color || '#7c3aed';
+        const accent = preferences.accent_color || '#ec4899';
+
+        if ($('primary-color')) $('primary-color').value = primary;
+        if ($('secondary-color')) $('secondary-color').value = secondary;
+        if ($('accent-color')) $('accent-color').value = accent;
+
+        applyThemeColors(primary, secondary, accent);
+        setupColorListeners();
     } catch (error) {
         console.error('Failed to load color preferences:', error);
     }
 }
 
+function applyThemeColors(primary, secondary, accent) {
+    document.documentElement.style.setProperty('--primary', primary);
+    document.documentElement.style.setProperty('--secondary', secondary);
+    document.documentElement.style.setProperty('--accent', accent);
+}
+
 function setupColorListeners() {
-    const primaryColorInput = document.getElementById('primary-color');
-    const secondaryColorInput = document.getElementById('secondary-color');
-    const accentColorInput = document.getElementById('accent-color');
-    
-    if (primaryColorInput) {
-        primaryColorInput.addEventListener('change', (e) => {
-            document.getElementById('primary-color-value').textContent = e.target.value;
+    ['primary-color', 'secondary-color', 'accent-color'].forEach((id) => {
+        const input = $(id);
+        if (!input || input.dataset.bound) return;
+        input.dataset.bound = '1';
+        input.addEventListener('input', () => {
+            applyThemeColors(
+                $('primary-color')?.value || '#5b6cff',
+                $('secondary-color')?.value || '#7c3aed',
+                $('accent-color')?.value || '#ec4899'
+            );
         });
-    }
-    
-    if (secondaryColorInput) {
-        secondaryColorInput.addEventListener('change', (e) => {
-            document.getElementById('secondary-color-value').textContent = e.target.value;
-        });
-    }
-    
-    if (accentColorInput) {
-        accentColorInput.addEventListener('change', (e) => {
-            document.getElementById('accent-color-value').textContent = e.target.value;
-        });
-    }
+    });
 }
 
 async function saveColorPreferences() {
-    const primaryColor = document.getElementById('primary-color').value;
-    const secondaryColor = document.getElementById('secondary-color').value;
-    const accentColor = document.getElementById('accent-color').value;
-    const messageDiv = document.getElementById('color-message');
-    
+    const primaryColor = $('primary-color')?.value;
+    const secondaryColor = $('secondary-color')?.value;
+    const accentColor = $('accent-color')?.value;
+    const messageDiv = $('color-message');
+
     try {
         const response = await fetch(`${API_BASE}/user-preferences`, {
             method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
+            headers: { 'Content-Type': 'application/json' },
             credentials: 'include',
             body: JSON.stringify({
                 primary_color: primaryColor,
@@ -631,13 +891,13 @@ async function saveColorPreferences() {
                 accent_color: accentColor
             })
         });
-        
         const data = await response.json();
-        
+
         if (response.ok) {
-            showMessage('Color preferences saved successfully!', 'success', messageDiv);
+            applyThemeColors(primaryColor, secondaryColor, accentColor);
+            showMessage('Colors saved', 'success', messageDiv);
         } else {
-            showMessage(data.error || 'Failed to save preferences', 'error', messageDiv);
+            showMessage(data.error || 'Failed to save', 'error', messageDiv);
         }
     } catch (error) {
         console.error('Color preference save error:', error);

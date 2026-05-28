@@ -2,1164 +2,181 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Admin - Vocabulary Test App</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover, maximum-scale=1, user-scalable=no">
+    <meta name="theme-color" content="#0f1117">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <title>Admin</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='app-shared.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='app-mobile.css') }}">
+    <link id="ui-desktop-styles" rel="stylesheet" href="{{ url_for('static', filename='app-desktop.css') }}" disabled>
+    <script src="{{ url_for('static', filename='ui-mode.js') }}"></script>
 </head>
 <body>
-    <div class="container">
-        <header>
-            <h1>⚙️ Admin Panel</h1>
-            <div class="header-actions">
-                <a href="/app/" class="btn-back">← Back to App</a>
-                <button type="button" id="view-toggle-btn" class="btn btn-secondary" style="display: none; white-space: nowrap;">Mobile view</button>
-                <div id="user-info" class="user-info" style="display: none;">
-                    <button onclick="logout()" class="btn-logout">Logout</button>
-                    <span id="username-display"></span>
+    <div id="auth-screen" class="screen auth-screen">
+        <div class="auth-brand">
+            <div class="logo" aria-hidden="true">⚙️</div>
+            <h1>Admin</h1>
+            <p>Sign in with an admin account</p>
+        </div>
+        <div class="auth-card">
+            <h2>Admin login</h2>
+            <form id="auth-form">
+                <div class="form-field">
+                    <label for="username">Username</label>
+                    <input type="text" id="username" autocomplete="username" required>
                 </div>
-            </div>
-        </header>
-
-        <!-- Auth Section -->
-        <section id="auth-section" class="auth-section">
-            <div class="auth-container">
-                <h2>Admin Login</h2>
-                <form id="auth-form">
-                    <div class="form-group">
-                        <label for="username">Username:</label>
-                        <input type="text" id="username" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="password">Password:</label>
-                        <input type="password" id="password" required>
-                    </div>
-                    <button type="button" onclick="login()" class="btn btn-primary">Login</button>
-                </form>
-                <div id="auth-message" class="message"></div>
-            </div>
-        </section>
-
-        <!-- Admin Section -->
-        <section id="admin-section" class="admin-section" style="display: none;">
-            <!-- Tab Navigation -->
-            <div class="admin-tabs">
-                <button onclick="switchTab('tests')" class="tab-button active" id="tab-tests">📝 Tests</button>
-                <button onclick="switchTab('users')" class="tab-button" id="tab-users">👥 Users</button>
-                <button onclick="switchTab('scores')" class="tab-button" id="tab-scores">📊 Scores</button>
-                <button onclick="switchTab('settings')" class="tab-button" id="tab-settings">⚙️ Settings</button>
-            </div>
-
-            <div class="admin-container">
-                <!-- Tests Management -->
-                <div id="tests-tab" class="admin-tab admin-tab-tests">
-                    <div class="existing-tests existing-tests-primary">
-                        <div class="existing-tests-toolbar">
-                            <h2>Existing Tests</h2>
-                            <button type="button" onclick="showNewTestForm()" class="btn btn-primary">New test</button>
-                        </div>
-                        <div id="save-message" class="message"></div>
-                        <div id="tests-list-admin" class="tests-list-admin"></div>
-                    </div>
-
-                    <div id="test-form-panel" class="admin-panel test-form-panel" style="display: none;">
-                        <div class="form-actions form-actions-top">
-                            <button type="button" onclick="saveTest()" class="btn btn-primary btn-large" id="save-test-btn-top">Save Test</button>
-                            <button type="button" onclick="hideTestFormPanel()" class="btn btn-secondary btn-large" id="cancel-test-btn-top" style="display: none;">Close</button>
-                        </div>
-                        <h2 id="test-form-title">Create New Test</h2>
-
-                        <div class="form-group">
-                            <label for="test-title">Test Title:</label>
-                            <input type="text" id="test-title" placeholder="e.g., Basic Arabic Vocabulary" required>
-                        </div>
-
-                        <div class="form-group">
-                            <label for="test-description">Test Description:</label>
-                            <textarea id="test-description" placeholder="Describe what this test covers" rows="3"></textarea>
-                        </div>
-
-                        <div class="form-group">
-                            <label for="test-weight">Test Weight:</label>
-                            <input type="number" id="test-weight" placeholder="e.g., 1.5" min="0.1" step="0.1" value="1" required>
-                        </div>
-
-                        <div class="form-group">
-                            <label for="test-max-questions">Max Questions:</label>
-                            <input type="number" id="test-max-questions" placeholder="Leave empty for full test" min="1" step="1">
-                        </div>
-
-                        <div class="form-group form-group-inline">
-                            <label for="test-enabled" class="checkbox-label">
-                                <input type="checkbox" id="test-enabled" checked>
-                                Visible to users (published)
-                            </label>
-                        </div>
-
-                        <div class="form-group form-group-inline">
-                            <label for="test-record-score" class="checkbox-label">
-                                <input type="checkbox" id="test-record-score">
-                                Record scores in database when users submit this test
-                            </label>
-                        </div>
-
-                        <div class="questions-section">
-                            <h3>Questions</h3>
-                            <div id="questions-list"></div>
-                            <button type="button" onclick="addQuestion()" class="btn btn-secondary">+ Add Question</button>
-                        </div>
-
-                        <div class="form-actions">
-                            <button type="button" onclick="saveTest()" class="btn btn-primary btn-large" id="save-test-btn">Save Test</button>
-                            <button type="button" onclick="hideTestFormPanel()" class="btn btn-secondary btn-large" id="cancel-test-btn" style="display: none;">Close</button>
-                        </div>
-                    </div>
+                <div class="form-field">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" autocomplete="current-password" required>
                 </div>
-
-                <!-- Users Management -->
-                <div id="users-tab" class="admin-tab" style="display: none;">
-                    <div class="admin-panel">
-                        <h2 id="user-form-title">Create New User</h2>
-                        
-                        <div class="form-group">
-                            <label for="user-username">Username:</label>
-                            <input type="text" id="user-username" placeholder="Enter username" required>
-                        </div>
-
-                        <div class="form-group">
-                            <label for="user-password">Password:</label>
-                            <input type="password" id="user-password" placeholder="Enter password (min 4 characters)" required>
-                        </div>
-
-                        <div class="form-group">
-                            <label for="user-role">Role:</label>
-                            <select id="user-role" required>
-                                <option value="user">Normal User</option>
-                                <option value="admin">Admin User</option>
-                            </select>
-                        </div>
-
-                        <!-- Save User Button -->
-                        <div class="form-actions">
-                            <button type="button" onclick="createNewUser()" class="btn btn-primary btn-large" id="user-create-btn">Create User</button>
-                            <button type="button" onclick="resetUserForm()" class="btn btn-secondary btn-large" id="user-cancel-btn" style="display: none;">Cancel</button>
-                        </div>
-
-                        <div id="user-create-message" class="message"></div>
-                    </div>
-
-                    <!-- Existing Users -->
-                    <div class="existing-tests">
-                        <h2>Existing Users</h2>
-                        <div id="users-list-admin" class="users-list-admin"></div>
-                    </div>
-                </div>
-
-                <!-- Scores Management -->
-                <div id="scores-tab" class="admin-tab" style="display: none;">
-                    <div class="admin-panel">
-                        <h2>All Users Test Scores</h2>
-                        <div id="admin-scores-list" class="scores-table-container"></div>
-                    </div>
-                </div>
-
-                <!-- Settings Management -->
-                <div id="settings-tab" class="admin-tab" style="display: none;">
-                    <div class="admin-panel">
-                        <h2>Settings</h2>
-                        
-                        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
-                            <!-- Registration Settings -->
-                            <div style="padding: 15px; background-color: #f9f9f9; border-radius: 8px; border: 1px solid #ddd;">
-                                <h3>Registration</h3>
-                                <div class="form-group">
-                                    <label for="registration-toggle">Allow New User Registration:</label>
-                                    <div style="display: flex; align-items: center; gap: 10px; margin-top: 10px;">
-                                        <input type="checkbox" id="registration-toggle" style="width: 20px; height: 20px; cursor: pointer;">
-                                        <span id="registration-status" style="font-size: 14px; color: #666;"></span>
-                                    </div>
-                                </div>
-                                <button type="button" onclick="saveRegistrationSetting()" class="btn btn-primary" style="margin-top: 15px;">Save</button>
-                                <div id="registration-message" class="message" style="margin-top: 10px;"></div>
-                            </div>
-
-                            <!-- Retake Settings -->
-                            <div style="padding: 15px; background-color: #f9f9f9; border-radius: 8px; border: 1px solid #ddd;">
-                                <h3>Test Retakes</h3>
-                                <div class="form-group">
-                                    <label for="retake-toggle">Allow Users to Retake Tests:</label>
-                                    <div style="display: flex; align-items: center; gap: 10px; margin-top: 10px;">
-                                        <input type="checkbox" id="retake-toggle" style="width: 20px; height: 20px; cursor: pointer;">
-                                        <span id="retake-status" style="font-size: 14px; color: #666;"></span>
-                                    </div>
-                                </div>
-                                <button type="button" onclick="saveRetakeSetting()" class="btn btn-primary" style="margin-top: 15px;">Save</button>
-                                <div id="retake-message" class="message" style="margin-top: 10px;"></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
+                <button type="submit" class="btn btn-primary btn-block">Login</button>
+            </form>
+            <p style="text-align:center;margin-top:16px;">
+                <a href="/app/" class="link-back">← Back to app</a>
+            </p>
+            <div id="auth-message" class="message" role="status"></div>
+        </div>
     </div>
 
-    <script>
-        const API_BASE = '/app/api';
-        let currentUser = null;
-        let questions = [];
-        let questionCounter = 0;
-        let editingTestName = null;
-        let editingUserId = null;
-        let passwordModified = false;
-        let adminViewMode = null;
+    <div id="admin-screen" class="screen" hidden>
+        <header class="top-bar">
+            <a href="/app/" class="link-back">← App</a>
+            <h1 id="top-title">Tests</h1>
+            <span id="username-display" class="user-chip"></span>
+        </header>
 
-        document.addEventListener('DOMContentLoaded', function() {
-            checkAuth();
-            applyAdminViewMode();
-        });
-
-        function getSavedAdminViewMode() {
-            const saved = localStorage.getItem('adminViewMode');
-            if (saved === 'desktop' || saved === 'mobile') {
-                return saved;
-            }
-            return window.innerWidth <= 768 ? 'mobile' : 'desktop';
-        }
-
-        function applyAdminViewMode(mode) {
-            adminViewMode = mode || getSavedAdminViewMode();
-            const compact = adminViewMode === 'mobile';
-            document.body.classList.toggle('compact-admin', compact);
-            const viewToggleBtn = document.getElementById('view-toggle-btn');
-            if (viewToggleBtn) {
-                viewToggleBtn.textContent = compact ? 'Desktop view' : 'Mobile view';
-                viewToggleBtn.style.display = 'inline-block';
-            }
-        }
-
-        function toggleAdminViewMode() {
-            const newMode = adminViewMode === 'mobile' ? 'desktop' : 'mobile';
-            localStorage.setItem('adminViewMode', newMode);
-            applyAdminViewMode(newMode);
-        }
-
-        function switchTab(tabName) {
-            // Hide all tabs
-            document.getElementById('tests-tab').style.display = 'none';
-            document.getElementById('users-tab').style.display = 'none';
-            document.getElementById('scores-tab').style.display = 'none';
-            document.getElementById('settings-tab').style.display = 'none';
-            
-            // Remove active class from all buttons
-            document.getElementById('tab-tests').classList.remove('active');
-            document.getElementById('tab-users').classList.remove('active');
-            document.getElementById('tab-scores').classList.remove('active');
-            document.getElementById('tab-settings').classList.remove('active');
-            
-            // Show selected tab and activate button
-            if (tabName === 'tests') {
-                const testsTab = document.getElementById('tests-tab');
-                testsTab.style.display = 'flex';
-                testsTab.style.flexDirection = 'column';
-                document.getElementById('tab-tests').classList.add('active');
-            } else if (tabName === 'users') {
-                document.getElementById('users-tab').style.display = 'grid';
-                document.getElementById('tab-users').classList.add('active');
-                loadExistingUsers();
-            } else if (tabName === 'scores') {
-                document.getElementById('scores-tab').style.display = 'block';
-                document.getElementById('tab-scores').classList.add('active');
-                loadAdminScores();
-            } else if (tabName === 'settings') {
-                document.getElementById('settings-tab').style.display = 'block';
-                document.getElementById('tab-settings').classList.add('active');
-                loadSettings();
-            }
-        }
-
-        async function checkAuth() {
-            try {
-                const response = await fetch(`${API_BASE}/user`, {
-                    credentials: 'include'
-                });
-                
-                if (response.ok) {
-                    const data = await response.json();
-                    currentUser = data;
-                    showAdminSection();
-                    loadExistingTests();
-                } else {
-                    showAuthSection();
-                }
-            } catch (error) {
-                console.error('Auth check failed:', error);
-                showAuthSection();
-            }
-        }
-
-        function showAuthSection() {
-            document.getElementById('auth-section').style.display = 'block';
-            document.getElementById('admin-section').style.display = 'none';
-            document.getElementById('user-info').style.display = 'none';
-        }
-
-        function showAdminSection() {
-            document.getElementById('auth-section').style.display = 'none';
-            document.getElementById('admin-section').style.display = 'block';
-            document.getElementById('user-info').style.display = 'flex';
-            document.getElementById('username-display').textContent = `${currentUser.username}`;
-        }
-
-        document.addEventListener('click', function(event) {
-            if (event.target && event.target.id === 'view-toggle-btn') {
-                toggleAdminViewMode();
-            }
-        });
-
-        async function login() {
-            const username = document.getElementById('username').value.trim();
-            const password = document.getElementById('password').value.trim();
-            const messageDiv = document.getElementById('auth-message');
-            
-            if (!username || !password) {
-                showMessage('Please fill in all fields', 'error', messageDiv);
-                return;
-            }
-            
-            try {
-                const response = await fetch(`${API_BASE}/login`, {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json'
-                    },
-                    credentials: 'include',
-                    body: JSON.stringify({ username, password })
-                });
-                
-                const data = await response.json();
-                
-                if (response.ok) {
-                    currentUser = { username };
-                    showMessage('Login successful!', 'success', messageDiv);
-                    document.getElementById('auth-form').reset();
-                    setTimeout(() => {
-                        showAdminSection();
-                        loadExistingTests();
-                    }, 500);
-                } else {
-                    showMessage(data.error || 'Login failed', 'error', messageDiv);
-                }
-            } catch (error) {
-                console.error('Login error:', error);
-                showMessage('Login failed', 'error', messageDiv);
-            }
-        }
-
-        async function logout() {
-            try {
-                await fetch(`${API_BASE}/logout`, {
-                    method: 'POST',
-                    credentials: 'include'
-                });
-                
-                currentUser = null;
-                questions = [];
-                questionCounter = 0;
-                editingTestName = null;
-                const tfp = document.getElementById('test-form-panel');
-                if (tfp) {
-                    tfp.style.display = 'none';
-                    resetTestForm();
-                }
-                showAuthSection();
-                document.getElementById('auth-form').reset();
-            } catch (error) {
-                console.error('Logout error:', error);
-            }
-        }
-
-        function addQuestion() {
-            const questionId = questionCounter++;
-            const div = document.createElement('div');
-            div.className = 'question-editor';
-            div.id = `question-${questionId}`;
-            
-            div.innerHTML = `
-                <div class="question-header">
-                    <h4>Question ${questions.length + 1}</h4>
-                    <button type="button" onclick="removeQuestion(${questionId})" class="btn-remove">✕</button>
+        <main class="content-area">
+            <section id="panel-tests" class="panel active">
+                <div class="toolbar-row">
+                    <h2 class="panel-title">Tests</h2>
+                    <button type="button" id="btn-new-test" class="btn-icon-text">+ New</button>
                 </div>
-                
-                <div class="form-group">
-                    <label>Arabic Word:</label>
-                    <input type="text" class="arabic-word" placeholder="e.g., مرحبا" required>
-                </div>
-                
-                <div class="form-group">
-                    <label>Correct English Answer:</label>
-                    <input type="text" class="correct-answer" placeholder="e.g., Hello" required>
-                </div>
-                
-                <div class="form-group">
-                    <label>Answer Options (comma separated):</label>
-                    <input type="text" class="options" placeholder="e.g., Hello, Thank you, Yes, No" required>
-                </div>
-            `;
-            
-            document.getElementById('questions-list').appendChild(div);
-            questions.push(questionId);
-        }
+                <div id="save-message" class="message" role="status"></div>
+                <div id="tests-list-admin"></div>
+            </section>
 
-        function removeQuestion(questionId) {
-            const div = document.getElementById(`question-${questionId}`);
-            if (div) {
-                div.remove();
-                questions = questions.filter(id => id !== questionId);
-            }
-        }
-
-        function resetTestForm() {
-            document.getElementById('test-title').value = '';
-            document.getElementById('test-description').value = '';
-            document.getElementById('test-weight').value = '1';
-            document.getElementById('test-max-questions').value = '';
-            document.getElementById('test-enabled').checked = true;
-            document.getElementById('test-record-score').checked = false;
-            document.getElementById('questions-list').innerHTML = '';
-            document.getElementById('test-form-title').textContent = 'Create New Test';
-            document.getElementById('save-test-btn').textContent = 'Save Test';
-            document.getElementById('save-test-btn-top').textContent = 'Save Test';
-            document.getElementById('save-test-btn').style.display = 'block';
-            document.getElementById('save-test-btn-top').style.display = 'block';
-            document.getElementById('cancel-test-btn').style.display = 'none';
-            document.getElementById('cancel-test-btn-top').style.display = 'none';
-            document.getElementById('save-message').className = 'message';
-            questions = [];
-            questionCounter = 0;
-            editingTestName = null;
-        }
-
-        function showNewTestForm() {
-            resetTestForm();
-            document.getElementById('test-form-panel').style.display = 'block';
-            document.getElementById('cancel-test-btn').style.display = 'inline-block';
-            document.getElementById('test-form-panel').scrollIntoView({ behavior: 'smooth' });
-        }
-
-        function hideTestFormPanel() {
-            document.getElementById('test-form-panel').style.display = 'none';
-            resetTestForm();
-        }
-
-        async function saveTest() {
-            const title = document.getElementById('test-title').value.trim();
-            const description = document.getElementById('test-description').value.trim();
-            const weight = parseFloat(document.getElementById('test-weight').value);
-            const maxQuestionsValue = document.getElementById('test-max-questions').value.trim();
-            const messageDiv = document.getElementById('save-message');
-            
-            if (!title) {
-                showMessage('Please enter a test title', 'error', messageDiv);
-                return;
-            }
-            
-            if (questions.length === 0) {
-                showMessage('Please add at least one question', 'error', messageDiv);
-                return;
-            }
-            
-            // Collect question data
-            const questionsData = [];
-            document.querySelectorAll('.question-editor').forEach(editor => {
-                const arabicWord = editor.querySelector('.arabic-word').value.trim();
-                const correctAnswer = editor.querySelector('.correct-answer').value.trim();
-                const optionsText = editor.querySelector('.options').value.trim();
-                
-                if (!arabicWord || !correctAnswer || !optionsText) {
-                    throw new Error('Please fill in all fields for all questions');
-                }
-                
-                const options = optionsText.split(',').map(opt => opt.trim());
-                
-                // Ensure correct answer is in options
-                if (!options.includes(correctAnswer)) {
-                    options.push(correctAnswer);
-                }
-                
-                // Shuffle options
-                options.sort(() => Math.random() - 0.5);
-                
-                questionsData.push({
-                    arabic_word: arabicWord,
-                    correct_answer: correctAnswer,
-                    options: options
-                });
-            });
-            
-            // Validate
-            if (questionsData.some(q => q.options.length < 2)) {
-                showMessage('Each question must have at least 2 options', 'error', messageDiv);
-                return;
-            }
-            
-            try {
-                let url = `${API_BASE}/admin/tests`;
-                let method = 'POST';
-                
-                if (editingTestName) {
-                    url = `${API_BASE}/admin/tests/${editingTestName}`;
-                    method = 'PUT';
-                }
-                
-                const maxQuestions = maxQuestionsValue ? parseInt(maxQuestionsValue, 10) : null;
-                if (maxQuestionsValue && (isNaN(maxQuestions) || maxQuestions < 1)) {
-                    showMessage('Max Questions must be a positive integer', 'error', messageDiv);
-                    return;
-                }
-
-                const payload = {
-                    title,
-                    description,
-                    weight,
-                    enabled: document.getElementById('test-enabled').checked,
-                    record_score: document.getElementById('test-record-score').checked,
-                    questions: questionsData
-                };
-                if (maxQuestions) {
-                    payload.max_questions = maxQuestions;
-                }
-
-                const response = await fetch(url, {
-                    method: method,
-                    headers: {
-                        'Content-Type': 'application/json'
-                    },
-                    credentials: 'include',
-                    body: JSON.stringify(payload)
-                });
-                
-                const data = await response.json();
-                
-                if (response.ok) {
-                    showMessage(editingTestName ? 'Test updated successfully!' : 'Test created successfully!', 'success', messageDiv);
-                    
-                    setTimeout(() => {
-                        hideTestFormPanel();
-                        loadExistingTests();
-                    }, 1000);
-                } else {
-                    showMessage(data.error || 'Failed to save test', 'error', messageDiv);
-                }
-            } catch (error) {
-                console.error('Save error:', error);
-                showMessage(error.message || 'Failed to save test', 'error', messageDiv);
-            }
-        }
-
-        async function loadExistingTests() {
-            try {
-                const response = await fetch(`${API_BASE}/tests`, {
-                    credentials: 'include'
-                });
-                
-                if (response.ok) {
-                    const data = await response.json();
-                    displayExistingTests(data.tests);
-                }
-            } catch (error) {
-                console.error('Failed to load tests:', error);
-            }
-        }
-
-        async function loadTestForEditing(testName) {
-            try {
-                const response = await fetch(`${API_BASE}/admin/tests/${testName}`, {
-                    credentials: 'include'
-                });
-                
-                if (response.ok) {
-                    const testData = await response.json();
-                    
-                    // Populate form
-                    document.getElementById('test-title').value = testData.title;
-                    document.getElementById('test-description').value = testData.description;
-                    document.getElementById('test-weight').value = testData.weight || 1;
-                    document.getElementById('test-max-questions').value = testData.max_questions || '';
-                    document.getElementById('test-enabled').checked = testData.enabled !== false;
-                    document.getElementById('test-record-score').checked = testData.record_score === true;
-                    document.getElementById('questions-list').innerHTML = '';
-                    questions = [];
-                    questionCounter = 0;
-                    
-                    // Add questions
-                    testData.questions.forEach(question => {
-                        const questionId = questionCounter++;
-                        const div = document.createElement('div');
-                        div.className = 'question-editor';
-                        div.id = `question-${questionId}`;
-                        
-                        const optionsStr = question.options.join(', ');
-                        div.innerHTML = `
-                            <div class="question-header">
-                                <h4>Question ${questions.length + 1}</h4>
-                                <button type="button" onclick="removeQuestion(${questionId})" class="btn-remove">✕</button>
-                            </div>
-                            
-                            <div class="form-group">
-                                <label>Arabic Word:</label>
-                                <input type="text" class="arabic-word" value="${question.arabic_word}" required>
-                            </div>
-                            
-                            <div class="form-group">
-                                <label>Correct English Answer:</label>
-                                <input type="text" class="correct-answer" value="${question.correct_answer}" required>
-                            </div>
-                            
-                            <div class="form-group">
-                                <label>Answer Options (comma separated):</label>
-                                <input type="text" class="options" value="${optionsStr}" required>
-                            </div>
-                        `;
-                        
-                        document.getElementById('questions-list').appendChild(div);
-                        questions.push(questionId);
-                    });
-                    
-                    // Update form state
-                    document.getElementById('test-form-title').textContent = `Edit Test: ${testData.title}`;
-                    document.getElementById('save-test-btn').textContent = 'Update Test';
-                    document.getElementById('save-test-btn-top').textContent = 'Update Test';
-                    document.getElementById('cancel-test-btn').style.display = 'inline-block';
-                    document.getElementById('cancel-test-btn-top').style.display = 'inline-block';
-                    editingTestName = testName;
-                    document.getElementById('test-form-panel').style.display = 'block';
-                    document.getElementById('test-form-panel').scrollIntoView({ behavior: 'smooth' });
-                } else {
-                    showMessage('Failed to load test', 'error', document.getElementById('save-message'));
-                }
-            } catch (error) {
-                console.error('Failed to load test:', error);
-                showMessage('Failed to load test', 'error', document.getElementById('save-message'));
-            }
-        }
-
-        async function deleteTestConfirm(testName) {
-            if (!confirm(`Are you sure you want to delete "${testName}"? This action cannot be undone.`)) {
-                return;
-            }
-            
-            try {
-                const response = await fetch(`${API_BASE}/admin/tests/${testName}`, {
-                    method: 'DELETE',
-                    credentials: 'include'
-                });
-                
-                const data = await response.json();
-                
-                if (response.ok) {
-                    showMessage('Test deleted successfully!', 'success', document.getElementById('save-message'));
-                    setTimeout(() => {
-                        loadExistingTests();
-                    }, 1000);
-                } else {
-                    showMessage(data.error || 'Failed to delete test', 'error', document.getElementById('save-message'));
-                }
-            } catch (error) {
-                console.error('Delete error:', error);
-                showMessage('Failed to delete test', 'error', document.getElementById('save-message'));
-            }
-        }
-
-        async function patchTestEnabled(testName, enabled, checkboxEl) {
-            try {
-                const response = await fetch(`${API_BASE}/admin/tests/${encodeURIComponent(testName)}/enabled`, {
-                    method: 'PATCH',
-                    headers: { 'Content-Type': 'application/json' },
-                    credentials: 'include',
-                    body: JSON.stringify({ enabled })
-                });
-                const data = await response.json();
-                if (!response.ok) {
-                    checkboxEl.checked = !enabled;
-                    showMessage(data.error || 'Failed to update visibility', 'error', document.getElementById('save-message'));
-                }
-            } catch (err) {
-                console.error(err);
-                checkboxEl.checked = !enabled;
-                showMessage('Failed to update visibility', 'error', document.getElementById('save-message'));
-            }
-        }
-
-        function displayExistingTests(tests) {
-            const container = document.getElementById('tests-list-admin');
-            container.innerHTML = '';
-
-            if (tests.length === 0) {
-                container.innerHTML = '<p>No tests created yet</p>';
-                return;
-            }
-
-            const wrap = document.createElement('div');
-            wrap.className = 'scores-table-container admin-tests-table-wrap';
-            const table = document.createElement('table');
-            table.className = 'scores-table admin-tests-table';
-            const thead = document.createElement('thead');
-            const hr = document.createElement('tr');
-            ['Title', 'Name', 'Visible to users', 'Actions'].forEach(label => {
-                const th = document.createElement('th');
-                th.textContent = label;
-                hr.appendChild(th);
-            });
-            thead.appendChild(hr);
-            table.appendChild(thead);
-            const tbody = document.createElement('tbody');
-
-            tests.forEach(test => {
-                const tr = document.createElement('tr');
-                const titleTd = document.createElement('td');
-                titleTd.textContent = test.title || test.name;
-                const nameTd = document.createElement('td');
-                nameTd.className = 'test-row-slug';
-                nameTd.textContent = test.name;
-
-                const visTd = document.createElement('td');
-                const cb = document.createElement('input');
-                cb.type = 'checkbox';
-                cb.checked = test.enabled !== false;
-                cb.title = 'When off, users cannot see or take this test';
-                cb.addEventListener('change', () => {
-                    patchTestEnabled(test.name, cb.checked, cb);
-                });
-                visTd.appendChild(cb);
-
-                const actionsTd = document.createElement('td');
-                actionsTd.className = 'tests-table-actions';
-                const editBtn = document.createElement('button');
-                editBtn.type = 'button';
-                editBtn.className = 'btn-action btn-edit';
-                editBtn.textContent = 'Edit';
-                editBtn.addEventListener('click', () => loadTestForEditing(test.name));
-                const delBtn = document.createElement('button');
-                delBtn.type = 'button';
-                delBtn.className = 'btn-action btn-delete';
-                delBtn.textContent = 'Delete';
-                delBtn.addEventListener('click', () => deleteTestConfirm(test.name));
-                actionsTd.appendChild(editBtn);
-                actionsTd.appendChild(delBtn);
-
-                tr.appendChild(titleTd);
-                tr.appendChild(nameTd);
-                tr.appendChild(visTd);
-                tr.appendChild(actionsTd);
-                tbody.appendChild(tr);
-            });
-
-            table.appendChild(tbody);
-            wrap.appendChild(table);
-            container.appendChild(wrap);
-        }
-
-        async function createNewUser() {
-            const username = document.getElementById('user-username').value.trim();
-            const password = document.getElementById('user-password').value.trim();
-            const role = document.getElementById('user-role').value;
-            const messageDiv = document.getElementById('user-create-message');
-            
-            if (editingUserId) {
-                // Update existing user
-                if (passwordModified && password.length < 4) {
-                    showMessage('Password must be at least 4 characters', 'error', messageDiv);
-                    return;
-                }
-                
-                try {
-                    const response = await fetch(`${API_BASE}/admin/users/${editingUserId}`, {
-                        method: 'PUT',
-                        headers: {
-                            'Content-Type': 'application/json'
-                        },
-                        credentials: 'include',
-                        body: JSON.stringify({ password, role, update_password: passwordModified })
-                    });
-                    
-                    const data = await response.json();
-                    
-                    if (response.ok) {
-                        showMessage('User updated successfully!', 'success', messageDiv);
-                        
-                        // Reset form
-                        setTimeout(() => {
-                            resetUserForm();
-                            loadExistingUsers();
-                        }, 1000);
-                    } else {
-                        showMessage(data.error || 'Failed to update user', 'error', messageDiv);
-                    }
-                } catch (error) {
-                    console.error('User update error:', error);
-                    showMessage('Failed to update user', 'error', messageDiv);
-                }
-            } else {
-                // Create new user
-                if (!username || !password) {
-                    showMessage('Please fill in all fields', 'error', messageDiv);
-                    return;
-                }
-                
-                if (password.length < 4) {
-                    showMessage('Password must be at least 4 characters', 'error', messageDiv);
-                    return;
-                }
-                
-                try {
-                    const response = await fetch(`${API_BASE}/admin/users`, {
-                        method: 'POST',
-                        headers: {
-                            'Content-Type': 'application/json'
-                        },
-                        credentials: 'include',
-                        body: JSON.stringify({ username, password, role })
-                    });
-                    
-                    const data = await response.json();
-                    
-                    if (response.ok) {
-                        showMessage('User created successfully!', 'success', messageDiv);
-                        
-                        // Reset form
-                        document.getElementById('user-username').value = '';
-                        document.getElementById('user-password').value = '';
-                        document.getElementById('user-role').value = 'user';
-                        
-                        // Reload users list
-                        setTimeout(() => {
-                            loadExistingUsers();
-                        }, 1000);
-                    } else {
-                        showMessage(data.error || 'Failed to create user', 'error', messageDiv);
-                    }
-                } catch (error) {
-                    console.error('User creation error:', error);
-                    showMessage('Failed to create user', 'error', messageDiv);
-                }
-            }
-        }
-
-        async function loadExistingUsers() {
-            try {
-                const response = await fetch(`${API_BASE}/admin/users`, {
-                    credentials: 'include'
-                });
-                
-                if (response.ok) {
-                    const data = await response.json();
-                    displayExistingUsers(data.users);
-                }
-            } catch (error) {
-                console.error('Failed to load users:', error);
-            }
-        }
-
-        function displayExistingUsers(users) {
-            const container = document.getElementById('users-list-admin');
-            container.innerHTML = '';
-            
-            if (users.length === 0) {
-                container.innerHTML = '<p>No users found</p>';
-                return;
-            }
-            
-            users.forEach(user => {
-                const roleClass = user.role === 'admin' ? 'admin-role' : 'user-role';
-                const div = document.createElement('div');
-                div.className = 'user-item-admin';
-                div.innerHTML = `
-                    <div class="user-info-item">
-                        <h4>${user.username}</h4>
-                        <p class="user-role-badge ${roleClass}">${user.role.toUpperCase()}</p>
+            <section id="panel-users" class="panel">
+                <h2 class="panel-title">Users</h2>
+                <div class="settings-section">
+                    <h3 id="user-form-title">Create user</h3>
+                    <div class="form-field">
+                        <label for="user-username">Username</label>
+                        <input type="text" id="user-username" placeholder="Username" required>
                     </div>
-                    <p class="user-created">Created: ${new Date(user.created_at).toLocaleDateString()}</p>
-                    <div class="user-actions">
-                        <button type="button" onclick="loadUserForEditing(${user.id})" class="btn btn-secondary btn-small">Edit</button>                        <button type=\"button\" onclick=\"deleteUserConfirm(${user.id}, '${user.username}')\" class=\"btn btn-danger btn-small\">Delete</button>                    </div>
-                `;
-                container.appendChild(div);
-            });
-        }
-
-        async function loadUserForEditing(userId) {
-            try {
-                const response = await fetch(`${API_BASE}/admin/users`, {
-                    credentials: 'include'
-                });
-                
-                if (response.ok) {
-                    const data = await response.json();
-                    const user = data.users.find(u => u.id === userId);
-                    
-                    if (user) {
-                        // Populate form for editing
-                        document.getElementById('user-username').value = user.username;
-                        document.getElementById('user-username').disabled = true;
-                        document.getElementById('user-password').value = '';
-                        document.getElementById('user-password').placeholder = 'Enter new password (leave empty to keep current)';
-                        document.getElementById('user-password').required = false;
-                        document.getElementById('user-password').oninput = function() { passwordModified = true; };
-                        document.getElementById('user-role').value = user.role;
-                        passwordModified = false;
-                        
-                        // Update form state
-                        document.getElementById('user-form-title').textContent = `Edit User: ${user.username}`;
-                        document.getElementById('user-create-btn').textContent = 'Update User';
-                        document.getElementById('user-create-btn').style.display = 'inline-block';
-                        document.getElementById('user-cancel-btn').style.display = 'inline-block';
-                        document.getElementById('user-create-message').className = 'message';
-                        editingUserId = userId;
-                        
-                        // Scroll to form
-                        document.querySelector('.admin-panel').scrollIntoView({ behavior: 'smooth' });
-                    }
-                }
-            } catch (error) {
-                console.error('Failed to load user:', error);
-            }
-        }
-
-        function resetUserForm() {
-            document.getElementById('user-username').value = '';
-            document.getElementById('user-username').disabled = false;
-            document.getElementById('user-password').value = '';
-            document.getElementById('user-password').placeholder = 'Enter password (min 4 characters)';
-            document.getElementById('user-password').required = true;
-            document.getElementById('user-password').oninput = null;
-            document.getElementById('user-role').value = 'user';
-            
-            // Reset form state
-            document.getElementById('user-form-title').textContent = 'Create New User';
-            document.getElementById('user-create-btn').textContent = 'Create User';
-            document.getElementById('user-create-btn').style.display = 'inline-block';
-            document.getElementById('user-cancel-btn').style.display = 'none';
-            document.getElementById('user-create-message').className = 'message';
-            editingUserId = null;
-            passwordModified = false;
-        }
-
-        async function deleteUserConfirm(userId, username) {
-            if (!confirm(`Are you sure you want to delete user "${username}"? This action cannot be undone.`)) {
-                return;
-            }
-            
-            try {
-                const response = await fetch(`${API_BASE}/admin/users/${userId}`, {
-                    method: 'DELETE',
-                    credentials: 'include'
-                });
-                
-                const data = await response.json();
-                const messageDiv = document.getElementById('user-create-message');
-                
-                if (response.ok) {
-                    showMessage('User deleted successfully!', 'success', messageDiv);
-                    setTimeout(() => {
-                        loadExistingUsers();
-                    }, 1000);
-                } else {
-                    showMessage(data.error || 'Failed to delete user', 'error', messageDiv);
-                }
-            } catch (error) {
-                console.error('Delete error:', error);
-                showMessage('Failed to delete user', 'error', document.getElementById('user-create-message'));
-            }
-        }
-
-        async function loadAdminScores() {
-            try {
-                const response = await fetch(`${API_BASE}/admin/scores`, {
-                    credentials: 'include'
-                });
-                
-                if (response.ok) {
-                    const data = await response.json();
-                    displayAdminScores(data.scores);
-                }
-            } catch (error) {
-                console.error('Failed to load scores:', error);
-            }
-        }
-
-        function displayAdminScores(scores) {
-            const container = document.getElementById('admin-scores-list');
-            container.innerHTML = '';
-            
-            if (scores.length === 0) {
-                container.innerHTML = '<p style="text-align: center; padding: 20px;">No scores recorded yet.</p>';
-                return;
-            }
-            
-            // Calculate weighted averages per user
-            const userWeightedScores = {};
-            scores.forEach(score => {
-                if (!userWeightedScores[score.username]) {
-                    userWeightedScores[score.username] = {
-                        totalWeightedScore: 0,
-                        totalWeight: 0
-                    };
-                }
-                const weight = score.weight || 1;
-                userWeightedScores[score.username].totalWeightedScore += score.score * weight;
-                userWeightedScores[score.username].totalWeight += weight;
-            });
-            
-            // Create weighted averages summary
-            let summaryHtml = '<div style="margin-bottom: 30px; padding: 20px; background-color: #f5f5f5; border-radius: 8px;">';
-            summaryHtml += '<h3 style="margin-top: 0;">📊 Weighted Averages</h3>';
-            summaryHtml += '<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px;">';
-            
-            Object.keys(userWeightedScores).forEach(username => {
-                const data = userWeightedScores[username];
-                const weightedAvg = data.totalWeightedScore / data.totalWeight;
-                const avgColor = weightedAvg >= 70 ? '#4caf50' : weightedAvg >= 50 ? '#ff9800' : '#f44336';
-                summaryHtml += `
-                    <div style="padding: 15px; background: white; border-radius: 5px; box-shadow: 0 2px 4px rgba(0,0,0,0.1);">
-                        <div style="font-weight: bold; margin-bottom: 8px;">${username}</div>
-                        <div style="font-size: 24px; color: ${avgColor}; font-weight: bold;">${weightedAvg.toFixed(2)}%</div>
-                        <div style="font-size: 12px; color: #666;">Weighted Average</div>
+                    <div class="form-field">
+                        <label for="user-password">Password</label>
+                        <input type="password" id="user-password" placeholder="Min 4 characters" required>
                     </div>
-                `;
-            });
-            
-            summaryHtml += '</div></div>';
-            
-            let html = summaryHtml + `
-                <table class="scores-table">
-                    <thead>
-                        <tr>
-                            <th>Username</th>
-                            <th>Test Name</th>
-                            <th>Weight</th>
-                            <th>Score</th>
-                            <th>Correct Answers</th>
-                            <th>Date</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-            `;
-            
-            scores.forEach(score => {
-                const date = new Date(score.created_at).toLocaleDateString();
-                const scoreColor = score.score >= 70 ? '#4caf50' : score.score >= 50 ? '#ff9800' : '#f44336';
-                const weight = score.weight || 1;
-                html += `
-                    <tr>
-                        <td><strong>${score.username}</strong></td>
-                        <td>${score.test_name}</td>
-                        <td>${weight}</td>
-                        <td style="color: ${scoreColor}; font-weight: bold;">${score.score.toFixed(2)}%</td>
-                        <td>${score.correct}/${score.total}</td>
-                        <td>${date}</td>
-                    </tr>
-                `;
-            });
-            
-            html += `
-                    </tbody>
-                </table>
-            `;
-            
-            container.innerHTML = html;
-        }
+                    <div class="form-field">
+                        <label for="user-role">Role</label>
+                        <select id="user-role">
+                            <option value="user">User</option>
+                            <option value="admin">Admin</option>
+                        </select>
+                    </div>
+                    <div class="btn-row">
+                        <button type="button" id="btn-user-cancel" class="btn btn-secondary" hidden>Cancel</button>
+                        <button type="button" id="btn-user-save" class="btn btn-primary">Create user</button>
+                    </div>
+                    <div id="user-create-message" class="message" role="status"></div>
+                </div>
+                <h3 class="panel-title" style="font-size:1rem;">Existing users</h3>
+                <div id="users-list-admin"></div>
+            </section>
 
-        function showMessage(message, type, element) {
-            element.textContent = message;
-            element.className = `message ${type}`;
-            setTimeout(() => {
-                element.className = 'message';
-            }, 5000);
-        }
+            <section id="panel-scores" class="panel">
+                <h2 class="panel-title">All scores</h2>
+                <div id="admin-scores-list"></div>
+            </section>
 
-        async function loadSettings() {
-            try {
-                const response = await fetch(`${API_BASE}/admin/config`, {
-                    credentials: 'include'
-                });
-                
-                if (response.ok) {
-                    const data = await response.json();
-                    
-                    // Load registration setting
-                    const registrationEnabled = data.config.registration_enabled === 'true';
-                    document.getElementById('registration-toggle').checked = registrationEnabled;
-                    document.getElementById('registration-status').textContent = registrationEnabled ? '✓ Enabled' : '✗ Disabled';
-                    
-                    // Load retake setting
-                    const retakeAllowed = data.config.retake_allowed === 'true';
-                    document.getElementById('retake-toggle').checked = retakeAllowed;
-                    document.getElementById('retake-status').textContent = retakeAllowed ? '✓ Enabled' : '✗ Disabled';
-                }
-            } catch (error) {
-                console.error('Failed to load settings:', error);
-            }
-        }
+            <section id="panel-settings" class="panel">
+                <h2 class="panel-title">Settings</h2>
+                <div class="settings-section">
+                    <h3>Registration</h3>
+                    <label class="checkbox-inline">
+                        <input type="checkbox" id="registration-toggle">
+                        Allow new user registration
+                    </label>
+                    <p id="registration-status" class="admin-card-meta" style="margin-top:8px;"></p>
+                    <button type="button" id="btn-save-registration" class="btn btn-primary btn-block" style="margin-top:12px;">Save</button>
+                    <div id="registration-message" class="message" role="status"></div>
+                </div>
+                <div class="settings-section">
+                    <h3>Test retakes</h3>
+                    <label class="checkbox-inline">
+                        <input type="checkbox" id="retake-toggle">
+                        Allow users to retake tests
+                    </label>
+                    <p id="retake-status" class="admin-card-meta" style="margin-top:8px;"></p>
+                    <button type="button" id="btn-save-retake" class="btn btn-primary btn-block" style="margin-top:12px;">Save</button>
+                    <div id="retake-message" class="message" role="status"></div>
+                </div>
+                <div class="settings-section ui-mode-setting">
+                    <h3>Display</h3>
+                    <p class="admin-card-meta" style="margin-bottom: 12px;">Switch between mobile and desktop layout.</p>
+                    <button type="button" class="btn btn-secondary btn-block ui-mode-toggle-btn" data-ui-mode-toggle>Switch to desktop view</button>
+                </div>
+            </section>
+        </main>
 
-        async function saveRegistrationSetting() {
-            const enabled = document.getElementById('registration-toggle').checked;
-            const messageDiv = document.getElementById('registration-message');
-            
-            try {
-                const response = await fetch(`${API_BASE}/admin/config`, {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json'
-                    },
-                    credentials: 'include',
-                    body: JSON.stringify({
-                        key: 'registration_enabled',
-                        value: enabled ? 'true' : 'false'
-                    })
-                });
-                
-                const data = await response.json();
-                
-                if (response.ok) {
-                    document.getElementById('registration-status').textContent = enabled ? '✓ Enabled' : '✗ Disabled';
-                    showMessage('Registration setting updated successfully!', 'success', messageDiv);
-                } else {
-                    showMessage(data.error || 'Failed to save setting', 'error', messageDiv);
-                }
-            } catch (error) {
-                console.error('Save error:', error);
-                showMessage('Failed to save setting', 'error', messageDiv);
-            }
-        }
+        <nav class="bottom-nav" aria-label="Admin navigation">
+            <button type="button" class="nav-item active" data-tab="tests" id="nav-tests">
+                <span class="nav-icon" aria-hidden="true">📝</span>Tests
+            </button>
+            <button type="button" class="nav-item" data-tab="users" id="nav-users">
+                <span class="nav-icon" aria-hidden="true">👥</span>Users
+            </button>
+            <button type="button" class="nav-item" data-tab="scores" id="nav-scores">
+                <span class="nav-icon" aria-hidden="true">📊</span>Scores
+            </button>
+            <button type="button" class="nav-item" data-tab="settings" id="nav-settings">
+                <span class="nav-icon" aria-hidden="true">⚙️</span>Settings
+            </button>
+        </nav>
+    </div>
 
-        async function saveRetakeSetting() {
-            const allowed = document.getElementById('retake-toggle').checked;
-            const messageDiv = document.getElementById('retake-message');
-            
-            try {
-                const response = await fetch(`${API_BASE}/admin/config`, {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json'
-                    },
-                    credentials: 'include',
-                    body: JSON.stringify({
-                        key: 'retake_allowed',
-                        value: allowed ? 'true' : 'false'
-                    })
-                });
-                
-                const data = await response.json();
-                
-                if (response.ok) {
-                    document.getElementById('retake-status').textContent = allowed ? '✓ Enabled' : '✗ Disabled';
-                    showMessage('Retake setting updated successfully!', 'success', messageDiv);
-                } else {
-                    showMessage(data.error || 'Failed to save setting', 'error', messageDiv);
-                }
-            } catch (error) {
-                console.error('Save error:', error);
-                showMessage('Failed to save setting', 'error', messageDiv);
-            }
-        }
-    </script>
+    <!-- Test editor overlay -->
+    <div id="test-form-overlay" class="form-overlay" aria-hidden="true">
+        <header class="form-overlay-header">
+            <button type="button" id="btn-close-test-form" class="btn-back">← Close</button>
+            <h2 id="test-form-title">New test</h2>
+        </header>
+        <div class="form-overlay-body">
+            <div class="form-field">
+                <label for="test-title">Title</label>
+                <input type="text" id="test-title" placeholder="e.g. Basic Arabic Vocabulary" required>
+            </div>
+            <div class="form-field">
+                <label for="test-description">Description</label>
+                <textarea id="test-description" placeholder="What this test covers" rows="3"></textarea>
+            </div>
+            <div class="form-field">
+                <label for="test-weight">Weight</label>
+                <input type="number" id="test-weight" min="0.1" step="0.1" value="1" required>
+            </div>
+            <div class="form-field">
+                <label for="test-max-questions">Max questions</label>
+                <input type="number" id="test-max-questions" min="1" step="1" placeholder="Leave empty for all">
+            </div>
+            <label class="checkbox-inline">
+                <input type="checkbox" id="test-enabled" checked>
+                Published (visible to users)
+            </label>
+            <label class="checkbox-inline" style="margin-top:10px;">
+                <input type="checkbox" id="test-record-score">
+                Record scores when submitted
+            </label>
+
+            <h3 class="panel-title" style="font-size:1rem;margin-top:20px;">Questions</h3>
+            <div id="questions-list"></div>
+            <button type="button" id="btn-add-question" class="btn btn-secondary btn-block">+ Add question</button>
+        </div>
+        <footer class="form-overlay-footer">
+            <button type="button" id="btn-cancel-test" class="btn btn-secondary">Cancel</button>
+            <button type="button" id="btn-save-test" class="btn btn-primary">Save test</button>
+        </footer>
+    </div>
+
+    <script src="{{ url_for('static', filename='admin.js') }}"></script>
 </body>
 </html>

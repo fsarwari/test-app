@@ -2,159 +2,180 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover, maximum-scale=1, user-scalable=no">
+    <meta name="theme-color" content="#0f1117">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <title>Tester App</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='app-shared.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='app-mobile.css') }}">
+    <link id="ui-desktop-styles" rel="stylesheet" href="{{ url_for('static', filename='app-desktop.css') }}" disabled>
+    <script src="{{ url_for('static', filename='ui-mode.js') }}"></script>
 </head>
 <body>
-    <div class="container">
-        <header>
-            <h1>📚 Tester App</h1>
-            <div id="user-info" class="user-info" style="display: none;">
-                <a href="/app/flashcards" class="btn-flashcards">🎴 Flashcards</a>
-                <a href="/app/admin" class="btn-admin">⚙️ Admin</a>
-                <button onclick="logout()" class="btn-logout">Logout</button>
-                <span id="username-display"></span>
+    <!-- Auth -->
+    <div id="auth-screen" class="screen auth-screen">
+        <div class="auth-brand">
+            <div class="logo" aria-hidden="true">📚</div>
+            <h1>Tester App</h1>
+            <p>Practice vocabulary on the go</p>
+        </div>
+        <div class="auth-card">
+            <h2>Sign in</h2>
+            <form id="auth-form" autocomplete="on">
+                <div class="form-field">
+                    <label for="username">Username</label>
+                    <input type="text" id="username" name="username" autocomplete="username" required>
+                </div>
+                <div class="form-field">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" name="password" autocomplete="current-password" required>
+                </div>
+                <div class="btn-row">
+                    <button type="button" id="btn-register" class="btn btn-secondary">Register</button>
+                    <button type="submit" class="btn btn-primary">Login</button>
+                </div>
+            </form>
+            <div id="auth-message" class="message" role="status" aria-live="polite"></div>
+        </div>
+    </div>
+
+    <!-- Main app -->
+    <div id="main-screen" class="screen" hidden>
+        <header class="top-bar">
+            <h1 id="top-title">Tests</h1>
+            <div class="top-bar-actions">
+                <span id="username-display" class="user-chip"></span>
+                <button type="button" id="btn-menu" class="icon-btn" aria-label="Menu">☰</button>
             </div>
         </header>
 
-        <!-- Auth Section -->
-        <section id="auth-section" class="auth-section">
-            <div class="auth-container">
-                <h2>Login / Register</h2>
-                <form id="auth-form">
-                    <div class="form-group">
-                        <label for="username">Username:</label>
-                        <input type="text" id="username" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="password">Password:</label>
-                        <input type="password" id="password" required>
-                    </div>
-                    <div class="button-group">
-                        <button type="button" onclick="register()" class="btn">Register</button>
-                        <button type="submit" class="btn btn-primary">Login</button>
-                    </div>
-                </form>
-                <div id="auth-message" class="message"></div>
-            </div>
-        </section>
-
-        <!-- Main App Section -->
-        <section id="app-section" class="app-section" style="display: none;">
-            <!-- Navigation Tabs -->
-            <div class="app-tabs">
-                <button onclick="switchUserTab('tests')" class="tab-button active" id="tab-tests">📝 Tests</button>
-                <button onclick="switchUserTab('scores')" class="tab-button" id="tab-scores">📊 My Scores</button>
-                <button onclick="switchUserTab('profile')" class="tab-button" id="tab-profile">👤 Profile</button>
-            </div>
-
-            <!-- Tests Tab -->
-            <div id="tests-tab" class="app-tab-content">
-                <!-- Tests List View -->
+        <main class="content-area">
+            <!-- Tests panel -->
+            <section id="panel-tests" class="panel active">
                 <div id="tests-list-view">
-                    <h2>Available Tests</h2>
-                    <div id="tests-list" class="scores-table-container tests-list-container"></div>
+                    <h2 class="panel-title">Available tests</h2>
+                    <div id="tests-list"></div>
                 </div>
 
-                <!-- Test Taking View -->
-                <div id="test-view" style="display: none;">
-                    <div class="test-header">
-                        <button onclick="backToTests()" class="btn-back">← Back to Tests</button>
+                <div id="test-view" class="subview" hidden>
+                    <div class="test-view-header">
+                        <button type="button" id="btn-back-test" class="btn-back">← Back</button>
                         <h2 id="test-title"></h2>
                     </div>
-                    
                     <form id="test-form">
                         <div id="questions-container"></div>
-                        <button type="submit" class="btn btn-primary btn-submit">Submit Test</button>
+                        <div class="sticky-footer">
+                            <button type="submit" class="btn btn-primary btn-block">Submit test</button>
+                        </div>
                     </form>
                 </div>
 
-                <!-- Results View -->
-                <div id="results-view" style="display: none;">
-                    <div class="results-container">
-                        <h2>Test Results</h2>
-                        <div class="score-display">
-                            <div class="score-circle">
-                                <span id="result-percentage">0%</span>
-                            </div>
-                            <div class="score-details">
-                                <p>Correct: <strong id="result-correct">0</strong> / <strong id="result-total">0</strong></p>
-                            </div>
+                <div id="results-view" class="subview" hidden>
+                    <div class="score-hero">
+                        <div id="score-ring" class="score-ring" style="--pct: 0">
+                            <span id="result-percentage">0%</span>
                         </div>
-                        
-                        <div class="answers-section">
-                            <h3>Answer Breakdown</h3>
-                            <div id="answers-breakdown" class="answers-breakdown"></div>
-                        </div>
-                        
-                        <button onclick="backToTests()" class="btn btn-primary">Take Another Test</button>
+                        <p class="score-sub">
+                            <strong id="result-correct">0</strong> of <strong id="result-total">0</strong> correct
+                        </p>
                     </div>
+                    <h3 class="panel-title" style="font-size: 1rem;">Breakdown</h3>
+                    <div id="answers-breakdown"></div>
+                    <button type="button" id="btn-back-results" class="btn btn-primary btn-block">Back to tests</button>
                 </div>
-            </div>
+            </section>
 
-            <!-- Scores Tab -->
-            <div id="scores-tab" class="app-tab-content" style="display: none;">
-                <h2>My Test Scores</h2>
-                <div id="scores-list" class="scores-table-container"></div>
-            </div>
+            <!-- Scores panel -->
+            <section id="panel-scores" class="panel">
+                <h2 class="panel-title">My scores</h2>
+                <div id="scores-list"></div>
+            </section>
 
-            <!-- Profile Tab -->
-            <div id="profile-tab" class="app-tab-content" style="display: none;">
-                <div class="profile-container">
-                    <h2>Profile</h2>
-                    <div class="profile-panel">
-                        <h3>Change Password</h3>
-                        <div class="form-group">
-                            <label for="current-password">Current Password:</label>
-                            <input type="password" id="current-password" placeholder="Enter your current password" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="new-password">New Password:</label>
-                            <input type="password" id="new-password" placeholder="Enter new password (min 4 characters)" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="confirm-password">Confirm New Password:</label>
-                            <input type="password" id="confirm-password" placeholder="Confirm new password" required>
-                        </div>
-                        <button type="button" onclick="changePassword()" class="btn btn-primary">Change Password</button>
-                        <div id="password-message" class="message"></div>
+            <!-- Profile panel -->
+            <section id="panel-profile" class="panel">
+                <h2 class="panel-title">Profile</h2>
+
+                <div class="settings-section">
+                    <h3>Change password</h3>
+                    <div class="form-field">
+                        <label for="current-password">Current password</label>
+                        <input type="password" id="current-password" autocomplete="current-password">
                     </div>
-
-                    <div class="profile-panel">
-                        <h3>Color Preferences</h3>
-                        <p style="color: #666; font-size: 14px; margin-bottom: 15px;">Customize your app appearance with color preferences.</p>
-                        
-                        <div class="form-group">
-                            <label for="primary-color">Primary Color:</label>
-                            <div style="display: flex; gap: 10px; align-items: center;">
-                                <input type="color" id="primary-color" value="#667eea" style="width: 50px; height: 40px; cursor: pointer;">
-                                <span id="primary-color-value" style="font-size: 14px; color: #666;">#667eea</span>
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <label for="secondary-color">Secondary Color:</label>
-                            <div style="display: flex; gap: 10px; align-items: center;">
-                                <input type="color" id="secondary-color" value="#764ba2" style="width: 50px; height: 40px; cursor: pointer;">
-                                <span id="secondary-color-value" style="font-size: 14px; color: #666;">#764ba2</span>
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <label for="accent-color">Accent Color:</label>
-                            <div style="display: flex; gap: 10px; align-items: center;">
-                                <input type="color" id="accent-color" value="#f093fb" style="width: 50px; height: 40px; cursor: pointer;">
-                                <span id="accent-color-value" style="font-size: 14px; color: #666;">#f093fb</span>
-                            </div>
-                        </div>
-
-                        <button type="button" onclick="saveColorPreferences()" class="btn btn-primary">Save Color Preferences</button>
-                        <div id="color-message" class="message"></div>
+                    <div class="form-field">
+                        <label for="new-password">New password</label>
+                        <input type="password" id="new-password" autocomplete="new-password" placeholder="Min 4 characters">
                     </div>
+                    <div class="form-field">
+                        <label for="confirm-password">Confirm</label>
+                        <input type="password" id="confirm-password" autocomplete="new-password">
+                    </div>
+                    <button type="button" id="btn-change-password" class="btn btn-primary btn-block">Update password</button>
+                    <div id="password-message" class="message" role="status"></div>
                 </div>
+
+                <div class="settings-section">
+                    <h3>Theme colors</h3>
+                    <div class="color-row">
+                        <label for="primary-color">Primary</label>
+                        <input type="color" id="primary-color" value="#5b6cff">
+                    </div>
+                    <div class="color-row">
+                        <label for="secondary-color">Secondary</label>
+                        <input type="color" id="secondary-color" value="#7c3aed">
+                    </div>
+                    <div class="color-row">
+                        <label for="accent-color">Accent</label>
+                        <input type="color" id="accent-color" value="#ec4899">
+                    </div>
+                    <button type="button" id="btn-save-colors" class="btn btn-primary btn-block">Save colors</button>
+                    <div id="color-message" class="message" role="status"></div>
+                </div>
+
+                <div class="settings-section ui-mode-setting">
+                    <h3>Display</h3>
+                    <p class="admin-card-meta" style="margin-bottom: 12px;">Use mobile layout on phones or desktop layout on larger screens.</p>
+                    <button type="button" class="btn btn-secondary btn-block ui-mode-toggle-btn" data-ui-mode-toggle>Switch to desktop view</button>
+                </div>
+            </section>
+        </main>
+
+        <nav id="bottom-nav" class="bottom-nav" aria-label="Main navigation">
+            <button type="button" class="nav-item active" data-tab="tests" id="nav-tests">
+                <span class="nav-icon" aria-hidden="true">📝</span>
+                Tests
+            </button>
+            <button type="button" class="nav-item" data-tab="scores" id="nav-scores">
+                <span class="nav-icon" aria-hidden="true">📊</span>
+                Scores
+            </button>
+            <button type="button" class="nav-item" data-tab="profile" id="nav-profile">
+                <span class="nav-icon" aria-hidden="true">👤</span>
+                Profile
+            </button>
+        </nav>
+    </div>
+
+    <!-- Leave test confirmation -->
+    <div id="leave-test-dialog" class="dialog-overlay" hidden aria-hidden="true">
+        <div class="dialog" role="alertdialog" aria-labelledby="leave-test-title" aria-describedby="leave-test-desc">
+            <h3 id="leave-test-title">Leave test?</h3>
+            <p id="leave-test-desc">If you leave now, your progress will be lost and the test will be canceled.</p>
+            <div class="dialog-actions">
+                <button type="button" id="btn-leave-cancel" class="btn btn-secondary">Keep taking test</button>
+                <button type="button" id="btn-leave-confirm" class="btn btn-primary">Leave test</button>
             </div>
-        </section>
+        </div>
+    </div>
+
+    <!-- Menu sheet -->
+    <div id="sheet-overlay" class="sheet-overlay" aria-hidden="true">
+        <div class="action-sheet" role="dialog" aria-label="Menu">
+            <div class="sheet-handle"></div>
+            <a href="/app/flashcards" class="sheet-link">🎴 Flashcards</a>
+            <a href="/app/admin" id="link-admin" class="sheet-link" hidden>⚙️ Admin</a>
+            <button type="button" id="btn-logout" class="sheet-btn danger">Log out</button>
+        </div>
     </div>
 
     <script src="{{ url_for('static', filename='app.js') }}"></script>
