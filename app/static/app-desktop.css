@@ -1,0 +1,632 @@
+/* Desktop layout — applies when body has class desktop-app (shared mobile HTML structure) */
+
+body.desktop-app button {
+    font-family: inherit;
+    appearance: none;
+    -webkit-appearance: none;
+}
+
+body.desktop-app {
+    margin: 0;
+    min-height: 100vh;
+    overflow: auto;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: #333;
+    padding: 24px;
+    -webkit-font-smoothing: antialiased;
+}
+
+body.desktop-app .screen {
+    position: relative;
+    inset: auto;
+    max-width: 960px;
+    margin: 0 auto;
+    padding-top: 0;
+    background: transparent;
+    min-height: auto;
+}
+
+body.desktop-app .screen[hidden] {
+    display: none !important;
+}
+
+/* Auth */
+body.desktop-app .auth-screen {
+    justify-content: center;
+    padding: 40px 24px;
+    min-height: 70vh;
+}
+
+body.desktop-app .auth-brand h1 {
+    color: #fff;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+body.desktop-app .auth-brand p {
+    color: rgba(255, 255, 255, 0.9);
+}
+
+body.desktop-app .auth-card {
+    background: #fff;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+    max-width: 420px;
+    margin: 0 auto;
+}
+
+body.desktop-app .auth-card h2 {
+    color: #333;
+    text-align: center;
+}
+
+body.desktop-app .form-field label {
+    color: #555;
+    text-transform: none;
+    letter-spacing: 0;
+    font-size: 0.95rem;
+}
+
+body.desktop-app .form-field input,
+body.desktop-app .form-field textarea,
+body.desktop-app .form-field select {
+    background: #fff;
+    border: 2px solid #ddd;
+    color: #333;
+}
+
+body.desktop-app .form-field input:focus,
+body.desktop-app .form-field textarea:focus,
+body.desktop-app .form-field select:focus {
+    border-color: #667eea;
+}
+
+body.desktop-app .btn {
+    border: none;
+    box-shadow: none;
+}
+
+body.desktop-app .btn-primary {
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    color: #fff;
+}
+
+body.desktop-app .btn-secondary {
+    background: #f0f0f0;
+    color: #333;
+    border: 1px solid #ddd;
+}
+
+body.desktop-app .btn-secondary.ui-mode-toggle-btn {
+    border: 1px solid #ccc;
+}
+
+body.desktop-app .form-field input,
+body.desktop-app .form-field textarea,
+body.desktop-app .form-field select {
+    display: block;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+body.desktop-app .message.success {
+    background: #e8f5e9;
+    color: #2e7d32;
+}
+
+body.desktop-app .message.error {
+    background: #ffebee;
+    color: #c62828;
+}
+
+/* Shell */
+body.desktop-app #main-screen,
+body.desktop-app #admin-screen {
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
+    overflow: hidden;
+}
+
+body.desktop-app .top-bar {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    border-bottom: none;
+    height: auto;
+    min-height: 72px;
+    padding: 20px 28px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: nowrap;
+    gap: 16px;
+}
+
+body.desktop-app .top-bar h1 {
+    color: #fff;
+    font-size: 1.75rem;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.15);
+    text-align: left;
+    flex: 1;
+}
+
+body.desktop-app .top-bar-actions {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    flex-shrink: 0;
+    background: transparent;
+}
+
+body.desktop-app .link-back {
+    color: #fff;
+    opacity: 0.95;
+}
+
+body.desktop-app .link-back:hover {
+    opacity: 1;
+}
+
+body.desktop-app .user-chip {
+    background: rgba(255, 255, 255, 0.2);
+    border: 2px solid rgba(255, 255, 255, 0.8);
+    color: #fff;
+    max-width: none;
+}
+
+body.desktop-app .icon-btn {
+    background: rgba(255, 255, 255, 0.2);
+    color: #fff;
+    border: 2px solid rgba(255, 255, 255, 0.5);
+}
+
+/* Bottom nav → horizontal tabs */
+body.desktop-app #main-screen,
+body.desktop-app #admin-screen {
+    display: flex;
+    flex-direction: column;
+}
+
+body.desktop-app .top-bar {
+    order: 1;
+}
+
+body.desktop-app .bottom-nav {
+    position: static !important;
+    left: auto !important;
+    right: auto !important;
+    bottom: auto !important;
+    height: auto !important;
+    padding: 0 28px !important;
+    padding-bottom: 0 !important;
+    background: #f8f9fc !important;
+    border-top: none !important;
+    border-bottom: 1px solid #e8e8e8 !important;
+    z-index: auto !important;
+    order: 2;
+}
+
+body.desktop-app .content-area {
+    order: 3;
+}
+
+body.desktop-app .nav-item {
+    flex: 0 1 auto;
+    flex-direction: row;
+    gap: 8px;
+    padding: 14px 24px;
+    font-size: 0.95rem;
+    text-transform: none;
+    letter-spacing: 0;
+    color: #666;
+    border: none;
+    border-bottom: 3px solid transparent;
+    border-radius: 0;
+    background: transparent;
+    cursor: pointer;
+    box-shadow: none;
+}
+
+body.desktop-app .nav-item .nav-icon {
+    font-size: 1.1rem;
+}
+
+body.desktop-app .nav-item.active {
+    color: #667eea;
+    border-bottom-color: #667eea;
+    background: transparent;
+}
+
+body.desktop-app .nav-item:hover {
+    color: #667eea;
+}
+
+body.desktop-app .content-area {
+    overflow: visible;
+    padding: 28px 32px 32px !important;
+    padding-bottom: 32px !important;
+    max-height: none;
+    flex: none;
+}
+
+body.desktop-app.test-active .content-area {
+    padding-bottom: 32px;
+}
+
+body.desktop-app .panel-title {
+    color: #333;
+    font-size: 1.35rem;
+}
+
+body.desktop-app .settings-section {
+    background: #f9f9f9;
+    border: 1px solid #e0e0e0;
+}
+
+body.desktop-app .settings-section h3 {
+    color: #333;
+}
+
+body.desktop-app .admin-card,
+body.desktop-app .test-card,
+body.desktop-app .list-card {
+    background: #fafafa;
+    border: 1px solid #e0e0e0;
+}
+
+body.desktop-app .test-card-title,
+body.desktop-app .admin-card-title,
+body.desktop-app .name {
+    color: #333;
+}
+
+body.desktop-app .test-card-slug,
+body.desktop-app .admin-card-meta,
+body.desktop-app .meta,
+body.desktop-app .score-sub {
+    color: #666;
+}
+
+body.desktop-app .btn-start,
+body.desktop-app .btn-icon-text {
+    background: linear-gradient(135deg, #667eea, #764ba2);
+}
+
+body.desktop-app .btn-back {
+    background: #f0f0f0;
+    color: #333;
+}
+
+body.desktop-app .question-card {
+    background: #f9f9f9;
+    border: 1px solid #e0e0e0;
+}
+
+body.desktop-app .question-card .q-num {
+    color: #667eea;
+}
+
+body.desktop-app .question-card .arabic {
+    color: #667eea;
+}
+
+body.desktop-app .option-item {
+    background: #fff;
+    border: 2px solid #e8e8e8;
+}
+
+body.desktop-app .option-item:has(input:checked) {
+    border-color: #667eea;
+    background: #f0f4ff;
+}
+
+body.desktop-app .score-hero {
+    background: #f5f5f5;
+    border-radius: 12px;
+    margin-bottom: 24px;
+}
+
+body.desktop-app .score-ring::before {
+    background: #fff;
+}
+
+body.desktop-app .score-ring span {
+    color: #333;
+}
+
+body.desktop-app .summary-card {
+    background: linear-gradient(135deg, #667eea, #764ba2);
+}
+
+body.desktop-app .score-row {
+    background: #fafafa;
+    border: 1px solid #e0e0e0;
+}
+
+body.desktop-app .empty-state {
+    color: #666;
+}
+
+/* Tables (desktop lists) */
+body.desktop-app .desktop-table-wrap {
+    background: #f9f9f9;
+    border-radius: 8px;
+    padding: 16px;
+    border: 1px solid #e0e0e0;
+    overflow-x: auto;
+}
+
+body.desktop-app .desktop-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+body.desktop-app .desktop-table thead {
+    background: #f0f0f0;
+    border-bottom: 2px solid #667eea;
+}
+
+body.desktop-app .desktop-table th {
+    padding: 12px;
+    text-align: left;
+    font-weight: 700;
+    color: #667eea;
+    font-size: 0.85rem;
+}
+
+body.desktop-app .desktop-table td {
+    padding: 12px;
+    border-bottom: 1px solid #e0e0e0;
+    color: #333;
+}
+
+body.desktop-app .desktop-table tbody tr:hover {
+    background: #f5f5f5;
+}
+
+body.desktop-app .desktop-table tbody tr:last-child td {
+    border-bottom: none;
+}
+
+/* Flashcards desktop — light surfaces, readable text (override mobile dark theme vars) */
+body.desktop-app #lessons-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 20px;
+}
+
+body.desktop-app #lessons-list .test-card {
+    flex-direction: column;
+    align-items: flex-start;
+    cursor: pointer;
+    transition: transform 0.15s, box-shadow 0.15s;
+}
+
+body.desktop-app #lessons-list .test-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+}
+
+body.desktop-app .mode-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    max-width: 700px;
+}
+
+body.desktop-app .mode-card {
+    background: #fafafa;
+    border: 1px solid #e0e0e0;
+}
+
+body.desktop-app .mode-card:hover {
+    background: #f0f4ff;
+    border-color: #667eea;
+}
+
+body.desktop-app .mode-card h3 {
+    color: #222;
+}
+
+body.desktop-app .mode-card p {
+    color: #555;
+}
+
+body.desktop-app #flashcards-view.flashcard-stage {
+    margin: 0;
+    min-height: 480px;
+}
+
+body.desktop-app .flashcard-wrap {
+    min-height: 320px;
+}
+
+body.desktop-app .flashcard-front,
+body.desktop-app .flashcard-back {
+    background: #fff;
+    border: 1px solid #e0e0e0;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
+}
+
+body.desktop-app .flashcard-back {
+    background: linear-gradient(145deg, #fff 0%, #f4f6ff 100%);
+}
+
+body.desktop-app .flashcard-front p,
+body.desktop-app .flashcard-back p {
+    color: #1e293b;
+}
+
+body.desktop-app .font-slider-row,
+body.desktop-app .font-slider-row label,
+body.desktop-app .font-slider-row span {
+    color: #555;
+}
+
+body.desktop-app .flashcard-hint {
+    color: #666;
+}
+
+body.desktop-app .counter-pill {
+    background: #eef0f4;
+    color: #444;
+}
+
+body.desktop-app #flashcards-title,
+body.desktop-app .test-view-header h2,
+body.desktop-app #selected-lesson-title {
+    color: #222;
+}
+
+body.desktop-app .flashcard-nav .progress-bar {
+    background: #e5e7eb;
+}
+
+/* Admin desktop */
+body.desktop-app #panel-users .settings-section {
+    max-width: 480px;
+}
+
+body.desktop-app .form-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 500;
+    background: rgba(0, 0, 0, 0.45);
+    transform: none;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    padding: 40px 24px;
+}
+
+body.desktop-app .form-overlay:not(.open) {
+    display: none !important;
+}
+
+body.desktop-app .form-overlay.open {
+    display: flex !important;
+}
+
+body.desktop-app .form-overlay-header,
+body.desktop-app .form-overlay-body,
+body.desktop-app .form-overlay-footer {
+    max-width: 720px;
+    width: 100%;
+    margin: 0 auto;
+}
+
+body.desktop-app .form-overlay-header {
+    border-radius: 12px 12px 0 0;
+    background: #fff;
+    border: 1px solid #e0e0e0;
+    border-bottom: none;
+}
+
+body.desktop-app .form-overlay-body {
+    background: #fff;
+    border-left: 1px solid #e0e0e0;
+    border-right: 1px solid #e0e0e0;
+    max-height: calc(100vh - 180px);
+}
+
+body.desktop-app .form-overlay-footer {
+    position: relative;
+    border-radius: 0 0 12px 12px;
+    background: #fff;
+    border: 1px solid #e0e0e0;
+    border-top: none;
+}
+
+body.desktop-app .question-editor {
+    background: #fff;
+    border: 1px solid #ddd;
+}
+
+body.desktop-app .ui-mode-setting {
+    margin-top: 8px;
+}
+
+body.desktop-app .ui-mode-toggle-btn {
+    width: auto;
+    min-width: 220px;
+}
+
+/* Dialog (desktop) */
+body.desktop-app .dialog {
+    background: #fff;
+    border: 1px solid #ddd;
+}
+
+body.desktop-app .dialog h3 {
+    color: #333;
+}
+
+body.desktop-app .dialog p {
+    color: #666;
+}
+
+/* Menu dropdown (desktop) — position set in app.js from menu button */
+body.desktop-app .sheet-overlay.menu-desktop {
+    background: transparent;
+}
+
+body.desktop-app .sheet-overlay.menu-desktop.open {
+    pointer-events: auto;
+}
+
+body.desktop-app .sheet-overlay.menu-desktop .action-sheet {
+    position: fixed;
+    left: auto;
+    bottom: auto;
+    margin: 0;
+    padding: 8px;
+    background: #fff;
+    border: 1px solid #e0e0e0;
+    border-radius: 10px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.18);
+    transform: none !important;
+}
+
+body.desktop-app .sheet-overlay.menu-desktop .sheet-handle {
+    display: none;
+}
+
+body.desktop-app .sheet-overlay.menu-desktop .sheet-link,
+body.desktop-app .sheet-overlay.menu-desktop .sheet-btn {
+    background: #f5f5f5;
+    color: #333;
+    min-height: 44px;
+    margin-bottom: 4px;
+    border-radius: 8px;
+}
+
+body.desktop-app .sheet-overlay.menu-desktop .sheet-link:last-of-type,
+body.desktop-app .sheet-overlay.menu-desktop .sheet-btn:last-child {
+    margin-bottom: 0;
+}
+
+body.desktop-app .sheet-overlay.menu-desktop .sheet-btn.danger {
+    color: #c62828;
+}
+
+body.desktop-app .top-bar-actions {
+    position: relative;
+}
+
+body.desktop-app .toolbar-row {
+    margin-bottom: 20px;
+}
+
+body.desktop-app .sticky-footer {
+    background: linear-gradient(transparent, #fff 30%);
+}
+
+body.desktop-app.test-active .bottom-nav {
+    display: none;
+}
+
+body.desktop-app.test-active #main-screen {
+    display: block;
+}
+
+body.desktop-app.test-active .top-bar {
+    display: flex;
+}

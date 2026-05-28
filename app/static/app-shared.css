@@ -1,0 +1,150 @@
+/* Shared UI behavior (mobile + desktop) */
+
+[hidden] {
+    display: none !important;
+}
+
+.panel {
+    display: none;
+}
+
+.panel.active {
+    display: block;
+}
+
+.subview[hidden] {
+    display: none !important;
+}
+
+.message {
+    margin-top: 14px;
+    padding: 12px;
+    border-radius: 10px;
+    font-size: 0.9rem;
+    text-align: center;
+    display: none;
+}
+
+.message.success {
+    display: block;
+}
+
+.message.error {
+    display: block;
+}
+
+/* Menu sheet */
+.sheet-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 1000;
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transition: opacity 0.25s, visibility 0.25s;
+}
+
+.sheet-overlay.open {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+}
+
+.action-sheet {
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 1001;
+    background: #1a1d27;
+    border-radius: 16px 16px 0 0;
+    padding: 12px 16px calc(16px + env(safe-area-inset-bottom, 0px));
+    transform: translateY(100%);
+    transition: transform 0.3s ease;
+}
+
+.sheet-overlay.open .action-sheet {
+    transform: translateY(0);
+}
+
+.sheet-handle {
+    width: 36px;
+    height: 4px;
+    background: #3a3f4f;
+    border-radius: 2px;
+    margin: 0 auto 16px;
+}
+
+.sheet-link,
+.sheet-btn {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    width: 100%;
+    min-height: 52px;
+    padding: 0 16px;
+    margin-bottom: 6px;
+    font-size: 1rem;
+    font-weight: 500;
+    border: none;
+    border-radius: 12px;
+    background: #242836;
+    color: #f4f5f7;
+    text-decoration: none;
+    cursor: pointer;
+    text-align: left;
+}
+
+.sheet-btn.danger {
+    color: #ef4444;
+}
+
+/* Confirm dialog */
+.dialog-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 1100;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 24px;
+    background: rgba(0, 0, 0, 0.6);
+}
+
+.dialog-overlay[hidden] {
+    display: none !important;
+}
+
+.dialog {
+    width: 100%;
+    max-width: 320px;
+    background: #1a1d27;
+    border-radius: 14px;
+    padding: 22px 20px 18px;
+    border: 1px solid #242836;
+}
+
+.dialog h3 {
+    margin: 0 0 10px;
+    font-size: 1.1rem;
+    color: #f4f5f7;
+}
+
+.dialog p {
+    margin: 0 0 20px;
+    font-size: 0.9rem;
+    color: #9ca3af;
+    line-height: 1.45;
+}
+
+.dialog-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.dialog-actions .btn {
+    width: 100%;
+    flex: none;
+}

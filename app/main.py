@@ -82,6 +82,16 @@ def init_db():
         )
     ''')
     
+    cursor.execute('''
+        CREATE TABLE IF NOT EXISTS user_prefs (
+            userid INTEGER NOT NULL,
+            setting TEXT NOT NULL,
+            value TEXT NOT NULL,
+            PRIMARY KEY (userid, setting),
+            FOREIGN KEY (userid) REFERENCES users(id)
+        )
+    ''')
+    
     conn.commit()
     conn.close()
 
@@ -829,6 +839,49 @@ def change_password():
         conn.close()
         
         return jsonify({'message': 'Password changed successfully'}), 200
+    except Exception as e:
+        return jsonify({'error': str(e)}), 500
+
+@app.route('/app/api/user-preferences', methods=['GET'])
+@login_required
+def get_user_preferences():
+    """Get user's color preferences"""
+    try:
+        conn = sqlite3.connect(DB_PATH)
+        cursor = conn.cursor()
+        cursor.execute('SELECT setting, value FROM user_prefs WHERE userid = ?', (session['user_id'],))
+        prefs = cursor.fetchall()
+        conn.close()
+        
+        preferences = {pref[0]: pref[1] for pref in prefs}
+        return jsonify(preferences), 200
+    except Exception as e:
+        return jsonify({'error': str(e)}), 500
+
+@app.route('/app/api/user-preferences', methods=['POST'])
+@login_required
+def save_user_preferences():
+    """Save user's color preferences"""
+    data = request.json
+    
+    if not data:
+        return jsonify({'error': 'No preferences provided'}), 400
+    
+    try:
+        conn = sqlite3.connect(DB_PATH)
+        cursor = conn.cursor()
+        
+        for setting, value in data.items():
+            if setting and value:
+                cursor.execute('''
+                    INSERT OR REPLACE INTO user_prefs (userid, setting, value)
+                    VALUES (?, ?, ?)
+                ''', (session['user_id'], setting, value))
+        
+        conn.commit()
+        conn.close()
+        
+        return jsonify({'message': 'Preferences saved successfully'}), 200
     except Exception as e:
         return jsonify({'error': str(e)}), 500
 
